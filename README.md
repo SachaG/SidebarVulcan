@@ -2,13 +2,13 @@
 
 This is the codebase for [Sidebar](http://sidebar.io/), a daily newsletter of design-related links. It's built with [Vulcan.js](http://vulcanjs.org/), a full-stack React/GraphQL framework.
 
-This app is used both to display links, accept link submission, and subscribe users to the mailing list; as well as to moderate the link queue and schedule newsletters. 
+This app is used both to display links, accept link submission, and subscribe users to the mailing list; as well as to moderate the link queue and schedule newsletters.
 
 ## License
 
-This codebase is provided mainly for educational purposes, but it is MIT-licensed meaning that you can freely reuse parts of all of it for your own projects, including commercial applications. 
+This codebase is provided mainly for educational purposes, but it is MIT-licensed meaning that you can freely reuse parts of all of it for your own projects, including commercial applications.
 
-Note that this only applies to **code**. All graphic assets, color palettes, content, images, logos, etc. are *not* MIT-licensed and **should not** be reused. So if you do want to use the code, please take the time to remove or change these assets. 
+Note that this only applies to **code**. All graphic assets, color palettes, content, images, logos, etc. are _not_ MIT-licensed and **should not** be reused. So if you do want to use the code, please take the time to remove or change these assets.
 
 ## Installation
 
@@ -20,29 +20,63 @@ npm start
 
 ## Settings
 
-You will need your own `settings.json` file. You can check out the included `settings-sample.json` file and use it as a starting point. 
+You will need your own `settings.json` file. You can check out the included `settings-sample.json` file and use it as a starting point.
 
-## Features
+## Main Features
 
-The Sidebar app is divided into two main parts. 
+The Sidebar app is divided into two main parts.
 
 ### Public-Facing Site
 
 This is what users have access to on [Sidebar](http://sidebar.io/). The main features include:
 
-- A list of recent links on the homepage. 
+- A list of recent links on the homepage.
 - Link archives.
 - Newsletter sign-up widget.
-- Sponsorship sign-up flow. 
-- Link submission page. 
+- Sponsorship sign-up flow.
+- Link submission page.
 
 ### Admin Area
 
-The admin area is used to moderate links and send out newsletters. It includes: 
+The admin area is used to moderate links and send out newsletters. It includes:
 
-- A link (a.k.a. posts) moderation dashboard. 
+- A link (a.k.a. posts) moderation dashboard.
 - A newsletter scheduling dashboard.
 - Other dashboards for users, categories, discounts, etc.
+
+## Feature Index
+
+Here is a cross-reference of the various Vulcan features used in the app and where the corresponding code lives.
+
+### Client/Server
+
+| **Feature/API**                                  | **Location**                                                                                                                                                                                                                                                      |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Schema definition                                | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js)                                                                                                                                                 |
+| Field-specific query                             | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js#L87-L95)                                                                                                                                         |
+| onCreate, onUpdate callbacks                     | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js#L221-L230)                                                                                                                                       |
+| Field decorator (makeAutocomplete)               | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js#L334)                                                                                                                                            |
+| Field relations                                  | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js#L380-L384)                                                                                                                                       |
+| Custom input                                     | [schema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/schema.js#L85), [ScheduledAtInput.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/posts/ScheduledAtInput.jsx) |
+| Fragment definition                              | [fragments.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/posts/fragments.js)                                                                                                                                           |
+| addToFragmentMatcher                             | [graphql.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/graphql.js)                                                                                                                                                     |
+| extendCollection                                 | [collection.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/users/collection.js#L5)                                                                                                                                      |
+| Routes (with layoutComponent and access control) | [routes.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/routes.js)                                                                                                                                                       |
+
+### Server
+
+| **Feature/API**  | **Location**                                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Cache            | [cache.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cache.js)                       |
+| Cron             | [cron.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cron.js)                         |
+| DB Indexes       | [indexes.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/indexes.js)                   |
+| apiSchema        | [apischema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/apischema.js)         |
+| Callbacks        | [callbacks](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/callbacks.js)            |
+| Custom mutations | [mutations.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/mutations.js) |
+| Custom queries   | [queries.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/queries.js)     |
+| RSS feed         | [rss.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/rss.js)                     |
+| REST API         | [api.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/api.js)                     |
+| Emails           | [emails.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/emails/emails.js)              |
 
 ## Codebase
 
@@ -52,15 +86,15 @@ The codebase generally follows a feature-first organization, meaning that all co
 
 ## Integrations
 
-The app relies on a few external service providers: 
+The app relies on a few external service providers:
 
-- [EmailOctopus](https://emailoctopus.com/) for newsletter sending. 
-- [Stripe](https://stripe.com/) for payment processing. 
-- [Sentry](https://sentry.io/) for error tracking. 
-- [Twitter](http://twitter.com/) for fetching avatars. 
-- [Google Analytics](https://analytics.google.com/) for analytics. 
+- [EmailOctopus](https://emailoctopus.com/) for newsletter sending.
+- [Stripe](https://stripe.com/) for payment processing.
+- [Sentry](https://sentry.io/) for error tracking.
+- [Twitter](http://twitter.com/) for fetching avatars.
+- [Google Analytics](https://analytics.google.com/) for analytics.
 
-Note that missing the API keys (in your `settings.json` file) for one or more of these services might lead to errors and/or warnings that might prevent you from running the app properly. 
+Note that missing the API keys (in your `settings.json` file) for one or more of these services might lead to errors and/or warnings that might prevent you from running the app properly.
 
 ## Support
 
