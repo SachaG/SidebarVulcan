@@ -1,0 +1,49 @@
+$spacing: 20px;
+
+$smaller-font: 0.8rem;
+$small-font: 0.9rem;
+$medium-font: 1rem;
+$large-font: 1.25rem;
+$larger-font: 1.35rem;
+
+$border: 1px solid $light-border-color;
+$border2: 1px solid $border-color;
+
+@mixin activeHover{
+  &:hover{
+    background: $active-color;
+    color: $white;
+    border-color: $active-color;
+    text-decoration: none;
+  }
+}
+
+@mixin flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin border-radius{
+  border-radius: 3px;
+}
+@mixin border{
+  border: $border;
+}
+@mixin border2{
+  border: $border2;
+}
+
+@mixin soft-shadow($opacity: 0.15){
+  box-shadow: 0 10px 40px rgba(37, 51, 62, $opacity);
+}
+
+@mixin letter-spacing{
+  letter-spacing: 1.5px;
+}
+
+@mixin subheader{
+  background: $lighter-grey;
+}
+$postsGutterWidth: $spacing * 3;
+$imageBorderWidth: $spacing * 3;

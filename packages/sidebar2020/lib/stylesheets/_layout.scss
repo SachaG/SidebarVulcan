@@ -1,0 +1,37 @@
+.layout {
+  // display: grid;
+  // grid-template-columns: [main] 1fr [header] 60px ;
+}
+.subheader {
+  padding: $spacing;
+  background: $background-color-secondary;
+}
+.header {
+  // grid-column: header/header;
+  // order: 2;
+}
+.layout-default {
+  // grid-column: main/main;
+  // order: 1;
+  @include medium-and-down {
+    padding: $spacing;
+  }
+  @include large-and-up {
+    background: $background-color-four;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    .layout-inner {
+      background: $white;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      min-height: 100vh;
+    }
+    .main {
+      padding: $spacing * 3;
+    }
+  }
+}
+
+.content-wrapper {
+  padding: $spacing;
+}

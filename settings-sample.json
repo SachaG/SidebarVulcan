@@ -1,0 +1,71 @@
+{
+  "public": {
+    "debug": false,
+    "title": "My Site",
+    "tagline": "A very cool site.",
+    "siteUrl": "https://example.com",
+
+    "siteImage": "/img/foo.png",
+    "faviconUrl": "/img/bar.svg",
+
+    "environment": "development",
+
+    "locale": "en",
+
+    "googleAnalytics": {
+      "apiKey": "UA-12345-1"
+    },
+
+    "stripe": {
+      "publishableKeyTest": "pk_test_foo123",
+      "publishableKey": "pk_live_foo123"
+    },
+
+    "sentry": {
+      "clientDSN": "https://foo123@o324825.ingest.sentry.io/foo123"
+    },
+
+    "hosting": "Localhost",
+    "hostingLink": "http://localhost:5000/"
+  },
+
+  "stripe": {
+    "secretKeyTest": "sk_test_foo123",
+    "secretKey": "sk_live_foo123",
+    "endpointSecret": "whsec_foo123"
+  },
+
+  "defaultEmail": "hello@example.com",
+  "mailUrl": "smtp://127.0.0.1:1025",
+  
+  "runCrons": true,
+
+  "newsletter": {
+    "provider": "emailoctopus"
+  },
+
+  "emailoctopus": {
+    "apiKey": "foo123",
+    "listId": "foo123",
+    "fromName": "My Site",
+    "fromEmail": "hello@example.com"
+  },
+
+  "enableDevelopmentEmails": true,
+
+  "twitter": {
+    "apiKey": "foo123",
+    "apiSecret": "foo123",
+    "token": "foo123",
+    "tokenSecret": "foo123"
+  },
+
+  "sentry": {
+    "serverDSN": "https://foo123@o324825.ingest.sentry.io/foo123"
+  },
+
+  "apolloEngine": {
+    "apiKey": "service:foo:foo123"
+  }
+  
+}

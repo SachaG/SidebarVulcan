@@ -1,0 +1,136 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  {{#if message}}
+  <tr>
+    <td bgcolor="#ffffff" align="left" valign="top"
+      style="padding: 20px 40px 20px 40px;">
+      <table width="100%">
+        <tr>
+          <td><div class="message text-primary-large">{{message}}</div></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  {{/if}}
+
+  {{#each posts.results}}
+
+  <!-- ARTICLE BLOCK -->
+  <tr>
+    <td bgcolor="#ffffff" align="left" valign="top"
+      style="border-top: 1px solid #eaeaea; padding: 20px 20px 20px 20px;">
+
+      <table width="100%">
+        <tr>
+          <!-- CENTER COLUMN -->
+          <td align="left" valign="top" width="100%">
+            <table>
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 0px 20px 0px 20px;" class="pad">
+                  <!-- TITLE -->
+                  <h2>
+                    <a href="{{urlRedirect}}">{{title}}</a>
+                    {{#if isSponsored}}
+                    <a href="https://sidebar.io/sponsor" class="sponsored">
+                      <!--[if mso]>&nbsp;<![endif]-->Sponsored
+                      <!--[if mso]>&nbsp;<![endif]--></a>
+                    {{/if}}
+                  </h2>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 5px 20px 0px 20px;" class="pad">
+                  <!-- DOMAIN -->
+                  <a href="{{urlRedirect}}" class="text-source">{{domain}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 0px 20px 0px 20px;" class="pad">
+                  <!-- EXCERPT -->
+                  <div class="posts-item-body text-primary-large">{{{htmlBody}}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 10px 20px 10px 20px;" class="pad">
+                  <!-- CATEGORIES -->
+                  {{#if categories}}
+                  {{#each categories}}
+                  <a href="{{pageUrl}}" class="tag">
+                    <!--[if mso]>&nbsp;<![endif]-->{{name}}
+                    <!--[if mso]>&nbsp;<![endif]--></a>
+                  {{/each}}
+                  {{/if}}
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 10px 20px 0px 20px;" class="pad">
+                  <!-- SUBMITTED BY -->
+                  <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td width="30">
+                        <img src="{{twitterAvatarUrl}}" alt="" width="20" style="border-radius: 30px;">
+                      </td>
+                      <td>
+                        <p class="text-primary">Credit: <a href="https://twitter.com/{{credit}}"
+                            class="link-primary" target="_blank">{{twitterName}}</a></p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <!-- RIGHT COLUMN -->
+          <td align="right" valign="center">
+            <table class="share">
+              <tr>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 0px 0px 0px 0px;" class="pad">
+                  <a href="{{emailShareUrl}}" target="_blank"><img height="24" width="24"
+                      src="http://sidebar.io/img/email.png" alt="Share by email" /></a>
+                </td>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 0px 0px 0px 10px;" class="pad">
+                  <a href="{{twitterShareUrl}}" target="_blank"><img height="24" width="24"
+                      src="http://sidebar.io/img/twitter.png" alt="Share on Twitter" /></a>
+                </td>
+                <td bgcolor="#ffffff" align="left" valign="top" style="padding: 0px 0px 0px 4px;" class="pad">
+                  <a href="{{facebookShareUrl}}" target="_blank"><img height="24" width="24"
+                      src="http://sidebar.io/img/facebook.png" alt="Share on Facebook" /></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- END ARTICLE BLOCK -->
+  {{/each}}
+
+  {{!-- {{#with JobsSingle}}
+    <tr>
+      <td bgcolor="#ffffff" align="center" valign="top" style="border-top: 1px solid #eaeaea; padding: 20px 20px 0px 20px;">
+        <h2 class="jobs-heading">From the <a href="http://sidebar.io/jobs">Job Board</a></h2>
+        <table class="jobs-item">
+          <tr>
+            <td>
+              <h3 class="jobs-item-company"><a href={{url}}>{{company}}</a></h3>
+
+              <h3 class="jobs-item-title"><a href={{url}}>{{title}}</a></h3>
+
+              <div class="jobs-item-body">{{{htmlBody}}}</div>
+
+              <a class="jobs-item-apply" href="{{url}}">Apply Now →</a>
+            </td>
+            <td>
+              <a class="jobs-item-thumbnail" href={{url}}><img src={{cloudinaryUrl}} /></a>
+            </td>
+          </tr>
+        </table>
+        <p class="jobs-prompt">
+          Looking for talent? <a href="https://sidebar.io/post-job">Share your job offer with over 40,000 designers →</a>
+        </p>
+      </td>
+    </tr>
+  {{/with}} --}}
+
+</table>

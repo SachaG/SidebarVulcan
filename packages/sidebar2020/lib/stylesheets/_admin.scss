@@ -1,0 +1,40 @@
+.wrapper-admin {
+  .content-wrapper {
+    background: $dark-background-color;
+    padding: $spacing * 2 $postsGutterWidth;
+  }
+}
+.admin-main {
+  background: $white;
+}
+
+.datatable-list-load-more {
+  button {
+    width: 100%;
+  }
+}
+
+.dashboard-heading {
+  padding: $spacing;
+  margin: 0;
+}
+
+.actions-button {
+  position: relative;
+  &-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-loading {
+    .actions-button-label {
+      opacity: 0.3;
+    }
+  }
+}

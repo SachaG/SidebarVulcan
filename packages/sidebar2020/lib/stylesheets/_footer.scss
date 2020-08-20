@@ -1,0 +1,16 @@
+.footer {
+  padding: $spacing;
+  background: $dark-background-color;
+  .footer-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .nav-item {
+    margin: 0 $spacing 0 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}

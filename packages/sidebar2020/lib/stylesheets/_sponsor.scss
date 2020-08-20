@@ -1,0 +1,61 @@
+.page-sponsor-landing {
+  .sponsor-cta {
+    @include flex-center;
+    margin-bottom: $spacing;
+  }
+}
+
+.sponsor-preview {
+  border: 1px dashed $border-color;
+  margin-bottom: $spacing;
+}
+.sponsor-preview-heading {
+  background: $background-color;
+  padding: $spacing/2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    font-size: $medium-font;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+.sponsor-preview-contents {
+  padding: $spacing;
+}
+
+.sponsor-discount {
+}
+
+.sponsor-checkout-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.sponsor-checkout-text {
+  margin-top: $spacing;
+  padding: $spacing;
+  background: $background-color;
+}
+.sponsor-discount {
+  margin-top: $spacing/2;
+  font-size: $small-font;
+}
+.sponsor-discount-base {
+  text-decoration: line-through;
+  @include font-secondary;
+}
+.sponsor-discount-price {
+  @include font-secondary;
+}
+.sponsor-discount-code {
+  background: $background-color;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.sponsor-checkout-thanks{
+  text-align: center;
+}

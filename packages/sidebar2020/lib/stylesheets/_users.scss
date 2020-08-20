@@ -1,0 +1,12 @@
+.user-item{
+  display: flex;
+  align-items: center;
+  .avatar{
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+  }
+  .user-item-name{
+    white-space: nowrap;
+  }
+}

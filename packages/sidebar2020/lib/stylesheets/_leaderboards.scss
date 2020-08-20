@@ -1,0 +1,48 @@
+.leaderboard {
+  @include medium-and-up{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $spacing * 4;
+  }
+}
+.leaderboard-heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted $dark-border-color;
+  padding-bottom: $spacing/2;
+  margin-bottom: $spacing/2;
+  @include font-secondary;
+  h3{
+    margin: 0;
+  }
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted $dark-border-color;
+  padding-bottom: $spacing/2;
+  margin-bottom: $spacing/2;
+}
+
+.leaderboard-rank {
+  display: inline-block;
+  margin-right: 3px;
+  @include font-secondary;
+}
+
+.leaderboard-count {
+  @include font-secondary;
+}
+
+.leaderboard-label{
+  display: flex;
+  align-items: center;
+  .avatar{
+    height: 22px;
+    width: 22px;
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,19 @@
+.input-categoriesIds {
+  .rbt-input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .rbt-input {
+    .rbt-token {
+      padding-right: 21px;
+      margin-right: $spacing/2;
+      font-size: $small-font;
+    }
+  }
+}
+
+.input-scheduledAt {
+  .col-sm-9 {
+  }
+}

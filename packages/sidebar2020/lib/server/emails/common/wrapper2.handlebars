@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{siteName}}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    @media {
+      /* CLIENT-SPECIFIC STYLES */
+      body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      img { -ms-interpolation-mode: bicubic; }
+
+      /* RESET STYLES */
+      img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+      table { border-collapse: collapse !important; }
+      body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+      /* iOS BLUE LINKS */
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      .text-source a {
+  	    color: #999999;
+        text-decoration: none;
+      }
+
+      /* REVEAL THUMBNAILS FOR DESKTOP */
+      .thumbnail {
+        overflow: visible !important;
+        float: none !important;
+        display: block !important;
+        line-height:100% !important;
+      }
+    }
+
+    /* WEB FONTS */
+    @media screen {
+
+      @font-face {
+        font-family: 'GT Eesti Text ULight';
+        src: url('http://webfonts.sidebar.io/fonts/GT-Eesti-Text-ULight-web/GT-Eesti-Text-ULight.woff') format('woff');
+        font-weight: 100;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'GT Eesti Text Light';
+        src: url('http://webfonts.sidebar.io/fonts/GT-Eesti-Text-Light-web/GT-Eesti-Text-Light.woff') format('woff');
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'GT Eesti Text Medium';
+        src: url('http://webfonts.sidebar.io/fonts/GT-Eesti-Text-Medium-web/GT-Eesti-Text-Medium.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+      }
+
+    }
+
+    /* DEFAULT TEXT STYLING FOR INLINING */
+    h1 {
+      color: #ffffff;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 100;
+      line-height: 22px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333333;
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 27px;
+      margin: 0;
+    }
+
+    h2 a {
+      color: #333333;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .text-primary {
+      color: #999999;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 16px;
+      margin: 0;
+    }
+
+    .text-primary-large {
+      color: #333333;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 100;
+      line-height: 26px;
+      margin: 0;
+    }
+
+    .text-paragraph{
+      margin-bottom: 20px;
+    }
+    .text-secondary {
+      color: #777777;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 18px;
+      margin: 0;
+    }
+
+    .text-strong{
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    .link-title {
+      color: #ffffff;
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      line-height: 22px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .link-link {
+
+    }
+
+    .link-primary {
+      color: #F56C33;
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .link-secondary {
+      color: #555555;
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .link-tertiary {
+      color: #777777;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-weight: 100;
+      text-decoration: none;
+    }
+
+    .link-action{
+      border: 1px solid #eaeaea;
+      border-radius: 3px;
+      padding: 15px;
+      display: inline-block;
+    }
+
+    .date {
+      color: #aeaeae;
+      color: #ffffff;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      letter-spacing: 6px;
+      line-height: 20px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .text-source {
+      color: #999999;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 16px;
+      text-decoration: none;
+    }
+
+    .thumbnail img {
+      border-radius: 2px !important;
+    }
+
+    /* TAGS */
+    .sponsored {
+      background-color: #FFFBDB;
+      border-radius: 2px;
+      color: #5E5855;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      padding: 4px 8px 4px 8px;
+      text-decoration: none;
+      margin-right: 5px;
+    }
+
+    .tag {
+      background-color: #f6f2ef;
+      border-radius: 2px;
+      color: #AF9D95;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      padding: 4px 8px 4px 8px;
+      text-decoration: none;
+      margin-right: 5px;
+    }
+
+    .announcement{
+      background: #FFFBDB;
+      padding: 20px 20px 1px 20px;
+    }
+    .announcement a{
+      color: #F56C33;
+    }
+    .big-margin{
+      margin-bottom: 60px;
+    }
+    .announcement p{
+      color: #79878e;
+    }
+
+    /* MOBILE STYLING */
+    @media screen and (max-width: 640px) {
+      .date {
+        font-size: 16px !important;
+        letter-spacing: 2px !important;
+      }
+
+      .thumbnail {
+        overflow: hidden !important;
+        float: left !important;
+        display: none !important;
+        line-height:0 !important;
+      }
+
+      .share {
+        overflow: hidden !important;
+        float: left !important;
+        display: none !important;
+        line-height:0 !important;
+      }
+
+      .pad {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+      }
+    }
+
+    .sponsored-link-table{
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      border: 1px solid #ddd;
+      margin: 20px 0;
+    }
+    .sponsored-link-table strong{
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+    }
+    .sponsored-link-table td{
+      padding: 10px;
+    }
+
+    .jobs-heading{
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .jobs-heading a{
+      text-decoration: none;
+      color: #F56C33;
+    }
+    .jobs-prompt{      
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .jobs-prompt a{
+      text-decoration: none;
+      color: #F56C33;
+
+    }
+    .jobs-item{
+      border: 1px solid #A2B1B9;
+      padding: 10px;
+      font-family: 'GT Eesti Text Light', Helvetica, Arial, sans-serif;
+    }
+    .jobs-item td{
+      padding: 20px;
+    }
+    .jobs-item-company{
+      margin: 0 0 5px 0;
+      font-size: 16px;
+    }
+    .jobs-item-company a{
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #F56C33;
+    }
+    .jobs-item-title{
+      margin: 0 0 5px 0;
+    }
+    .jobs-item-title a{
+      font-family: 'GT Eesti Text Medium', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333333;
+    }
+    .jobs-item-body p{
+      line-height: 1.5;
+      margin: 0 0 10px 0;
+    }
+    .jobs-item-apply{
+      text-decoration: none;
+      color: #F56C33;
+    }
+    .jobs-item-thumbnail img{
+      width: 120px;
+    }
+
+    .posts-item-body p{
+      margin: 5px 0;
+    }
+
+    .message{
+      padding: 20px;
+      background: #f2f2f2;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
+</head>
+<body style="background-color: #ebebeb; margin: 0 !important; padding: 0 !important;">
+
+<!-- HIDDEN PREHEADER TEXT -->
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    The 5 best design links, every day. Curated by a selection of great editors.
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+    <!-- HEADER -->
+    <tr>
+        <td bgcolor="#ebebeb" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="720">
+            <tr>
+            <td align="center" valign="top" width="720">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 720px;" >
+                {{#if date}}
+                  <tr>
+                      <td align="center" valign="top" style="padding: 40px 20px 20px 20px;">
+                          <!-- SHARING -->
+                          <p class="text-secondary">Email not displaying properly? <a href="\{{WebVersionURL}}" class="link-secondary" target="_blank">View browser version.</a></p>
+                      </td>
+                  </tr>
+                {{/if}}
+                <tr>
+                    <td bgcolor="#F56C33" align="left" valign="top" style="border-radius: 0px 0px 0 0; padding: 0px 0px 0px 0px;">
+                        <table width="100%">
+                          <tr>
+                            <td align="left">
+                              <!-- LOGO OR SITE NAME -->
+                              <a href="https://sidebar.io"><img alt="Sidebar" src="https://sidebar.io/img/sidebar-logo-white-transparent.png" width="60px" height="60px" style="color: #ffffff; display: block; font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 20px;" border="0"></a>
+                            </td>
+                            <td align="right" valign="center" style="padding: 0px 20px;">
+                              {{#if date}}
+                                <p class="date">{{date}}</p>
+                              {{/if}}
+                            </td>
+                          </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- TAGLINE -->
+                <!-- <tr>
+                    <td bgcolor="#F56C33" align="center" valign="top" style="padding: 20px 20px 40px 20px;">
+                      {{#if tagline}}
+                        <h1>{{tagline}}</h1>
+                      {{/if}}
+                    </td>
+                </tr> -->
+                
+                <tr>
+                    <td>
+                        <!-- MAIN CONTENT -->
+                        {{{body}}}
+                    </td>
+                </tr>
+                
+                <!-- BLANK CORNERS ROW -->
+                <tr>
+                    <td bgcolor="#ffffff" align="left" valign="top" style="border-radius: 0px 0px 4px 4px; padding: 0px 20px 0px 20px;">
+                        &nbsp;
+                    </td>
+                </tr>
+                {{#if date}}
+                  <tr>
+                      <td align="center" valign="top" style="padding: 20px 20px 0px 20px;">
+                          <!-- NOTIFICATIONS REMINDER -->
+                          <p class="text-secondary">You&rsquo;re receiving this email because you signed up on <a href="http://sidebar.io" class="link-secondary" target="_blank">sidebar.io</a>. <a href="\{{UnsubscribeURL}}" class="link-secondary" target="_blank">Unsubscribe</a></p>
+                      </td>
+                  </tr>
+                {{/if}}
+                <tr>
+                    <td align="center" valign="top" style="padding: 20px 20px 40px 20px;">
+                        <!-- NOTIFICATIONS REMINDER -->
+                        <p class="text-secondary">Sacha Greif - Kyoto, Japan</p>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+</table>
+</body>

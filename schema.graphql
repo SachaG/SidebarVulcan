@@ -1,0 +1,2155 @@
+
+scalar JSON
+scalar Date
+
+# see https://docs.hasura.io/1.0/graphql/manual/queries/query-filters.html
+
+input String_Selector {
+  _eq: String
+  #_gt: String
+  #_gte: String
+  #_ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  #_lt: String
+  #_lte: String
+  #_neq: String
+  #_nilike: String
+  #_nin: [String!]
+  #_nlike: String
+  #_nsimilar: String
+  #_similar: String
+}
+
+input String_Array_Selector {
+  _in: [String!]
+  _contains: String
+  # _contains_all: [String_Selector]
+}
+
+input Int_Selector {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  #_is_null: Boolean
+  _lt: Int
+  _lte: Int
+  #_neq: Int
+  #_nin: [Int!]
+}
+
+input Int_Array_Selector {
+  contains: Int_Selector
+  # contains_all: [Int_Selector]
+}
+
+input Float_Selector {
+  _eq: Float
+  _gt: Float
+  _gte: Float
+  _in: [Float!]
+  #_is_null: Boolean
+  _lt: Float
+  _lte: Float
+  #_neq: Float
+  #_nin: [Float!]
+}
+
+input Float_Array_Selector {
+  contains: Float_Selector
+  # contains_all: [Float_Selector]
+}
+
+input Boolean_Selector {
+  _eq: Boolean
+  #_neq: Boolean
+}
+
+input Boolean_Array_Selector {
+  contains: Boolean_Selector
+  # contains_all: [Boolean_Selector]
+}
+
+input Date_Selector {
+  _eq: Date
+  _gt: Date
+  _gte: Date
+  _in: [Date!]
+  #_is_null: Boolean
+  _lt: Date
+  _lte: Date
+  #_neq: Date
+  #_nin: [Date!]
+}
+
+input Date_Array_Selector {
+  contains: Date_Selector
+  # contains_all: [Date_Selector]
+}
+
+# column ordering options
+enum SortOptions {
+  asc
+  desc
+}
+
+input OptionsInput {
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # For single document queries, return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+}
+
+type Site {
+  title: String
+  url: String
+  logoUrl: String
+  sourceVersion: String
+}
+type IntlValue {
+  locale: String
+  value: String
+}
+input IntlValueInput{
+  locale: String
+  value: String
+}
+directive @intl on FIELD_DEFINITION
+
+  input AuthPasswordInput {
+    email: String
+    password: String
+  }
+  type AuthResult {
+    token: String
+    userId: String
+  }
+  type LogoutResult {
+    userId: String
+  }
+
+  input SignupInput {
+    email: String
+    password: String
+  }
+  type SignupResult {
+    userId: String
+  }
+
+  input SetPasswordInput {
+    newPassword: String
+  }
+
+  #type SetPasswordResult # Will auth user again so we reuse AuthResult atm
+
+  input ResetPasswordInput {
+    token: String
+    newPassword: String
+  }
+  type ResetPasswordResult {
+    userId: String
+  }
+
+  input VerifyEmailInput {
+    token: String
+  }
+  type VerifyEmailResult {
+    userId: String
+  }
+
+  input AuthEmailInput {
+    email: String
+  }
+
+type EmailResponse {
+  from: String
+  to: String
+  subject: String
+  success: JSON
+  error: String
+}
+type NewsletterResponse {
+    email: String
+    success: JSON
+    error: String
+  }
+
+type AvailableDate {
+  label: String
+  value: Date
+}
+
+type UrlMetadata {
+  author: String
+  description: String
+  image: String
+  publisher: String
+  title: String
+  url: String
+  twitter: String
+}
+union AssociatedDocument = Job | Post
+union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | Job | Discount
+
+# A user object
+type User {
+  _id: String 
+  username: String 
+  emails: [JSON] 
+  createdAt: Date 
+  isAdmin: Boolean 
+  locale: String 
+  profile: JSON 
+  services: JSON 
+  displayName: String 
+  email: String 
+  emailHash: String 
+  avatarUrl: String 
+  slug: String 
+  groups: [String] 
+  pageUrl: String 
+  pagePath: String 
+  editUrl: String 
+  isSpammer: Boolean 
+  emailIsRequired: Boolean 
+  twitterScreenName: String 
+  twitterName: String 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteUserInput{
+  filter: UserFilterInput
+  id: String
+}
+
+input SingleUserInput {
+  # filtering
+  filter: UserFilterInput
+  sort: UserSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: UserSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiUserInput {
+
+  # filtering
+  filter: UserFilterInput
+  sort: UserSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleUserOutput{
+  result: User
+}
+
+type  MultiUserOutput{
+  results: [User]
+  totalCount: Int
+}
+
+type UserMutationOutput{
+  data: User
+}
+
+input CreateUserInput {
+  data: CreateUserDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateUserDataInput {
+  username: String 
+  isAdmin: Boolean 
+  locale: String 
+  profile: JSON 
+  displayName: String 
+  email: String 
+  groups: [String] 
+  isSpammer: Boolean 
+  emailIsRequired: Boolean 
+}
+
+input UpdateUserInput{
+  filter: UserFilterInput
+  id: String
+  data: UpdateUserDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertUserInput{
+  filter: UserFilterInput
+  id: String
+  data: UpdateUserDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateUserDataInput {
+  username: String 
+  isAdmin: Boolean 
+  locale: String 
+  displayName: String 
+  email: String 
+  groups: [String] 
+  isSpammer: Boolean 
+  emailIsRequired: Boolean 
+}
+
+input UserFilterInput {
+  _and: [UserFilterInput]
+  _not: UserFilterInput
+  _or: [UserFilterInput]
+
+
+  _id: String_Selector
+  username: String_Selector
+
+  createdAt: Date_Selector
+  isAdmin: Boolean_Selector
+  locale: String_Selector
+
+  displayName: String_Selector
+  email: String_Selector
+  emailHash: String_Selector
+  avatarUrl: String_Selector
+  slug: String_Selector
+  groups: String_Array_Selector
+  pageUrl: String_Selector
+  pagePath: String_Selector
+  editUrl: String_Selector
+  isSpammer: Boolean_Selector
+  emailIsRequired: Boolean_Selector
+  twitterScreenName: String_Selector
+}
+
+input UserSortInput {
+  _id: SortOptions
+  username: SortOptions
+  emails: SortOptions
+  createdAt: SortOptions
+  isAdmin: SortOptions
+  locale: SortOptions
+  services: SortOptions
+  displayName: SortOptions
+  email: SortOptions
+  emailHash: SortOptions
+  avatarUrl: SortOptions
+  slug: SortOptions
+  groups: SortOptions
+  pageUrl: SortOptions
+  pagePath: SortOptions
+  editUrl: SortOptions
+  isSpammer: SortOptions
+  emailIsRequired: SortOptions
+  twitterScreenName: SortOptions
+}
+
+input UserSelectorInput {
+  _and: [UserSelectorInput]
+  _or: [UserSelectorInput]
+
+}
+
+input UserSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Newsletters
+type Newsletter {
+  _id: String 
+  createdAt: Date 
+  subject: String 
+  message: String 
+  html: String 
+  provider: String 
+  data: JSON 
+  status: Float 
+  sentAt: Date 
+  error: JSON 
+  postsIds: [String] 
+  posts: [Post] 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+  sentAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteNewsletterInput{
+  filter: NewsletterFilterInput
+  id: String
+}
+
+input SingleNewsletterInput {
+  # filtering
+  filter: NewsletterFilterInput
+  sort: NewsletterSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: NewsletterSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiNewsletterInput {
+
+  # filtering
+  filter: NewsletterFilterInput
+  sort: NewsletterSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleNewsletterOutput{
+  result: Newsletter
+}
+
+type  MultiNewsletterOutput{
+  results: [Newsletter]
+  totalCount: Int
+}
+
+type NewsletterMutationOutput{
+  data: Newsletter
+}
+
+input CreateNewsletterInput {
+  data: CreateNewsletterDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateNewsletterDataInput {
+  subject: String 
+  message: String 
+  postsIds: [String] 
+}
+
+input UpdateNewsletterInput{
+  filter: NewsletterFilterInput
+  id: String
+  data: UpdateNewsletterDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertNewsletterInput{
+  filter: NewsletterFilterInput
+  id: String
+  data: UpdateNewsletterDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateNewsletterDataInput {
+  subject: String 
+  message: String 
+  status: Float 
+  sentAt: Date 
+  postsIds: [String] 
+}
+
+input NewsletterFilterInput {
+  _and: [NewsletterFilterInput]
+  _not: NewsletterFilterInput
+  _or: [NewsletterFilterInput]
+
+
+  _id: String_Selector
+  createdAt: Date_Selector
+  subject: String_Selector
+  message: String_Selector
+  html: String_Selector
+  provider: String_Selector
+
+  status: Float_Selector
+  sentAt: Date_Selector
+
+  postsIds: String_Array_Selector
+}
+
+input NewsletterSortInput {
+  _id: SortOptions
+  createdAt: SortOptions
+  subject: SortOptions
+  message: SortOptions
+  html: SortOptions
+  provider: SortOptions
+  data: SortOptions
+  status: SortOptions
+  sentAt: SortOptions
+  error: SortOptions
+  postsIds: SortOptions
+}
+
+input NewsletterSelectorInput {
+  _and: [NewsletterSelectorInput]
+  _or: [NewsletterSelectorInput]
+
+}
+
+input NewsletterSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Emails
+type Email {
+  name: String 
+  template: String 
+  subject: String 
+  testPath: String 
+}
+
+
+input DeleteEmailInput{
+  filter: EmailFilterInput
+  id: String
+}
+
+input SingleEmailInput {
+  # filtering
+  filter: EmailFilterInput
+  sort: EmailSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: EmailSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiEmailInput {
+
+  # filtering
+  filter: EmailFilterInput
+  sort: EmailSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleEmailOutput{
+  result: Email
+}
+
+type  MultiEmailOutput{
+  results: [Email]
+  totalCount: Int
+}
+
+type EmailMutationOutput{
+  data: Email
+}
+
+input EmailFilterInput {
+  _and: [EmailFilterInput]
+  _not: EmailFilterInput
+  _or: [EmailFilterInput]
+
+
+  name: String_Selector
+  template: String_Selector
+  subject: String_Selector
+  testPath: String_Selector
+}
+
+input EmailSortInput {
+  name: SortOptions
+  template: SortOptions
+  subject: SortOptions
+  testPath: SortOptions
+}
+
+input EmailSelectorInput {
+  _and: [EmailSelectorInput]
+  _or: [EmailSelectorInput]
+
+}
+
+input EmailSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Settings
+type Setting {
+  name: String 
+  value: JSON 
+  defaultValue: JSON 
+  isPublic: Boolean 
+  description: String 
+}
+
+
+input DeleteSettingInput{
+  filter: SettingFilterInput
+  id: String
+}
+
+input SingleSettingInput {
+  # filtering
+  filter: SettingFilterInput
+  sort: SettingSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: SettingSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiSettingInput {
+
+  # filtering
+  filter: SettingFilterInput
+  sort: SettingSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleSettingOutput{
+  result: Setting
+}
+
+type  MultiSettingOutput{
+  results: [Setting]
+  totalCount: Int
+}
+
+type SettingMutationOutput{
+  data: Setting
+}
+
+input SettingFilterInput {
+  _and: [SettingFilterInput]
+  _not: SettingFilterInput
+  _or: [SettingFilterInput]
+
+
+  name: String_Selector
+
+
+  isPublic: Boolean_Selector
+  description: String_Selector
+}
+
+input SettingSortInput {
+  name: SortOptions
+  value: SortOptions
+  defaultValue: SortOptions
+  isPublic: SortOptions
+  description: SortOptions
+}
+
+input SettingSelectorInput {
+  _and: [SettingSelectorInput]
+  _or: [SettingSelectorInput]
+
+}
+
+input SettingSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Callbacks
+type Callback {
+  name: String 
+  iterator: JSON 
+  properties: [JSON] 
+  runs: String 
+  newSyntax: Boolean 
+  returns: String 
+  description: String 
+  hooks: [String] 
+}
+
+
+input DeleteCallbackInput{
+  filter: CallbackFilterInput
+  id: String
+}
+
+input SingleCallbackInput {
+  # filtering
+  filter: CallbackFilterInput
+  sort: CallbackSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: CallbackSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiCallbackInput {
+
+  # filtering
+  filter: CallbackFilterInput
+  sort: CallbackSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleCallbackOutput{
+  result: Callback
+}
+
+type  MultiCallbackOutput{
+  results: [Callback]
+  totalCount: Int
+}
+
+type CallbackMutationOutput{
+  data: Callback
+}
+
+input CallbackFilterInput {
+  _and: [CallbackFilterInput]
+  _not: CallbackFilterInput
+  _or: [CallbackFilterInput]
+
+
+  name: String_Selector
+
+
+  runs: String_Selector
+  newSyntax: Boolean_Selector
+  returns: String_Selector
+  description: String_Selector
+
+}
+
+input CallbackSortInput {
+  name: SortOptions
+  iterator: SortOptions
+  properties: SortOptions
+  runs: SortOptions
+  newSyntax: SortOptions
+  returns: SortOptions
+  description: SortOptions
+  hooks: SortOptions
+}
+
+input CallbackSelectorInput {
+  _and: [CallbackSelectorInput]
+  _or: [CallbackSelectorInput]
+
+}
+
+input CallbackSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Charges
+type Charge {
+  _id: String 
+  createdAt: Date 
+  userId: String 
+  user: User 
+  type: String 
+  associatedCollection: String 
+  associatedId: String 
+  productKey: String 
+  source: String 
+  test: Boolean 
+  properties: JSON 
+  ip: String 
+  amount: Float 
+  stripeId: String 
+  stripeChargeUrl: String 
+  associatedDocument: AssociatedDocument 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteChargeInput{
+  filter: ChargeFilterInput
+  id: String
+}
+
+input SingleChargeInput {
+  # filtering
+  filter: ChargeFilterInput
+  sort: ChargeSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: ChargeSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiChargeInput {
+
+  # filtering
+  filter: ChargeFilterInput
+  sort: ChargeSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleChargeOutput{
+  result: Charge
+}
+
+type  MultiChargeOutput{
+  results: [Charge]
+  totalCount: Int
+}
+
+type ChargeMutationOutput{
+  data: Charge
+}
+
+input ChargeFilterInput {
+  _and: [ChargeFilterInput]
+  _not: ChargeFilterInput
+  _or: [ChargeFilterInput]
+
+
+  _id: String_Selector
+  createdAt: Date_Selector
+  userId: String_Selector
+  type: String_Selector
+  associatedCollection: String_Selector
+  associatedId: String_Selector
+  productKey: String_Selector
+  source: String_Selector
+  test: Boolean_Selector
+
+  ip: String_Selector
+  amount: Float_Selector
+  stripeId: String_Selector
+  stripeChargeUrl: String_Selector
+}
+
+input ChargeSortInput {
+  _id: SortOptions
+  createdAt: SortOptions
+  userId: SortOptions
+  type: SortOptions
+  associatedCollection: SortOptions
+  associatedId: SortOptions
+  productKey: SortOptions
+  source: SortOptions
+  test: SortOptions
+  properties: SortOptions
+  ip: SortOptions
+  amount: SortOptions
+  stripeId: SortOptions
+  stripeChargeUrl: SortOptions
+}
+
+input ChargeSelectorInput {
+  _and: [ChargeSelectorInput]
+  _or: [ChargeSelectorInput]
+
+}
+
+input ChargeSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for AnalyticsEvents
+type AnalyticsEvent {
+  createdAt: Date 
+  name: String 
+  properties: JSON 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteAnalyticsEventInput{
+  filter: AnalyticsEventFilterInput
+  id: String
+}
+
+input SingleAnalyticsEventInput {
+  # filtering
+  filter: AnalyticsEventFilterInput
+  sort: AnalyticsEventSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: AnalyticsEventSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiAnalyticsEventInput {
+
+  # filtering
+  filter: AnalyticsEventFilterInput
+  sort: AnalyticsEventSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleAnalyticsEventOutput{
+  result: AnalyticsEvent
+}
+
+type  MultiAnalyticsEventOutput{
+  results: [AnalyticsEvent]
+  totalCount: Int
+}
+
+type AnalyticsEventMutationOutput{
+  data: AnalyticsEvent
+}
+
+input CreateAnalyticsEventInput {
+  data: CreateAnalyticsEventDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateAnalyticsEventDataInput {
+  name: String 
+  properties: JSON 
+}
+
+input AnalyticsEventFilterInput {
+  _and: [AnalyticsEventFilterInput]
+  _not: AnalyticsEventFilterInput
+  _or: [AnalyticsEventFilterInput]
+
+
+  createdAt: Date_Selector
+  name: String_Selector
+
+}
+
+input AnalyticsEventSortInput {
+  createdAt: SortOptions
+  name: SortOptions
+  properties: SortOptions
+}
+
+input AnalyticsEventSelectorInput {
+  _and: [AnalyticsEventSelectorInput]
+  _or: [AnalyticsEventSelectorInput]
+
+}
+
+input AnalyticsEventSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Posts
+type Post {
+  _id: String 
+  # Timetstamp of post creation
+  createdAt: Date 
+  # Timestamp of post first appearing on the site (i.e. being approved)
+  postedAt: Date 
+  # Note: if no date displayed here works for you, please pick the closest suitable date and contact us afterwards to change it to your desired date.
+  scheduledAt: Date 
+  sentAt: Date 
+  url: String 
+  domain: String 
+  title: String 
+  # The Twitter username of the individual (or organization) that will receive credit for the resource being linked to.
+  credit: String 
+  # The full Twitter display name of the credited user
+  twitterName: String 
+  # The Twitter avatar URL of the credited user
+  twitterAvatarUrl: String 
+  slug: String 
+  # Markdown accepted.
+  body: String 
+  htmlBody: String 
+  clickCount: Float 
+  status: Float 
+  isFuture: Boolean 
+  userIP: String 
+  userAgent: String 
+  referrer: String 
+  userId: String 
+  user: User 
+  newsletters: [Newsletter] 
+  shortTitle: String 
+  # You can pick up to three categories.
+  categoriesIds: [String] 
+  categories: [Category] 
+  isSponsored: Boolean 
+  discountCode: String 
+  discountAmount: String 
+  sponsorshipPrice: Float 
+  paidAt: Date 
+  pagePath: String 
+  pageUrl: String 
+  urlRedirect: String 
+  emailShareUrl: String 
+  twitterShareUrl: String 
+  facebookShareUrl: String 
+  sponsorshipPriceFormatted: String 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+  postedAtFormatted(format: String = "YYYY/MM/DD"): String 
+  scheduledAtFormatted(format: String = "YYYY/MM/DD"): String 
+  sentAtFormatted(format: String = "YYYY/MM/DD"): String 
+  paidAtFormatted(format: String = "YYYY/MM/DD"): String 
+  tweetedAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeletePostInput{
+  filter: PostFilterInput
+  id: String
+}
+
+input SinglePostInput {
+  # filtering
+  filter: PostFilterInput
+  sort: PostSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: PostSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiPostInput {
+
+  # filtering
+  filter: PostFilterInput
+  sort: PostSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SinglePostOutput{
+  result: Post
+}
+
+type  MultiPostOutput{
+  results: [Post]
+  totalCount: Int
+}
+
+type PostMutationOutput{
+  data: Post
+}
+
+input CreatePostInput {
+  data: CreatePostDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreatePostDataInput {
+  scheduledAt: Date 
+  sentAt: Date 
+  url: String 
+  title: String 
+  credit: String 
+  body: String 
+  status: Float 
+  userId: String 
+  shortTitle: String 
+  categoriesIds: [String] 
+  isSponsored: Boolean 
+  discountCode: String 
+  sponsorshipPrice: Float 
+}
+
+input UpdatePostInput{
+  filter: PostFilterInput
+  id: String
+  data: UpdatePostDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertPostInput{
+  filter: PostFilterInput
+  id: String
+  data: UpdatePostDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdatePostDataInput {
+  postedAt: Date 
+  scheduledAt: Date 
+  sentAt: Date 
+  url: String 
+  title: String 
+  credit: String 
+  body: String 
+  status: Float 
+  userId: String 
+  shortTitle: String 
+  categoriesIds: [String] 
+  isSponsored: Boolean 
+  discountCode: String 
+  discountAmount: String 
+  sponsorshipPrice: Float 
+  paidAt: Date 
+}
+
+input PostFilterInput {
+  _and: [PostFilterInput]
+  _not: PostFilterInput
+  _or: [PostFilterInput]
+
+
+  _id: String_Selector
+  createdAt: Date_Selector
+  postedAt: Date_Selector
+  scheduledAt: Date_Selector
+  sentAt: Date_Selector
+  url: String_Selector
+  domain: String_Selector
+  title: String_Selector
+  credit: String_Selector
+  twitterName: String_Selector
+  twitterAvatarUrl: String_Selector
+  slug: String_Selector
+  body: String_Selector
+  htmlBody: String_Selector
+  clickCount: Float_Selector
+  status: Float_Selector
+  isFuture: Boolean_Selector
+  userIP: String_Selector
+  userAgent: String_Selector
+  referrer: String_Selector
+  userId: String_Selector
+  shortTitle: String_Selector
+  categoriesIds: String_Array_Selector
+  isSponsored: Boolean_Selector
+  discountCode: String_Selector
+  discountAmount: String_Selector
+  sponsorshipPrice: Float_Selector
+  paidAt: Date_Selector
+}
+
+input PostSortInput {
+  _id: SortOptions
+  createdAt: SortOptions
+  postedAt: SortOptions
+  scheduledAt: SortOptions
+  sentAt: SortOptions
+  url: SortOptions
+  domain: SortOptions
+  title: SortOptions
+  credit: SortOptions
+  twitterName: SortOptions
+  twitterAvatarUrl: SortOptions
+  slug: SortOptions
+  body: SortOptions
+  htmlBody: SortOptions
+  clickCount: SortOptions
+  status: SortOptions
+  isFuture: SortOptions
+  userIP: SortOptions
+  userAgent: SortOptions
+  referrer: SortOptions
+  userId: SortOptions
+  shortTitle: SortOptions
+  categoriesIds: SortOptions
+  isSponsored: SortOptions
+  discountCode: SortOptions
+  discountAmount: SortOptions
+  sponsorshipPrice: SortOptions
+  paidAt: SortOptions
+}
+
+input PostSelectorInput {
+  _and: [PostSelectorInput]
+  _or: [PostSelectorInput]
+
+}
+
+input PostSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Categories
+type Category {
+  _id: String 
+  name: String 
+  description: String 
+  slug: String 
+  pagePath: String 
+  pageUrl: String 
+}
+
+
+input DeleteCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+}
+
+input SingleCategoryInput {
+  # filtering
+  filter: CategoryFilterInput
+  sort: CategorySortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: CategorySelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiCategoryInput {
+
+  # filtering
+  filter: CategoryFilterInput
+  sort: CategorySortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleCategoryOutput{
+  result: Category
+}
+
+type  MultiCategoryOutput{
+  results: [Category]
+  totalCount: Int
+}
+
+type CategoryMutationOutput{
+  data: Category
+}
+
+input CreateCategoryInput {
+  data: CreateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateCategoryDataInput {
+  name: String 
+  description: String 
+  slug: String 
+}
+
+input UpdateCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+  data: UpdateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+  data: UpdateCategoryDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateCategoryDataInput {
+  name: String 
+  description: String 
+  slug: String 
+}
+
+input CategoryFilterInput {
+  _and: [CategoryFilterInput]
+  _not: CategoryFilterInput
+  _or: [CategoryFilterInput]
+
+
+  _id: String_Selector
+  name: String_Selector
+  description: String_Selector
+  slug: String_Selector
+}
+
+input CategorySortInput {
+  _id: SortOptions
+  name: SortOptions
+  description: SortOptions
+  slug: SortOptions
+}
+
+input CategorySelectorInput {
+  _and: [CategorySelectorInput]
+  _or: [CategorySelectorInput]
+
+}
+
+input CategorySelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Jobs
+type Job {
+  _id: String 
+  createdAt: Date 
+  userId: String 
+  user: User 
+  company: String 
+  url: String 
+  title: String 
+  body: String 
+  htmlBody: String 
+  thumbnailUrl: String 
+  status: Float 
+  paidAt: Date 
+  archivedAt: Date 
+  coupon: String 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+  sentAtFormatted(format: String = "YYYY/MM/DD"): String 
+  paidAtFormatted(format: String = "YYYY/MM/DD"): String 
+  archivedAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteJobInput{
+  filter: JobFilterInput
+  id: String
+}
+
+input SingleJobInput {
+  # filtering
+  filter: JobFilterInput
+  sort: JobSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: JobSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiJobInput {
+
+  # filtering
+  filter: JobFilterInput
+  sort: JobSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleJobOutput{
+  result: Job
+}
+
+type  MultiJobOutput{
+  results: [Job]
+  totalCount: Int
+}
+
+type JobMutationOutput{
+  data: Job
+}
+
+input CreateJobInput {
+  data: CreateJobDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateJobDataInput {
+  company: String 
+  url: String 
+  title: String 
+  body: String 
+  thumbnailUrl: String 
+  status: Float 
+  coupon: String 
+}
+
+input UpdateJobInput{
+  filter: JobFilterInput
+  id: String
+  data: UpdateJobDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertJobInput{
+  filter: JobFilterInput
+  id: String
+  data: UpdateJobDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateJobDataInput {
+  company: String 
+  url: String 
+  title: String 
+  body: String 
+  thumbnailUrl: String 
+  status: Float 
+  paidAt: Date 
+  archivedAt: Date 
+  coupon: String 
+}
+
+input JobFilterInput {
+  _and: [JobFilterInput]
+  _not: JobFilterInput
+  _or: [JobFilterInput]
+
+
+  _id: String_Selector
+  createdAt: Date_Selector
+  userId: String_Selector
+  company: String_Selector
+  url: String_Selector
+  title: String_Selector
+  body: String_Selector
+  htmlBody: String_Selector
+  thumbnailUrl: String_Selector
+  status: Float_Selector
+  paidAt: Date_Selector
+  archivedAt: Date_Selector
+  coupon: String_Selector
+}
+
+input JobSortInput {
+  _id: SortOptions
+  createdAt: SortOptions
+  userId: SortOptions
+  company: SortOptions
+  url: SortOptions
+  title: SortOptions
+  body: SortOptions
+  htmlBody: SortOptions
+  thumbnailUrl: SortOptions
+  status: SortOptions
+  paidAt: SortOptions
+  archivedAt: SortOptions
+  coupon: SortOptions
+}
+
+input JobSelectorInput {
+  _and: [JobSelectorInput]
+  _or: [JobSelectorInput]
+
+}
+
+input JobSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+# Type for Discounts
+type Discount {
+  _id: String 
+  code: String 
+  # Discount percentage without the "%"
+  amount: Float 
+}
+
+
+input DeleteDiscountInput{
+  filter: DiscountFilterInput
+  id: String
+}
+
+input SingleDiscountInput {
+  # filtering
+  filter: DiscountFilterInput
+  sort: DiscountSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: DiscountSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiDiscountInput {
+
+  # filtering
+  filter: DiscountFilterInput
+  sort: DiscountSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleDiscountOutput{
+  result: Discount
+}
+
+type  MultiDiscountOutput{
+  results: [Discount]
+  totalCount: Int
+}
+
+type DiscountMutationOutput{
+  data: Discount
+}
+
+input CreateDiscountInput {
+  data: CreateDiscountDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateDiscountDataInput {
+  code: String 
+  amount: Float 
+}
+
+input UpdateDiscountInput{
+  filter: DiscountFilterInput
+  id: String
+  data: UpdateDiscountDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertDiscountInput{
+  filter: DiscountFilterInput
+  id: String
+  data: UpdateDiscountDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateDiscountDataInput {
+  code: String 
+  amount: Float 
+}
+
+input DiscountFilterInput {
+  _and: [DiscountFilterInput]
+  _not: DiscountFilterInput
+  _or: [DiscountFilterInput]
+
+
+  _id: String_Selector
+  code: String_Selector
+  amount: Float_Selector
+}
+
+input DiscountSortInput {
+  _id: SortOptions
+  code: SortOptions
+  amount: SortOptions
+}
+
+input DiscountSelectorInput {
+  _and: [DiscountSelectorInput]
+  _or: [DiscountSelectorInput]
+
+}
+
+input DiscountSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
+
+
+type Query {
+  siteData: Site
+  
+  currentUser: User
+  
+  getDatabaseObject(id: String): JSON
+  
+  availableSponsorshipDates: [AvailableDate]
+  
+  leaderboards: JSON
+  
+  homepagePosts: [JSON]
+  
+  # A single User document fetched by ID or slug
+  user(input: SingleUserInput!): SingleUserOutput
+  
+  # A list of User documents matching a set of query terms
+  users(input: MultiUserInput):  MultiUserOutput
+  
+  # A single Newsletter document fetched by ID or slug
+  newsletter(input: SingleNewsletterInput!): SingleNewsletterOutput
+  
+  # A list of Newsletter documents matching a set of query terms
+  newsletters(input: MultiNewsletterInput):  MultiNewsletterOutput
+  
+  emails(input: MultiEmailInput):  MultiEmailOutput
+  
+  settings(input: MultiSettingInput):  MultiSettingOutput
+  
+  callbacks(input: MultiCallbackInput):  MultiCallbackOutput
+  
+  # A single Charge document fetched by ID or slug
+  charge(input: SingleChargeInput!): SingleChargeOutput
+  
+  # A list of Charge documents matching a set of query terms
+  charges(input: MultiChargeInput):  MultiChargeOutput
+  
+  # A single AnalyticsEvent document fetched by ID or slug
+  analyticsEvent(input: SingleAnalyticsEventInput!): SingleAnalyticsEventOutput
+  
+  # A list of AnalyticsEvent documents matching a set of query terms
+  analyticsEvents(input: MultiAnalyticsEventInput):  MultiAnalyticsEventOutput
+  
+  # A single Post document fetched by ID or slug
+  post(input: SinglePostInput!): SinglePostOutput
+  
+  # A list of Post documents matching a set of query terms
+  posts(input: MultiPostInput):  MultiPostOutput
+  
+  # A single Category document fetched by ID or slug
+  category(input: SingleCategoryInput!): SingleCategoryOutput
+  
+  # A list of Category documents matching a set of query terms
+  categories(input: MultiCategoryInput):  MultiCategoryOutput
+  
+  # A single Job document fetched by ID or slug
+  job(input: SingleJobInput!): SingleJobOutput
+  
+  # A list of Job documents matching a set of query terms
+  jobs(input: MultiJobInput):  MultiJobOutput
+  
+  # A single Discount document fetched by ID or slug
+  discount(input: SingleDiscountInput!): SingleDiscountOutput
+  
+  # A list of Discount documents matching a set of query terms
+  discounts(input: MultiDiscountInput):  MultiDiscountOutput
+  
+}
+  
+
+type Mutation {
+  authenticateWithPassword(input: AuthPasswordInput): AuthResult
+
+  logout: LogoutResult
+
+  signup(input: SignupInput): SignupResult
+
+  setPassword(input: SetPasswordInput): AuthResult
+
+  sendResetPasswordEmail(input: AuthEmailInput): Boolean
+
+  resetPassword(input: ResetPasswordInput): ResetPasswordResult
+
+  sendVerificationEmail(input: AuthEmailInput): Boolean
+
+  verifyEmail(input: VerifyEmailInput): VerifyEmailResult
+
+  testEmail(emailName: String) : EmailResponse
+
+  paymentActionMutation(token: JSON, userId: String, productKey: String, associatedCollection: String, associatedId: String, properties: JSON, coupon: String) : Chargeable
+
+  sendNewsletter(newsletterId: String) : Newsletter
+
+  testNewsletter(newsletterId: String) : Newsletter
+
+  addUserNewsletter(userId: String) : NewsletterResponse
+
+  addEmailNewsletter(email: String) : NewsletterResponse
+
+  removeUserNewsletter(userId: String) : NewsletterResponse
+
+  getUrlMetadata(url: String): UrlMetadata
+
+  approvePost(documentId: String): Post
+
+  spamPost(documentId: String): Post
+
+  # Mutation for creating new User documents
+  createUser(
+  input: CreateUserInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateUserDataInput
+) : UserMutationOutput
+
+  # Mutation for updating a User document
+  updateUser(
+  input: UpdateUserInput,
+  "Deprecated (use 'input' field instead)."
+  selector: UserSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateUserDataInput 
+) : UserMutationOutput
+
+  # Mutation for upserting a User document
+  upsertUser(
+  input: UpsertUserInput,
+  "Deprecated (use 'input' field instead)."
+  selector: UserSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateUserDataInput
+) : UserMutationOutput
+
+  # Mutation for deleting a User document
+  deleteUser(
+  input: DeleteUserInput,
+  "Deprecated (use 'input' field instead)."
+  selector: UserSelectorUniqueInput
+) : UserMutationOutput
+
+  # Mutation for creating new Newsletter documents
+  createNewsletter(
+  input: CreateNewsletterInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateNewsletterDataInput
+) : NewsletterMutationOutput
+
+  # Mutation for updating a Newsletter document
+  updateNewsletter(
+  input: UpdateNewsletterInput,
+  "Deprecated (use 'input' field instead)."
+  selector: NewsletterSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateNewsletterDataInput 
+) : NewsletterMutationOutput
+
+  # Mutation for upserting a Newsletter document
+  upsertNewsletter(
+  input: UpsertNewsletterInput,
+  "Deprecated (use 'input' field instead)."
+  selector: NewsletterSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateNewsletterDataInput
+) : NewsletterMutationOutput
+
+  # Mutation for deleting a Newsletter document
+  deleteNewsletter(
+  input: DeleteNewsletterInput,
+  "Deprecated (use 'input' field instead)."
+  selector: NewsletterSelectorUniqueInput
+) : NewsletterMutationOutput
+
+  # Mutation for creating new AnalyticsEvent documents
+  createAnalyticsEvent(
+  input: CreateAnalyticsEventInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateAnalyticsEventDataInput
+) : AnalyticsEventMutationOutput
+
+  # Mutation for creating new Post documents
+  createPost(
+  input: CreatePostInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreatePostDataInput
+) : PostMutationOutput
+
+  # Mutation for updating a Post document
+  updatePost(
+  input: UpdatePostInput,
+  "Deprecated (use 'input' field instead)."
+  selector: PostSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdatePostDataInput 
+) : PostMutationOutput
+
+  # Mutation for upserting a Post document
+  upsertPost(
+  input: UpsertPostInput,
+  "Deprecated (use 'input' field instead)."
+  selector: PostSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdatePostDataInput
+) : PostMutationOutput
+
+  # Mutation for deleting a Post document
+  deletePost(
+  input: DeletePostInput,
+  "Deprecated (use 'input' field instead)."
+  selector: PostSelectorUniqueInput
+) : PostMutationOutput
+
+  # Mutation for creating new Category documents
+  createCategory(
+  input: CreateCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateCategoryDataInput
+) : CategoryMutationOutput
+
+  # Mutation for updating a Category document
+  updateCategory(
+  input: UpdateCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateCategoryDataInput 
+) : CategoryMutationOutput
+
+  # Mutation for upserting a Category document
+  upsertCategory(
+  input: UpsertCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateCategoryDataInput
+) : CategoryMutationOutput
+
+  # Mutation for deleting a Category document
+  deleteCategory(
+  input: DeleteCategoryInput,
+  "Deprecated (use 'input' field instead)."
+  selector: CategorySelectorUniqueInput
+) : CategoryMutationOutput
+
+  # Mutation for creating new Job documents
+  createJob(
+  input: CreateJobInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateJobDataInput
+) : JobMutationOutput
+
+  # Mutation for updating a Job document
+  updateJob(
+  input: UpdateJobInput,
+  "Deprecated (use 'input' field instead)."
+  selector: JobSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateJobDataInput 
+) : JobMutationOutput
+
+  # Mutation for upserting a Job document
+  upsertJob(
+  input: UpsertJobInput,
+  "Deprecated (use 'input' field instead)."
+  selector: JobSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateJobDataInput
+) : JobMutationOutput
+
+  # Mutation for deleting a Job document
+  deleteJob(
+  input: DeleteJobInput,
+  "Deprecated (use 'input' field instead)."
+  selector: JobSelectorUniqueInput
+) : JobMutationOutput
+
+  # Mutation for creating new Discount documents
+  createDiscount(
+  input: CreateDiscountInput,
+  "Deprecated (use 'input' field instead)."
+  data: CreateDiscountDataInput
+) : DiscountMutationOutput
+
+  # Mutation for updating a Discount document
+  updateDiscount(
+  input: UpdateDiscountInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DiscountSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateDiscountDataInput 
+) : DiscountMutationOutput
+
+  # Mutation for upserting a Discount document
+  upsertDiscount(
+  input: UpsertDiscountInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DiscountSelectorUniqueInput,
+  "Deprecated (use 'input' field instead)."
+  data: UpdateDiscountDataInput
+) : DiscountMutationOutput
+
+  # Mutation for deleting a Discount document
+  deleteDiscount(
+  input: DeleteDiscountInput,
+  "Deprecated (use 'input' field instead)."
+  selector: DiscountSelectorUniqueInput
+) : DiscountMutationOutput
+
+}
+
+

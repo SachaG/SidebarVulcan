@@ -1,0 +1,107 @@
+.newsletter-preview {
+  iframe {
+    width: 100%;
+    min-height: 600px;
+  }
+}
+
+.newsletter-code {
+  textarea {
+    width: 100%;
+    min-height: 600px;
+    padding: $spacing;
+  }
+}
+
+.status-indicator {
+  &-error {
+    background: $dark-red;
+    color: $inverted-text-color;
+  }
+}
+
+.newslettersignup {
+  // display: none;
+  height: 100%;
+  @include flex-center;
+  // background: $background-color;
+  // background: $background-color-four;
+  // border: $imageBorderWidth solid $background-color;
+  padding: $spacing;
+}
+
+.newslettersignup-inner {
+  border: 1px dotted rgba(255, 255, 255, 0.9);
+  padding: 0 $spacing * 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.newslettersignup-tagline,
+.newslettersignup-subtagline {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $small-font;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 2px 10px;
+  @include font-regular;
+  background: $active-color-secondary;
+  text-align: center;
+}
+.newslettersignup-tagline {
+  transform: translateY(-50%);
+}
+.newslettersignup-subtagline {
+  transform: translateY(50%);
+}
+.newslettersignup-heading {
+  text-align: center;
+  font-size: $larger-font;
+  margin-bottom: $spacing/2;
+}
+.newslettersignup-subheading {
+  text-align: center;
+  font-size: $medium-font;
+  @include font-regular;
+}
+.newsletterform-inner {
+  @include flex-center;
+  .form-group {
+    margin: 0 $spacing/2 0 0;
+  }
+  .form-control {
+    border: none;
+  }
+}
+
+.newsletterform-success {
+  color: $inverted-text-color;
+  text-align: center;
+  font-size: $large-font;
+}
+
+.newsletter-cell {
+  padding: $spacing/2;
+  border: 1px solid $border-color;
+  @include border-radius;
+  cursor: pointer;
+  &:hover {
+    background: $background-color;
+  }
+}
+
+.newsletter-cell-date {
+  font-size: $small-font;
+  margin-bottom: 0px;
+}
+
+.newsletter-cell-subject {
+  font-size: $smallest-font;
+  @include font-regular;
+  color: $light-text-color;
+  margin: 0;
+}

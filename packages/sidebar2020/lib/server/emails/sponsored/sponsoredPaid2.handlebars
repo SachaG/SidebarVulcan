@@ -1,0 +1,44 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  <tr>
+    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 30px 20px 30px 20px;">
+
+      <p class="heading text-primary-large">
+        Thanks for supporting Sidebar!
+      </p>
+
+      {{#with post.result}}
+      <table class="sponsored-link-table">
+        <tr>
+          <td><strong>Link:</strong></td>
+          <td>{{title}}</td>
+        </tr>
+        <tr>
+          <td><strong>URL:</strong></td>
+          <td>{{url}}</td>
+        </tr>
+        <tr>
+          <td><strong>Description:</strong></td>
+          <td>{{{htmlBody}}}</td>
+        </tr>
+        <tr>
+          <td><strong>Scheduled for:</strong></td>
+          <td>{{scheduledAtFormatted}}</td>
+        </tr>
+        <tr>
+          <td><strong>Paid on:</strong></td>
+          <td>{{paidAtFormatted}}</td>
+        </tr>
+        <tr>
+          <td><strong>Fee:</strong></td>
+          <td>{{sponsorshipPriceFormatted}}</td>
+        </tr>
+      </table>
+      {{/with}}
+      <br />
+
+      <h2><a href="{{siteData.url}}account" class="link-link link-action">View Your Links</a></h2>
+
+    </td>
+  </tr>
+</table>

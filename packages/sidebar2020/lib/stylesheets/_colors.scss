@@ -1,0 +1,68 @@
+/*
+
+Color Values
+
+*/
+
+$white: #FFFFFF;
+$black: #333333;
+
+$light-red: #ffd4dc;
+$red: #E04E4B;
+$dark-red: #EF1642;
+
+$dark-orange-red: #d35b33;
+$orange-red: #f36c3d;
+$light-orange-red: #F78A66;
+$lighter-orange-red:#ffe3d9;
+
+$lighter-green: #daf8c8;
+$light-green: #c9faaa;
+$green: #98D96F;
+
+$light-yellow: #fff3bf;
+$medium-yellow: #E1D29E;
+
+$dark-beige: #D9C8C1;
+$darkest-beige: #5E5855;
+
+$lightest-grey: #f2f2f2;
+$lighter-grey: #e3e8eb;
+$light-grey: #c6d1d8;
+$medium-grey: #79878e;
+$dark-grey: #4c595f;
+$darker-grey: #383d3f;
+
+$lighter-blue: #d1f0ff;
+$light-blue: #b8e9ff;
+$medium-blue: #91c1d8;
+$dark-blue: #60C0F0;
+
+$pink: #EB78C7;
+
+/*
+
+Color Variables
+
+*/
+$background-color: $lightest-grey;
+$dark-background-color: $lighter-grey;
+$background-color-secondary: $lightest-grey;
+$background-color-tertiary: $light-yellow;
+$background-color-four: $lighter-blue;
+
+$active-color: $orange-red;
+$link-color: $orange-red;
+$active-color-secondary: $light-orange-red;
+$hover-color: $dark-blue;
+
+$dark-border-color: $light-grey;
+$border-color: $lighter-grey;
+$light-border-color: $light-grey;
+$lighter-border-color: $lighter-grey;
+
+$text-color: $darker-grey;
+$light-text-color: $dark-grey;
+$lighter-text-color: $medium-grey;
+$lightest-text-color: $light-grey;
+$inverted-text-color: $white;

@@ -1,0 +1,424 @@
+/* -------------------------------------------------- */
+/* Cell
+/* -------------------------------------------------- */
+
+.post-cell {
+  &-medium {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-small {
+    border: 1px solid $border-color;
+    @include border-radius;
+    cursor: pointer;
+    &:hover {
+      background: $background-color;
+    }
+  }
+}
+
+.post-status {
+  @include medium-and-up {
+    width: 150px;
+  }
+  margin-left: $spacing;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-index {
+  @include flex-center;
+  font-size: 7rem;
+  color: $lightest-grey;
+  position: absolute;
+  top: -55px;
+  left: -35px;
+  @include font-bold;
+  z-index: 1;
+}
+
+.post-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+.post-subheading {
+  margin: 0 0 $spacing/4 0;
+  display: flex;
+  align-items: center;
+}
+
+.post-date {
+  @include font-secondary;
+  margin-right: $spacing/2;
+  font-size: $small-font;
+  &,
+  a:not(:hover) {
+    color: $lighter-text-color;
+  }
+  &::after {
+    content: ' | ';
+    color: $lighter-text-color;
+  }
+}
+
+.post-domain {
+  margin: 0;
+  display: inline-block;
+  color: $lighter-text-color;
+  @include font-regular;
+  font-size: $small-font;
+  a {
+    &,
+    &:visited {
+      color: $lighter-text-color;
+    }
+    &:hover {
+      color: $active-color;
+    }
+  }
+}
+
+.post-title {
+  @include font-primary;
+  font-size: $mediumer-font;
+  // @include font-regular;
+  margin-bottom: $spacing/4;
+  a {
+    &,
+    &:link {
+      color: $text-color;
+    }
+    &:visited {
+      color: $lighter-text-color;
+    }
+    &:hover {
+      color: $active-color;
+    }
+  }
+  .post-cell-small & {
+    font-size: $smaller-font;
+    line-height: 1.3;
+  }
+}
+
+.post-sponsored {
+  background: $background-color-tertiary;
+  display: inline-block;
+  padding: 5px 8px;
+  @include border-radius;
+  text-transform: uppercase;
+  font-size: $smallest-font;
+  @include font-regular;
+  margin-left: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.post-body-container {
+  margin-bottom: $spacing/2;
+}
+
+.post-body {
+  display: inline;
+  p {
+    display: inline;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+}
+
+.post-credit {
+  margin-right: $spacing/2;
+}
+
+.post-twitter {
+  border-radius: 100%;
+  overflow: hidden;
+  display: block;
+  border: 3px solid $border-color;
+  height: 30px;
+  width: 30px;
+  &:hover {
+    border-color: $active-color;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+.post-categories {
+  display: flex;
+  align-items: center;
+  .category-cell {
+    margin-right: $spacing/2;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.post-actions {
+  margin-top: $spacing/2;
+  display: flex;
+  align-items: center;
+}
+
+.post-finish-checkout,
+.post-view-invoice {
+  margin-left: $spacing/2;
+}
+
+/* -------------------------------------------------- */
+/* List
+/* -------------------------------------------------- */
+
+.post-list {
+  .post-cell {
+    margin-bottom: $spacing * 2;
+  }
+}
+
+.post-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* -------------------------------------------------- */
+/* Home
+/* -------------------------------------------------- */
+
+// List
+
+$offset: 3 * $spacing;
+
+.day-postlist {
+  @include large-and-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $postsGutterWidth;
+    row-gap: $spacing * 2;
+    margin: $spacing * 2 $postsGutterWidth;
+
+    .post-cell {
+      margin: 0;
+      display: block;
+      &:first-child {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        .post-title {
+          font-size: $largeish-font;
+        }
+      }
+    }
+  }
+}
+
+.day {
+  @include medium-and-down {
+    .postscolumn {
+      padding: $spacing;
+      overflow: hidden;
+    }
+  }
+  @include large-and-up {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50vh 50vh auto;
+    // height: 100vh;
+    // overflow: hidden;
+    .postscolumn {
+      grid-area: one;
+      // overflow-y: scroll;
+      position: sticky;
+      top: 0;
+    }
+
+    .sidecolumn-image {
+      grid-area: two;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .sidecolumn-two {
+      grid-area: three;
+      position: sticky;
+      top: 50vh;
+      z-index: 5;
+    }
+
+    .sidecolumn-spacer {
+      grid-area: four;
+      // background: $background-color;
+    }
+    // .sidecolumn,
+    // .postscolumn {
+    //   grid-row-start: 1;
+    //   grid-row-end: 2;
+    // }
+    &:first-child {
+      .postscolumn {
+        padding-top: $spacing * 6;
+      }
+    }
+    &:nth-child(even) {
+      grid-template-areas:
+        'two two one one one'
+        'three three one one one'
+        'four four one one one';
+      // .sidecolumn {
+      //   grid-column-start: 1;
+      //   grid-column-end: 3;
+      // }
+      // .postscolumn {
+      //   grid-area: 'one'
+      // }
+    }
+    &:nth-child(odd) {
+      grid-template-areas:
+        'one one one two two'
+        'one one one three three'
+        'one one one four four';
+      // .postscolumn {
+      //   grid-column-start: 1;
+      //   grid-column-end: 4;
+      // }
+      // .sidecolumn {
+      //   grid-column-start: 4;
+      //   grid-column-end: 6;
+      // }
+    }
+  }
+}
+
+// Side Column
+
+.sidecolumn-inner {
+  @include large-and-up {
+    position: sticky;
+    top: 0px;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50% 50%;
+  }
+}
+.sidecolumn-one {
+  overflow: hidden;
+}
+.sidecolumn-two {
+  background: $background-color-four;
+  background: $light-orange-red;
+}
+.sidecolumn-image {
+  overflow: hidden;
+  height: 100%;
+  background: $active-color;
+}
+.day-image {
+  display: block;
+  width: 100%;
+}
+.day-date {
+  min-height: 200px;
+  height: 100%;
+  position: relative;
+  font-size: $huge-font;
+  margin: 0;
+  line-height: 0.7;
+}
+.day-weekdaystamp,
+.day-datestamp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    display: block;
+  }
+}
+.day-weekdaystamp {
+  color: $active-color;
+  color: $white;
+  // margin-bottom: $spacing;
+  z-index: 2;
+}
+
+.day-datestamp {
+  color: $lighter-grey;
+  color: $white;
+  color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  font-size: 10rem;
+}
+
+.post-load-more {
+  position: relative;
+  .btn {
+    width: 100%;
+    padding: $spacing * 2;
+    border-radius: 0;
+    font-size: $largeish-font;
+  }
+}
+.post-load-more-label {
+}
+.post-load-more-loading {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+/* -------------------------------------------------- */
+/* Admin
+/* -------------------------------------------------- */
+
+.status-indicator {
+  display: inline-block;
+  background: $lighter-grey;
+  padding: 3px 8px;
+  @include border-radius;
+  white-space: nowrap;
+  font-size: $smaller-font;
+  margin: 0 4px 4px 0;
+  cursor: default;
+  &-pending {
+    background: $lighter-grey;
+  }
+  &-published {
+    background: $lighter-green;
+  }
+  &-scheduled {
+    background: $light-blue;
+  }
+}
+
+.datatable-item-title {
+  font-size: $small-font;
+  a,
+  span {
+    display: block;
+  }
+}
