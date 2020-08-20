@@ -29,7 +29,7 @@ const Posts = createCollection({
   apiSchema,
 
   permissions: {
-    read: canRead,
+    canRead,
     canCreate: ["members"],
     canUpdate: ["owners"],
     canDelete: ["owners"],
