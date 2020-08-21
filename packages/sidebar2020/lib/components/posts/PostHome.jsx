@@ -12,8 +12,8 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 const postCount = 35;
-// const pollInterval = 5 * 60 * 1000; // every 5 minutes
-const pollInterval = 5 *1000; // every 5 minutes
+const pollInterval = 5 * 60 * 1000; // every 5 minutes
+// const pollInterval = 5 * 1000; // every 5 seconds
 
 const homepageQuery = `
 query homepagePosts {
