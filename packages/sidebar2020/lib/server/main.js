@@ -5,6 +5,7 @@ import './cron';
 import './redirect';
 import './indexes';
 import './cache';
+import './connect';
 
 export * from './newsletters'
 export * from './users'

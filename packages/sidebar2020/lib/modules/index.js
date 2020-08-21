@@ -8,5 +8,6 @@ export * from './categories/index.js';
 export * from './posts/index.js';
 export * from './newsletters/index.js';
 export * from './jobs/index.js';
-export * from './charges/index.js';
 export * from './discounts/index.js';
+export * from './logs/index.js';
+export * from './charges/index.js';

@@ -48,7 +48,17 @@ The admin area is used to moderate links and send out newsletters. It includes:
 
 Here is a cross-reference of the various Vulcan features used in the app and where the corresponding code lives.
 
-### Client/Server
+### Components
+
+| **Feature/API**   | **Location** |
+| ----------------- | ------------ |
+| useQuery | [PostHome.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/posts/PostHome.jsx#L37)          |
+| Cell | [PostCell.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/posts/PostCell.jsx) |
+| Datatable | [AdminPosts.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/admin/AdminPosts.jsx) |
+| SmartForm | [PostSubmit.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/posts/PostSubmit.jsx), [SponsorSubmit](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/sponsor/SponsorSubmit.jsx)|
+
+
+### Modules (Client/Server)
 
 | **Feature/API**                                  | **Location**                                                                                                                                                                                                                                                      |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -65,18 +75,21 @@ Here is a cross-reference of the various Vulcan features used in the app and whe
 
 ### Server
 
-| **Feature/API**  | **Location**                                                                                                                   |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Cache            | [cache.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cache.js)                       |
-| Cron             | [cron.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cron.js)                         |
-| DB Indexes       | [indexes.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/indexes.js)                   |
-| apiSchema        | [apischema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/apischema.js)         |
-| Callbacks        | [callbacks](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/callbacks.js)            |
-| Custom mutations | [mutations.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/mutations.js) |
-| Custom queries   | [queries.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/queries.js)     |
-| RSS feed         | [rss.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/rss.js)                     |
-| REST API         | [api.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/api.js)                     |
-| Emails           | [emails.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/emails/emails.js)              |
+| **Feature/API**    | **Location**                                                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| Cache              | [cache.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cache.js)                       |
+| Cron               | [cron.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/cron.js)                         |
+| DB Indexes         | [indexes.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/indexes.js)                   |
+| apiSchema          | [apischema.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/apischema.js)         |
+| Callbacks          | [callbacks](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/callbacks.js)            |
+| Custom mutations   | [mutations.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/mutations.js) |
+| Custom queries     | [queries.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/graphql/queries.js)     |
+| RSS feed           | [rss.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/rss.js)                     |
+| REST API           | [api.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/api.js)                     |
+| Emails             | [emails.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/emails/emails.js)              |
+| GraphQL Union Type | [graphql.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/charges/graphql.js#L5)        |
+
+|
 
 ## Codebase
 

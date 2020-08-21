@@ -191,7 +191,7 @@ type UrlMetadata {
   twitter: String
 }
 union AssociatedDocument = Job | Post
-union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | Job | Discount
+union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | Job | Discount | Log
 
 # A user object
 type User {
@@ -1842,6 +1842,126 @@ input DiscountSelectorUniqueInput {
 }
 
 
+# Type for Logs
+type Log {
+  _id: String 
+  ip: String 
+  createdAt: Date 
+  method: String 
+  originalUrl: String 
+  url: String 
+  headers: JSON 
+  query: JSON 
+  remoteAddress: String 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
+}
+
+
+input DeleteLogInput{
+  filter: LogFilterInput
+  id: String
+}
+
+input SingleLogInput {
+  # filtering
+  filter: LogFilterInput
+  sort: LogSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  "Deprecated (use 'filter/id' fields instead)."
+  selector: LogSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiLogInput {
+
+  # filtering
+  filter: LogFilterInput
+  sort: LogSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  "Deprecated (use 'filter/id' fields instead)."
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+  
+}
+
+type SingleLogOutput{
+  result: Log
+}
+
+type  MultiLogOutput{
+  results: [Log]
+  totalCount: Int
+}
+
+type LogMutationOutput{
+  data: Log
+}
+
+input LogFilterInput {
+  _and: [LogFilterInput]
+  _not: LogFilterInput
+  _or: [LogFilterInput]
+
+
+  _id: String_Selector
+  ip: String_Selector
+  createdAt: Date_Selector
+  method: String_Selector
+  originalUrl: String_Selector
+  url: String_Selector
+
+
+  remoteAddress: String_Selector
+}
+
+input LogSortInput {
+  _id: SortOptions
+  ip: SortOptions
+  createdAt: SortOptions
+  method: SortOptions
+  originalUrl: SortOptions
+  url: SortOptions
+  headers: SortOptions
+  query: SortOptions
+  remoteAddress: SortOptions
+}
+
+input LogSelectorInput {
+  _and: [LogSelectorInput]
+  _or: [LogSelectorInput]
+
+}
+
+input LogSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
 
 
 type Query {
@@ -1910,6 +2030,12 @@ type Query {
   
   # A list of Discount documents matching a set of query terms
   discounts(input: MultiDiscountInput):  MultiDiscountOutput
+  
+  # A single Log document fetched by ID or slug
+  log(input: SingleLogInput!): SingleLogOutput
+  
+  # A list of Log documents matching a set of query terms
+  logs(input: MultiLogInput):  MultiLogOutput
   
 }
   

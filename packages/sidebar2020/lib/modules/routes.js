@@ -24,6 +24,7 @@ import AdminJobs from '../components/admin/AdminJobs.jsx';
 import AdminLayout from '../components/admin/AdminLayout.jsx';
 import AdminDiscounts from '../components/admin/AdminDiscounts.jsx'
 import AdminCharges from '../components/admin/AdminCharges.jsx';
+import AdminLogs from '../components/admin/AdminLogs.jsx';
 
 import SponsorLanding from '../components/sponsor/SponsorLanding.jsx';
 import SponsorSubmit from '../components/sponsor/SponsorSubmit.jsx';
@@ -80,6 +81,7 @@ const routes = [
   {name:'admin.newsletters',    path: '/admin/newsletters',           component: AdminNewsletters,   layoutComponent: AdminLayout, access: adminAccessOptions },
   {name:'admin.discounts',      path: '/admin/discounts',             component: AdminDiscounts,     layoutComponent: AdminLayout, access: adminAccessOptions },
   {name:'admin.charges',        path: '/admin/charges',               component: AdminCharges,       layoutComponent: AdminLayout, access: adminAccessOptions },
+  {name:'admin.logs',           path: '/admin/logs',                  component: AdminLogs,       layoutComponent: AdminLayout, access: adminAccessOptions },
 ];
 
 if (Meteor.isDevelopment && getSetting('environment') === 'development') {
