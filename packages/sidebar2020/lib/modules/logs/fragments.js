@@ -11,5 +11,6 @@ registerFragment(`
     headers
     query
     remoteAddress
+    body
   }
 `);

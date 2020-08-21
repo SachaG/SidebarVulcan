@@ -1852,6 +1852,7 @@ type Log {
   url: String 
   headers: JSON 
   query: JSON 
+  body: JSON 
   remoteAddress: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
@@ -1933,6 +1934,7 @@ input LogFilterInput {
   url: String_Selector
 
 
+
   remoteAddress: String_Selector
 }
 
@@ -1945,6 +1947,7 @@ input LogSortInput {
   url: SortOptions
   headers: SortOptions
   query: SortOptions
+  body: SortOptions
   remoteAddress: SortOptions
 }
 

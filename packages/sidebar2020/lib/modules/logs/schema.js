@@ -31,6 +31,10 @@ export default {
     type: Object,
     canRead: ["admins"],
   },
+  body: {
+    type: Object,
+    canRead: ["admins"],
+  },
   remoteAddress: {
     type: String,
     canRead: ["admins"],

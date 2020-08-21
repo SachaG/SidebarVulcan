@@ -21,6 +21,7 @@ const AdminLogs = () => (
         // 'remoteAddress',
         'query',
         { name: 'headers', component: Headers },
+        { name: 'body', component: Body },
       ]}
     />
   </div>
@@ -32,6 +33,27 @@ const Headers = ({ document }) => (
       <pre>
         <code>{JSON.stringify(document.headers, '', 2)}</code>
       </pre>
+    </Components.ModalTrigger>
+  </div>
+);
+
+const Body = ({ document }) => (
+  <div>
+    <Components.ModalTrigger label="Show Body" title="Body">
+      <div>
+        <pre>
+          <code>{JSON.stringify(document.body, '', 2)}</code>
+        </pre>
+        {document.body && document.body.query && (
+          <div>
+            <hr />
+            <h4>GraphQL Query</h4>
+            <pre>
+              <code>{document.body.query.replace(/\\n/g, /\n/)}</code>
+            </pre>
+          </div>
+        )}
+      </div>
     </Components.ModalTrigger>
   </div>
 );
