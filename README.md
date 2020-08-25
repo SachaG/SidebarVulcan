@@ -4,15 +4,37 @@ This is the codebase for [Sidebar](http://sidebar.io/), a daily newsletter of de
 
 This app is used both to display links, accept link submission, and subscribe users to the mailing list; as well as to moderate the link queue and schedule newsletters.
 
+## Should I Use This?
+
+If you intend to use this codebase as a starting point for your own project, in addition to basic **HTML/CSS** knowledge you should already be familiar with **React** at the very least, and ideally have a basic understanding of how **GraphQL** works (or be willing to learn). Being familiar with **Node** is also a plus. 
+
+Note that this is a production codebase for a real-world app, and as such being easy to customize or adapt is not its first priority. Be ready to have to get your hands dirty to change a lot of the design, content, behavior, etc. if you want to reuse this for your own project. 
+
 ## License
 
 This codebase is provided mainly for educational purposes, but it is MIT-licensed meaning that you can freely reuse parts of all of it for your own projects, including commercial applications.
 
-Note that this only applies to **code**. All graphic assets, color palettes, content, images, logos, etc. are _not_ MIT-licensed and **should not** be reused. So if you do want to use the code, please take the time to remove or change these assets.
+Note that this only applies to **code**. All graphic assets, color palettes, text content, images, logos, etc. are _not_ MIT-licensed and **should not** be reused. So if you do want to use the code, please take the time to remove or change these assets.
 
 ## Installation
 
-Please follow the [Vuclan two-repo install](https://docs.vulcanjs.org/#Two-Repo-Install-Optional) to get the latest version of Vulcan's `devel` branch, and then run:
+#### 1. Two-Repo Install
+
+Please follow the [Vuclan two-repo install](https://docs.vulcanjs.org/#Two-Repo-Install-Optional) to get the latest version of Vulcan's `devel` branch.
+
+#### 2. Install NPM packages
+
+Install NPM packages with `yarn` or `npm install`. 
+
+#### 3. Create your `settings.json` file
+
+Create a new `settings.json` file at the root of your project and copy over the contents of `settings-sample.json`. 
+
+At minimum, you will need to configure the settings with a Twitter API key to enable Twitter login. Note that your settings will not be publicly accessible *unless* they are within the `public` block of the JSON object, in which case they *will* be published to the client. 
+
+#### 4. Run the app
+
+Run the app with:
 
 ```
 npm start
@@ -43,6 +65,23 @@ The admin area is used to moderate links and send out newsletters. It includes:
 - A link (a.k.a. posts) moderation dashboard.
 - A newsletter scheduling dashboard.
 - Other dashboards for users, categories, discounts, etc.
+
+## Code Overview
+
+### File Types
+
+The majority of files in this codebase follow the same naming convention. Here is a quick overview.
+
+| **Name**   | **Description** | 
+| ----------------- | ------------ |
+| `main.js` | The entry point for the client or server bundle |
+| `index.js` | Centralizes all the imports in a directory |
+| `collection.js` | Create or extend a collection (a.k.a. model) |
+| `schema.js` | A model's schema (list of fields) |
+| `helpers.js` | Various helpers related to a model |
+| `callbacks.js` | Server-side callbacks that should run before or after a given model's CRUD mutations |
+| `apischema.js` | A model's API-only (i.e. not present in the database) fields |
+| `fragments.js` | Fragments are a way to control what fields to load when requesting data |
 
 ## Feature Index
 

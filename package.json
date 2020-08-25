@@ -1,6 +1,6 @@
 {
   "name": "Sidebar",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "engines": {
     "npm": "^3.0"
   },
@@ -130,6 +130,7 @@
     "simpl-schema": "^1.9.0",
     "speakingurl": "^9.0.0",
     "storybook-addon-intl": "^2.3.2",
+    "string-similarity": "^4.0.2",
     "stripe": "^8.56.0",
     "styled-components": "^2.4.1",
     "tracker-component": "^1.3.21",

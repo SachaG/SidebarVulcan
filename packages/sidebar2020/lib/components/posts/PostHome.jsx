@@ -39,7 +39,7 @@ const PostHome = () => {
   const results = data.homepagePosts;
   return (
     <div className="post-list">
-      {loading ? <PostDaysLoading /> : results.length > 0 ? <PostDays posts={results} /> : <PostDaysEmpty />}
+      {loading ? <PostDaysLoading /> : results && results.length > 0 ? <PostDays posts={results} /> : <PostDaysEmpty />}
       <PostLoadMore />
     </div>
   );

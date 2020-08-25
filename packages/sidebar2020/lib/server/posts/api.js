@@ -19,9 +19,7 @@ query apiPostsQuery($input: MultiPostInput) {
       
       # categories
       categories {
-        _id
-        name
-        slug
+        ...CategoryFragment
       }
     }
   }

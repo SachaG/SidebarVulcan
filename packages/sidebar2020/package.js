@@ -17,7 +17,7 @@ Package.onUse((api) => {
     'vulcan:forms',
     // 'vulcan:forms-tags',
     // 'vulcan:forms-upload',
-    // 'vulcan:accounts',
+    'vulcan:accounts',
     'vulcan:payments',
     'vulcan:admin',
     

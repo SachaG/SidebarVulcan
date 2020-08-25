@@ -233,7 +233,7 @@ input SingleUserInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: UserSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -256,7 +256,7 @@ input MultiUserInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -266,7 +266,7 @@ input MultiUserInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleUserOutput{
@@ -422,7 +422,7 @@ input SingleNewsletterInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: NewsletterSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -445,7 +445,7 @@ input MultiNewsletterInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -455,7 +455,7 @@ input MultiNewsletterInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleNewsletterOutput{
@@ -576,7 +576,7 @@ input SingleEmailInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: EmailSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -599,7 +599,7 @@ input MultiEmailInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -609,7 +609,7 @@ input MultiEmailInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleEmailOutput{
@@ -681,7 +681,7 @@ input SingleSettingInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: SettingSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -704,7 +704,7 @@ input MultiSettingInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -714,7 +714,7 @@ input MultiSettingInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleSettingOutput{
@@ -791,7 +791,7 @@ input SingleCallbackInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: CallbackSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -814,7 +814,7 @@ input MultiCallbackInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -824,7 +824,7 @@ input MultiCallbackInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleCallbackOutput{
@@ -916,7 +916,7 @@ input SingleChargeInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: ChargeSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -939,7 +939,7 @@ input MultiChargeInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -949,7 +949,7 @@ input MultiChargeInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleChargeOutput{
@@ -1040,7 +1040,7 @@ input SingleAnalyticsEventInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: AnalyticsEventSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1063,7 +1063,7 @@ input MultiAnalyticsEventInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1073,7 +1073,7 @@ input MultiAnalyticsEventInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleAnalyticsEventOutput{
@@ -1201,7 +1201,7 @@ input SinglePostInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: PostSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1224,7 +1224,7 @@ input MultiPostInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1234,7 +1234,7 @@ input MultiPostInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SinglePostOutput{
@@ -1412,7 +1412,7 @@ input SingleCategoryInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: CategorySelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1435,7 +1435,7 @@ input MultiCategoryInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1445,7 +1445,7 @@ input MultiCategoryInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleCategoryOutput{
@@ -1564,7 +1564,7 @@ input SingleJobInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: JobSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1587,7 +1587,7 @@ input MultiJobInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1597,7 +1597,7 @@ input MultiJobInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleJobOutput{
@@ -1730,7 +1730,7 @@ input SingleDiscountInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: DiscountSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1753,7 +1753,7 @@ input MultiDiscountInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1763,7 +1763,7 @@ input MultiDiscountInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleDiscountOutput{
@@ -1871,7 +1871,7 @@ input SingleLogInput {
   id: String
 
   # backwards-compatibility
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   selector: LogSelectorUniqueInput
 
   # options (backwards-compatibility)
@@ -1894,7 +1894,7 @@ input MultiLogInput {
 
   # backwards-compatibility
   # A JSON object that contains the query terms used to fetch data
-  "Deprecated (use 'filter/id' fields instead)."
+  # Deprecated (use 'filter/id' fields instead).
   terms: JSON
 
   # options (backwards-compatibility)
@@ -1904,7 +1904,7 @@ input MultiLogInput {
   enableTotal: Boolean
   # An identifier to name the query's execution context
   contextName: String
-  
+
 }
 
 type SingleLogOutput{
@@ -2083,199 +2083,199 @@ type Mutation {
   # Mutation for creating new User documents
   createUser(
   input: CreateUserInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateUserDataInput
 ) : UserMutationOutput
 
   # Mutation for updating a User document
   updateUser(
   input: UpdateUserInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: UserSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateUserDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdateUserDataInput
 ) : UserMutationOutput
 
   # Mutation for upserting a User document
   upsertUser(
   input: UpsertUserInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: UserSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdateUserDataInput
 ) : UserMutationOutput
 
   # Mutation for deleting a User document
   deleteUser(
   input: DeleteUserInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: UserSelectorUniqueInput
 ) : UserMutationOutput
 
   # Mutation for creating new Newsletter documents
   createNewsletter(
   input: CreateNewsletterInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateNewsletterDataInput
 ) : NewsletterMutationOutput
 
   # Mutation for updating a Newsletter document
   updateNewsletter(
   input: UpdateNewsletterInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: NewsletterSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateNewsletterDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdateNewsletterDataInput
 ) : NewsletterMutationOutput
 
   # Mutation for upserting a Newsletter document
   upsertNewsletter(
   input: UpsertNewsletterInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: NewsletterSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdateNewsletterDataInput
 ) : NewsletterMutationOutput
 
   # Mutation for deleting a Newsletter document
   deleteNewsletter(
   input: DeleteNewsletterInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: NewsletterSelectorUniqueInput
 ) : NewsletterMutationOutput
 
   # Mutation for creating new AnalyticsEvent documents
   createAnalyticsEvent(
   input: CreateAnalyticsEventInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateAnalyticsEventDataInput
 ) : AnalyticsEventMutationOutput
 
   # Mutation for creating new Post documents
   createPost(
   input: CreatePostInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreatePostDataInput
 ) : PostMutationOutput
 
   # Mutation for updating a Post document
   updatePost(
   input: UpdatePostInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: PostSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdatePostDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdatePostDataInput
 ) : PostMutationOutput
 
   # Mutation for upserting a Post document
   upsertPost(
   input: UpsertPostInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: PostSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdatePostDataInput
 ) : PostMutationOutput
 
   # Mutation for deleting a Post document
   deletePost(
   input: DeletePostInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: PostSelectorUniqueInput
 ) : PostMutationOutput
 
   # Mutation for creating new Category documents
   createCategory(
   input: CreateCategoryInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateCategoryDataInput
 ) : CategoryMutationOutput
 
   # Mutation for updating a Category document
   updateCategory(
   input: UpdateCategoryInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: CategorySelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateCategoryDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdateCategoryDataInput
 ) : CategoryMutationOutput
 
   # Mutation for upserting a Category document
   upsertCategory(
   input: UpsertCategoryInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: CategorySelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdateCategoryDataInput
 ) : CategoryMutationOutput
 
   # Mutation for deleting a Category document
   deleteCategory(
   input: DeleteCategoryInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: CategorySelectorUniqueInput
 ) : CategoryMutationOutput
 
   # Mutation for creating new Job documents
   createJob(
   input: CreateJobInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateJobDataInput
 ) : JobMutationOutput
 
   # Mutation for updating a Job document
   updateJob(
   input: UpdateJobInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: JobSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateJobDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdateJobDataInput
 ) : JobMutationOutput
 
   # Mutation for upserting a Job document
   upsertJob(
   input: UpsertJobInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: JobSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdateJobDataInput
 ) : JobMutationOutput
 
   # Mutation for deleting a Job document
   deleteJob(
   input: DeleteJobInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: JobSelectorUniqueInput
 ) : JobMutationOutput
 
   # Mutation for creating new Discount documents
   createDiscount(
   input: CreateDiscountInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: CreateDiscountDataInput
 ) : DiscountMutationOutput
 
   # Mutation for updating a Discount document
   updateDiscount(
   input: UpdateDiscountInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: DiscountSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
-  data: UpdateDiscountDataInput 
+  # Deprecated (use 'input' field instead).
+  data: UpdateDiscountDataInput
 ) : DiscountMutationOutput
 
   # Mutation for upserting a Discount document
   upsertDiscount(
   input: UpsertDiscountInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: DiscountSelectorUniqueInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   data: UpdateDiscountDataInput
 ) : DiscountMutationOutput
 
   # Mutation for deleting a Discount document
   deleteDiscount(
   input: DeleteDiscountInput,
-  "Deprecated (use 'input' field instead)."
+  # Deprecated (use 'input' field instead).
   selector: DiscountSelectorUniqueInput
 ) : DiscountMutationOutput
 
