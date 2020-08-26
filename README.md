@@ -68,6 +68,10 @@ The admin area is used to moderate links and send out newsletters. It includes:
 
 ## Code Overview
 
+### Screencasts
+
+If you're looking for a quick overview of the codebase, [screencasts are available on YouTube](https://www.youtube.com/playlist?list=PLBoa_Q6hVeSzm3sMjcxImwu2uLTk5-WpT).
+
 ### File Types
 
 The majority of files in this codebase follow the same naming convention. Here is a quick overview.
