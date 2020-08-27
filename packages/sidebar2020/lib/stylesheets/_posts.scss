@@ -94,9 +94,15 @@
 
 .post-webringsite {
   margin-right: $spacing/2;
+  display: flex;
+  align-items: center;
   &::after {
+    margin-left: $spacing/2;
     content: ' | ';
     color: $lighter-text-color;
+  }
+  .post-credit {
+    margin-right: 5px;
   }
 }
 

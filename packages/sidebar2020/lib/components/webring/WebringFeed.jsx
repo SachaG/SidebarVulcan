@@ -4,7 +4,7 @@ import { Components } from 'meteor/vulcan:core';
 import Posts from '../../modules/posts/collection';
 import PostCell from '../posts/PostCell';
 
-const PostListItem = ({ document }) => <PostCell document={document} variant="medium" key={document._id} />;
+const PostListItem = ({ document }) => <PostCell document={document} showWebring={true} variant="medium" key={document._id} />;
 
 const WebringFeed = () => {
   

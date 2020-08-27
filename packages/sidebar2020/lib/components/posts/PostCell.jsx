@@ -60,6 +60,7 @@ const PostCellMedium = ({
   showEdit = false,
   showStatus = false,
   showActions = false,
+  showWebring = false,
 }) => {
   if (!post) {
     return <p>No post found.</p>;
@@ -78,7 +79,7 @@ const PostCellMedium = ({
     categories,
     urlRedirect,
     isSponsored,
-    webringSite
+    webringSite,
   } = post;
 
   const date = postedAtFormatted || scheduledAtFormatted;
@@ -88,9 +89,11 @@ const PostCellMedium = ({
       {index && <div className="post-index">{index}</div>}
       <div className="post-content">
         <div className="post-subheading">
-          
-          {webringSite && (
-            <h4 className="post-webringsite">{webringSite.title}</h4>
+          {showWebring && (
+            <h4 className="post-webringsite">
+              <PostCredit post={post} />
+              <span>{webringSite.title}</span>
+            </h4>
           )}
 
           {showDate && date && (
@@ -120,13 +123,13 @@ const PostCellMedium = ({
         <div className="post-body-container">
           <div className="post-body" dangerouslySetInnerHTML={{ __html: htmlBody }} />
         </div>
-        <div className="post-footer">
+        {!showWebring && <div className="post-footer">
           <PostCredit post={post} />
           <div className="post-categories">
             {categories &&
               categories.map((category) => <CategoryCell key={category._id} variant="small" document={category} />)}
           </div>
-        </div>
+        </div>}
         {showActions && (
           <div className="post-actions">
             {showEdit && <PostEditButton post={post} />}

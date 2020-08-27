@@ -28,7 +28,7 @@ export const importRSSFeeds = async () => {
     console.log(`// Parsing feed for ${url}, ${items.length} items found`);
 
     for (const item of items) {
-      const { title, link: url } = item;
+      const { title, link: url, isoDate } = item;
 
       // get metadata to get "clean" description and twitter credit
       const metadata = await getMetadata(url);
@@ -43,6 +43,7 @@ export const importRSSFeeds = async () => {
         credit,
         status: postStatus.pending,
         webringSiteId: site._id,
+        scheduledAt: new Date(isoDate),
       };
 
       // check if post already exists

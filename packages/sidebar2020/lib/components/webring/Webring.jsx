@@ -10,7 +10,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import SidebarPortal from '../common/SidebarPortal.jsx';
 import { webringStatus } from '../../modules/data';
 
-const PostListItem = ({ document }) => <PostCell document={document} variant="medium" key={document._id} />;
+const PostListItem = ({ document }) => <PostCell document={document} showWebring={true} variant="medium" key={document._id} />;
 
 const WebringListItem = ({ document }) => <WebringSiteCell document={document} key={document._id} />;
 
