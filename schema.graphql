@@ -216,6 +216,7 @@ type User {
   emailIsRequired: Boolean 
   twitterScreenName: String 
   twitterName: String 
+  webringSites: [WebringSite] 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 

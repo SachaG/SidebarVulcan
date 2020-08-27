@@ -1,7 +1,7 @@
 import { registerFragment } from "meteor/vulcan:core";
 
 registerFragment(/* GraphQL */ `
-  fragment WebringSiteFragment on WebringSite {
+  fragment WebringSiteFields on WebringSite {
     _id
     url
     feedUrl
@@ -11,6 +11,13 @@ registerFragment(/* GraphQL */ `
     twitterAvatarUrl
     status
     userId
+  }
+`);
+
+
+registerFragment(/* GraphQL */ `
+  fragment WebringSiteFragment on WebringSite {
+    ...WebringSiteFields
     user {
       ...UserFragment
     }

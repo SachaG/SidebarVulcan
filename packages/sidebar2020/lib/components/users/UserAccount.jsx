@@ -1,9 +1,12 @@
 import { Components, useCurrentUser } from 'meteor/vulcan:core';
 import React from 'react';
 import Posts from '../../modules/posts/collection';
+import WebringSites from '../../modules/sites/collection';
 import PostCell from '../posts/PostCell';
 import { useApolloClient } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
+import WebringSiteCell from '../webring/WebringSiteCell';
+import PageLayout from '../common/PageLayout';
 
 const PaginatedListItem = ({ document }) => (
   <PostCell
@@ -22,10 +25,11 @@ const UserAccount = () => {
   const { loading, currentUser } = useCurrentUser();
 
   return (
-    <div className="page accounts-page">
-      <div className="page-heading">
-        <h2 className="page-heading-title">Account</h2>
-        {currentUser && (
+    <PageLayout
+      name="account"
+      title="Account"
+      action={
+        currentUser && (
           <Components.Button
             className="page-heading-action"
             onClick={() => {
@@ -34,25 +38,42 @@ const UserAccount = () => {
           >
             Log Out
           </Components.Button>
-        )}
-      </div>
+        )
+      }
+    >
       {loading ? (
         <Components.Loading />
       ) : currentUser ? (
-        <UserAccountPostList currentUser={currentUser} />
+        <div className="account-contents">
+          {currentUser.webringSites && <UserAccountWebringSites currentUser={currentUser} />}
+          <UserAccountPostList currentUser={currentUser} />
+        </div>
       ) : (
         <p>
           Please <Link to="/log-in?redirect=/account">log in or sign up</Link>.
         </p>
       )}
-    </div>
+    </PageLayout>
   );
 };
+
+const UserAccountWebringSites = ({ currentUser }) => (
+  <div className="webring-list">
+    <div className="webring-list-heading">
+      <h3>Webring Sites</h3>
+    </div>
+    <div className="webring-list-contents">
+      {currentUser.webringSites.map((document) => (
+        <WebringSiteCell document={document} key={document._id} currentUser={currentUser} />
+      ))}
+    </div>
+  </div>
+);
 
 const UserAccountPostList = ({ currentUser }) => (
   <div className="post-list">
     <div className="post-list-heading">
-      <h2>Submitted Posts</h2>
+      <h3>Submitted Posts</h3>
     </div>
     <Components.PaginatedList
       className="post-list-contents"

@@ -1,6 +1,15 @@
-import { registerFragment } from 'meteor/vulcan:core';
+import { registerFragment, extendFragment } from "meteor/vulcan:core";
 
-registerFragment(`
+extendFragment(
+  "UsersCurrent",
+  /* GraphQL */ `
+  webringSites{
+      ...WebringSiteFields
+    }
+`
+);
+
+registerFragment(/* GraphQL */ `
   fragment UserFragment on User {
     _id
     slug

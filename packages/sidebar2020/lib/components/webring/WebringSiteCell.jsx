@@ -1,6 +1,9 @@
 import React from 'react';
+import { Components } from 'meteor/vulcan:core';
+import WebringSites from '../../modules/sites/collection.js';
+import Users from 'meteor/vulcan:users';
 
-const WebringSiteCell = ({ document }) => {
+const WebringSiteCell = ({ document, currentUser }) => {
   const { title, url, twitterAvatarUrl } = document;
   return (
     <div className="webring-cell">
@@ -10,6 +13,9 @@ const WebringSiteCell = ({ document }) => {
         </span>
         <h4 className="webring-title">{title}</h4>
       </a>
+      {Users.owns(currentUser, document) && (
+        <Components.EditButton collection={WebringSites} documentId={document._id} />
+      )}
     </div>
   );
 };

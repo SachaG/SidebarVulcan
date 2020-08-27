@@ -15,7 +15,16 @@
   }
 }
 
+.webring-list {
+  .page-account & {
+    margin-bottom: $spacing;
+  }
+}
+
 .webring-cell {
+  .modal-trigger {
+    margin-top: $spacing/2;
+  }
 }
 
 .webring-members-intro {
@@ -23,7 +32,7 @@
 }
 
 .webring-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 .webring-avatar {
@@ -37,9 +46,9 @@
   margin: 0;
 }
 
-.webring-indicator{
-  svg{
-    g path{
+.webring-indicator {
+  svg {
+    g path {
       fill: $red;
     }
   }

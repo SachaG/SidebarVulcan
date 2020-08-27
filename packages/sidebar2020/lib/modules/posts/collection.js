@@ -10,12 +10,14 @@ import Users from "meteor/vulcan:users";
 import { postStatus } from "../data";
 import PostCell from "../../components/posts/PostCell";
 
-// user can view post if it's published, or they are its owner; or they are admin
+// user can view post if it's published, or they are its owner; 
+// or they are admin; or it's part of the webring
 const canRead = ({ document, user }) => {
   return (
     document.status === postStatus.published ||
     Users.owns(user, document) ||
-    Users.isAdmin(user)
+    Users.isAdmin(user) || 
+    document.webringSiteId
   );
 };
 
