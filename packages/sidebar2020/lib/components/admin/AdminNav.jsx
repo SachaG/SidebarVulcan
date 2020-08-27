@@ -12,6 +12,7 @@ const nav = [
   { name: 'Jobs', to: '/admin/jobs' },
   { name: 'Discounts', to: '/admin/discounts' },
   { name: 'Charges', to: '/admin/charges' },
+  { name: 'Sites', to: '/admin/sites' },
   { name: 'Logs', to: '/admin/logs' },
 ];
 

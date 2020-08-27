@@ -68,6 +68,10 @@ The admin area is used to moderate links and send out newsletters. It includes:
 
 ## Code Overview
 
+All code for the Sidebar app is contained within the `sidebar2020` package. It's split into three sub-directories corresponding to the environment the code will run into: client, server, and both (the `modules` directory), plus a `components` directory (components also run in both environments).
+
+The codebase generally follows a feature-first organization, meaning that all code related to a specific feature (posts, categories, users, etc.) is grouped together rather than grouping code by what it actually does (GraphQL code, cron jobs, models, etc.).
+
 ### File Types
 
 The majority of files in this codebase follow the same naming convention. Here is a quick overview.
@@ -83,11 +87,11 @@ The majority of files in this codebase follow the same naming convention. Here i
 | `apischema.js` | A model's API-only (i.e. not present in the database) fields |
 | `fragments.js` | Fragments are a way to control what fields to load when requesting data |
 
-## Feature Index
+### Feature Index
 
 Here is a cross-reference of the various Vulcan features used in the app and where the corresponding code lives.
 
-### Components
+#### Components
 
 | **Feature/API**   | **Location** |
 | ----------------- | ------------ |
@@ -97,7 +101,7 @@ Here is a cross-reference of the various Vulcan features used in the app and whe
 | SmartForm | [PostSubmit.jsx](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/posts/PostSubmit.jsx), [SponsorSubmit](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/components/sponsor/SponsorSubmit.jsx)|
 
 
-### Modules (Client/Server)
+#### Modules (Client/Server)
 
 | **Feature/API**                                  | **Location**                                                                                                                                                                                                                                                      |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,7 +116,7 @@ Here is a cross-reference of the various Vulcan features used in the app and whe
 | extendCollection                                 | [collection.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/users/collection.js#L5)                                                                                                                                      |
 | Routes (with layoutComponent and access control) | [routes.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/modules/routes.js)                                                                                                                                                       |
 
-### Server
+#### Server
 
 | **Feature/API**    | **Location**                                                                                                                   |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -127,14 +131,6 @@ Here is a cross-reference of the various Vulcan features used in the app and whe
 | REST API           | [api.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/posts/api.js)                     |
 | Emails             | [emails.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/emails/emails.js)              |
 | GraphQL Union Type | [graphql.js](https://github.com/SachaG/SidebarVulcan/blob/master/packages/sidebar2020/lib/server/charges/graphql.js#L5)        |
-
-|
-
-## Codebase
-
-All code for the Sidebar app is contained within the `sidebar2020` package. It's split into three sub-directories corresponding to the environment the code will run into: client, server, and both (the `modules` directory), plus a `components` directory (components also run in both environments).
-
-The codebase generally follows a feature-first organization, meaning that all code related to a specific feature (posts, categories, users, etc.) is grouped together rather than grouping code by what it actually does (GraphQL code, cron jobs, models, etc.).
 
 ## Integrations
 

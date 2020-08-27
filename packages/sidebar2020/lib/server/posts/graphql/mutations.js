@@ -11,7 +11,7 @@ import Users from "meteor/vulcan:users";
 import Posts from "../../../modules/posts/collection";
 import { postStatus, userStatus } from "../../../modules/data";
 import get from "lodash/get";
-import { getMetadata } from "../../helpers/metadata";
+import { getMetadata } from "../../helpers/metadata.js";
 
 // import metascraper from 'metascraper';
 

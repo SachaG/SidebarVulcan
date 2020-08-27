@@ -11,6 +11,7 @@ export const postStatus = {
   scheduled: 4, // scheduled in the future
   // sent: 5,
   spam: 5,
+  webring: 6,
 };
 
 export const postStatusReverse = {
@@ -20,6 +21,7 @@ export const postStatusReverse = {
   4: "scheduled",
   // 5: "sent",
   5: "spam",
+  6: "webring",
 };
 
 export const postStatusOptions = [
@@ -51,6 +53,11 @@ export const postStatusOptions = [
     value: 5,
     label: "spam",
     description: "This link has been marked as spam"
+  },
+  {
+    value: 6,
+    label: "webring",
+    description: "This link is part of the Sidebar webring"
   },
 ];
 
@@ -100,6 +107,34 @@ export const newsletterStatusReverse = {
   2: "scheduled",
   3: "sent",
   4: "error",
+};
+
+
+export const webringStatus = {
+  pending: 1,
+  approved: 2,
+  rejected: 3,
+};
+
+export const webringStatusOptions = [
+  {
+    value: 1,
+    label: "pending",
+  },
+  {
+    value: 2,
+    label: "approved",
+  },
+  {
+    value: 3,
+    label: "rejected",
+  },
+];
+
+export const webringStatusReverse = {
+  1: "pending",
+  2: "approved",
+  3: "rejected",
 };
 
 export const basePostPrice = 950;

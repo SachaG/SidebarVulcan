@@ -8,6 +8,8 @@ import LogInFinish from '../components/common/LogInFinish.jsx';
 import UserAccount from '../components/users/UserAccount.jsx';
 
 import About from '../components/other/About.jsx';
+import Terms from '../components/other/Terms.jsx';
+import Privacy from '../components/other/Privacy.jsx';
 import Leaderboard from '../components/other/Leaderboard.jsx';
 
 import PostList from '../components/posts/PostList';
@@ -15,6 +17,10 @@ import PostSubmit from '../components/posts/PostSubmit';
 import PostThanks from '../components/posts/PostThanks';
 
 import CategoryList from '../components/categories/CategoryList';
+
+import Webring from '../components/webring/Webring';
+import WebringApply from '../components/webring/WebringApply';
+import WebringThanks from '../components/webring/WebringThanks';
 
 import AdminPosts from '../components/admin/AdminPosts.jsx';
 import AdminUsers from '../components/admin/AdminUsers.jsx';
@@ -25,6 +31,7 @@ import AdminLayout from '../components/admin/AdminLayout.jsx';
 import AdminDiscounts from '../components/admin/AdminDiscounts.jsx'
 import AdminCharges from '../components/admin/AdminCharges.jsx';
 import AdminLogs from '../components/admin/AdminLogs.jsx';
+import AdminSites from '../components/admin/AdminSites.jsx';
 
 import SponsorLanding from '../components/sponsor/SponsorLanding.jsx';
 import SponsorSubmit from '../components/sponsor/SponsorSubmit.jsx';
@@ -45,6 +52,8 @@ const routes = [
   {name:'account',              path: '/account',                   component: UserAccount},
 
   {name:'about',                path: '/about',                     component: About},
+  {name:'terms',                path: '/terms',                     component: Terms},
+  {name:'privacy',              path: '/privacy',                   component: Privacy},
   {name:'leaderboard',          path: '/leaderboard',               component: Leaderboard},
 
   {name:'posts',                path: '/archives',                  component: PostList},
@@ -55,6 +64,10 @@ const routes = [
   {name:'posts.thanks',         path: '/submit/thanks',             component: PostThanks},
 
   {name:'categories',           path: '/categories',                component: CategoryList}, // index route
+
+  {name:'webring',              path: '/webring',                component: Webring}, // index route
+  {name:'webring.apply',              path: '/webring/apply',                component: WebringApply}, // index route
+  {name:'webring.thanks',              path: '/webring/thanks',                component: WebringThanks}, // index route
   // {name:'users.single',   path:'users/:slug',           componentName: 'UsersSingle'},
   // {name:'users.account',  path:'account',               componentName: 'UsersAccount'},
   // {name:'users.edit',     path:'users/:slug/edit',      componentName: 'UsersAccount'},
@@ -81,7 +94,8 @@ const routes = [
   {name:'admin.newsletters',    path: '/admin/newsletters',           component: AdminNewsletters,   layoutComponent: AdminLayout, access: adminAccessOptions },
   {name:'admin.discounts',      path: '/admin/discounts',             component: AdminDiscounts,     layoutComponent: AdminLayout, access: adminAccessOptions },
   {name:'admin.charges',        path: '/admin/charges',               component: AdminCharges,       layoutComponent: AdminLayout, access: adminAccessOptions },
-  {name:'admin.logs',           path: '/admin/logs',                  component: AdminLogs,       layoutComponent: AdminLayout, access: adminAccessOptions },
+  {name:'admin.logs',           path: '/admin/logs',                  component: AdminLogs,          layoutComponent: AdminLayout, access: adminAccessOptions },
+  {name:'admin.sites',          path: '/admin/sites',                 component: AdminSites,         layoutComponent: AdminLayout, access: adminAccessOptions },
 ];
 
 if (Meteor.isDevelopment && getSetting('environment') === 'development') {

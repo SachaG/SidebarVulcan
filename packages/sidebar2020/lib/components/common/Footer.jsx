@@ -5,13 +5,16 @@ import { getSetting } from 'meteor/vulcan:core';
 const footer = [
   { name: 'About', to: '/about' },
   { name: 'Leaderboard', to: '/leaderboard' },
+  { name: 'Webring', to: '/webring' },
+  { name: 'Privacy Policy', href: '/privacy' },
+  { name: 'Terms', href: '/terms' },
   { name: 'Contact', href: 'mailto:hi@sidebar.io' },
   { name: 'Twitter', href: 'https://twitter.com/sidebario', rel: 'me' },
   { name: 'Facebook', href: 'https://www.facebook.com/SidebarIO' },
   { name: 'RSS', href: 'https://sidebar.io/feed.xml' },
   { name: 'REST API', href: 'https://sidebar.io/api' },
   { name: 'GraphQL', href: 'https://sidebar.io/graphql' },
-  { name: 'GitHub', href: 'https://github.com/SachaG/Sidebar/' },
+  { name: 'GitHub', href: 'https://github.com/SachaG/SidebarVulcan/' },
 ];
 
 const Footer = () => (

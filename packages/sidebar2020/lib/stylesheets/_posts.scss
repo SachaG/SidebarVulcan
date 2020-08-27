@@ -38,6 +38,7 @@
   left: -35px;
   @include font-bold;
   z-index: 1;
+  display: none;
 }
 
 .post-content {

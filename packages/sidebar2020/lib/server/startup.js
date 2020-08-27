@@ -3,6 +3,8 @@ import Posts from '../modules/posts/collection.js';
 import { renameFieldMigration } from './migrations';
 import { checkForScheduledPosts } from './posts/cronjobs';
 
+import { importRSSFeeds } from './posts/webring.js';
+
 Meteor.startup(async function () {
   // await addMissingDomains();
   // await renameFieldMigration(Posts, 'categories', 'categoriesIds');
@@ -15,5 +17,7 @@ Meteor.startup(async function () {
 
   // await addMissingTwitterData();
   // await updateUserTwitterData();
+
+  await importRSSFeeds();
 });
 

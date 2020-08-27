@@ -191,7 +191,7 @@ type UrlMetadata {
   twitter: String
 }
 union AssociatedDocument = Job | Post
-union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | Job | Discount | Log
+union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | WebringSite | Job | Discount | Log
 
 # A user object
 type User {
@@ -1528,6 +1528,162 @@ input CategorySelectorUniqueInput {
 }
 
 
+# Type for WebringSites
+type WebringSite {
+  _id: String 
+  title: String 
+  url: String 
+  # The site's RSS feed URL
+  feedUrl: String 
+  # The Twitter account associated with the site
+  twitterScreenName: String 
+  userId: String 
+  user: User 
+  status: Float 
+}
+
+
+input DeleteWebringSiteInput{
+  filter: WebringSiteFilterInput
+  id: String
+}
+
+input SingleWebringSiteInput {
+  # filtering
+  filter: WebringSiteFilterInput
+  sort: WebringSiteSortInput
+  search: String
+  id: String
+
+  # backwards-compatibility
+  # Deprecated (use 'filter/id' fields instead).
+  selector: WebringSiteSelectorUniqueInput
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Return null instead of throwing MissingDocumentError
+  allowNull: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+}
+
+input MultiWebringSiteInput {
+
+  # filtering
+  filter: WebringSiteFilterInput
+  sort: WebringSiteSortInput
+  search: String
+  offset: Int
+  limit: Int
+
+  # backwards-compatibility
+  # A JSON object that contains the query terms used to fetch data
+  # Deprecated (use 'filter/id' fields instead).
+  terms: JSON
+
+  # options (backwards-compatibility)
+  # Whether to enable caching for this query
+  enableCache: Boolean
+  # Whether to calculate totalCount for this query
+  enableTotal: Boolean
+  # An identifier to name the query's execution context
+  contextName: String
+
+}
+
+type SingleWebringSiteOutput{
+  result: WebringSite
+}
+
+type  MultiWebringSiteOutput{
+  results: [WebringSite]
+  totalCount: Int
+}
+
+type WebringSiteMutationOutput{
+  data: WebringSite
+}
+
+input CreateWebringSiteInput {
+  data: CreateWebringSiteDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input CreateWebringSiteDataInput {
+  title: String 
+  url: String 
+  feedUrl: String 
+  twitterScreenName: String 
+  userId: String 
+  status: Float 
+}
+
+input UpdateWebringSiteInput{
+  filter: WebringSiteFilterInput
+  id: String
+  data: UpdateWebringSiteDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpsertWebringSiteInput{
+  filter: WebringSiteFilterInput
+  id: String
+  data: UpdateWebringSiteDataInput!
+  # An identifier to name the mutation's execution context
+  contextName: String
+}
+
+input UpdateWebringSiteDataInput {
+  title: String 
+  url: String 
+  feedUrl: String 
+  twitterScreenName: String 
+  userId: String 
+  status: Float 
+}
+
+input WebringSiteFilterInput {
+  _and: [WebringSiteFilterInput]
+  _not: WebringSiteFilterInput
+  _or: [WebringSiteFilterInput]
+
+
+  _id: String_Selector
+  title: String_Selector
+  url: String_Selector
+  feedUrl: String_Selector
+  twitterScreenName: String_Selector
+  userId: String_Selector
+  status: Float_Selector
+}
+
+input WebringSiteSortInput {
+  _id: SortOptions
+  title: SortOptions
+  url: SortOptions
+  feedUrl: SortOptions
+  twitterScreenName: SortOptions
+  userId: SortOptions
+  status: SortOptions
+}
+
+input WebringSiteSelectorInput {
+  _and: [WebringSiteSelectorInput]
+  _or: [WebringSiteSelectorInput]
+
+}
+
+input WebringSiteSelectorUniqueInput {
+  _id: String
+  documentId: String # OpenCRUD backwards compatibility
+  slug: String
+
+}
+
+
 # Type for Jobs
 type Job {
   _id: String 
@@ -2022,6 +2178,12 @@ type Query {
   # A list of Category documents matching a set of query terms
   categories(input: MultiCategoryInput):  MultiCategoryOutput
   
+  # A single WebringSite document fetched by ID or slug
+  webringSite(input: SingleWebringSiteInput!): SingleWebringSiteOutput
+  
+  # A list of WebringSite documents matching a set of query terms
+  webringSites(input: MultiWebringSiteInput):  MultiWebringSiteOutput
+  
   # A single Job document fetched by ID or slug
   job(input: SingleJobInput!): SingleJobOutput
   
@@ -2214,6 +2376,38 @@ type Mutation {
   # Deprecated (use 'input' field instead).
   selector: CategorySelectorUniqueInput
 ) : CategoryMutationOutput
+
+  # Mutation for creating new WebringSite documents
+  createWebringSite(
+  input: CreateWebringSiteInput,
+  # Deprecated (use 'input' field instead).
+  data: CreateWebringSiteDataInput
+) : WebringSiteMutationOutput
+
+  # Mutation for updating a WebringSite document
+  updateWebringSite(
+  input: UpdateWebringSiteInput,
+  # Deprecated (use 'input' field instead).
+  selector: WebringSiteSelectorUniqueInput,
+  # Deprecated (use 'input' field instead).
+  data: UpdateWebringSiteDataInput
+) : WebringSiteMutationOutput
+
+  # Mutation for upserting a WebringSite document
+  upsertWebringSite(
+  input: UpsertWebringSiteInput,
+  # Deprecated (use 'input' field instead).
+  selector: WebringSiteSelectorUniqueInput,
+  # Deprecated (use 'input' field instead).
+  data: UpdateWebringSiteDataInput
+) : WebringSiteMutationOutput
+
+  # Mutation for deleting a WebringSite document
+  deleteWebringSite(
+  input: DeleteWebringSiteInput,
+  # Deprecated (use 'input' field instead).
+  selector: WebringSiteSelectorUniqueInput
+) : WebringSiteMutationOutput
 
   # Mutation for creating new Job documents
   createJob(
