@@ -8,6 +8,7 @@ import PostCell from '../posts/PostCell';
 import WebringSiteCell from './WebringSiteCell';
 import { LinkContainer } from 'react-router-bootstrap';
 import SidebarPortal from '../common/SidebarPortal.jsx';
+import { webringStatus } from '../../modules/data';
 
 const PostListItem = ({ document }) => <PostCell document={document} variant="medium" key={document._id} />;
 
@@ -26,6 +27,12 @@ Note that once your site is part of the Sidebar webring, your RSS feed's content
 `;
 
 const Webring = () => {
+
+  const membersInput = {
+    filter: { status: { _eq: webringStatus.approved } },
+    sort: { createdAt: 'desc' },
+  }
+
   const feedInput = {
     filter: { webringSiteId: { _is_null: false } },
     sort: { postedAt: 'desc' },
@@ -50,7 +57,7 @@ const Webring = () => {
           options={{
             collection: WebringSites,
             fragmentName: 'WebringSiteFragment',
-            input: {},
+            input: membersInput,
           }}
         />
       </div>

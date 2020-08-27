@@ -11,6 +11,7 @@ registerFragment(/* GraphQL */ `
     twitterAvatarUrl
     status
     userId
+    createdAt
   }
 `);
 

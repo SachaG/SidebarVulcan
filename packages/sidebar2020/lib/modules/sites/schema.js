@@ -1,11 +1,21 @@
 import { makeAutocomplete } from "meteor/vulcan:core";
-import { webringStatusOptions } from "../../modules/data.js";
+import { webringStatus, webringStatusOptions } from "../../modules/data.js";
 
 export default {
   _id: {
     type: String,
     canRead: ["guests"],
     optional: true,
+  },
+
+  createdAt: {
+    type: Date,
+    optional: true,
+    canRead: ["guests"],
+    orderable: true,
+    onCreate: () => {
+      return new Date();
+    },
   },
 
   title: {
@@ -81,7 +91,7 @@ export default {
     canCreate: ["admins"],
     canUpdate: ["admins"],
     input: "radiogroup",
-    defaultValue: webringStatusOptions.pending,
+    defaultValue: webringStatus.pending,
     options: webringStatusOptions,
   },
 };

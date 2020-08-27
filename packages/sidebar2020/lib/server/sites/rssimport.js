@@ -13,6 +13,7 @@ const limitItems = (items) => items.slice(0, 5);
 export const importRSSFeeds = async () => {
   // get all approved webring sites
   const sites = WebringSites.find({ status: webringStatus.approved }).fetch();
+  let totalCount = 0;
 
   console.log(`[--- Importing ${sites.length} RSS feeds ---]`);
 
@@ -49,8 +50,7 @@ export const importRSSFeeds = async () => {
 
       if (!postExists) {
         console.log(`  - Importing post “${title}”…`);
-        console.log(data);
-        count ++;
+        count++;
         // create post
         try {
           await createMutator({
@@ -65,6 +65,9 @@ export const importRSSFeeds = async () => {
       }
     }
 
-    console.log(`  -> Imported ${count} new items.`)
+    console.log(`  -> Imported ${count} new items.`);
+
+    totalCount += count;
   }
+  return { totalCount };
 };

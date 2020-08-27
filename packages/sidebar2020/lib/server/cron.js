@@ -2,7 +2,7 @@ import moment from 'moment';
 import { CronJob } from 'cron';
 import { getSetting } from 'meteor/vulcan:core';
 import { checkForScheduledPosts } from './posts/cronjobs';
-import { importRSSFeeds } from './posts/webring.js';
+import { importRSSFeeds } from './sites/rssimport.js';
 
 const runCrons = getSetting('runCrons', true);
 

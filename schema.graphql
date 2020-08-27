@@ -1536,6 +1536,7 @@ input CategorySelectorUniqueInput {
 # Type for WebringSites
 type WebringSite {
   _id: String 
+  createdAt: Date 
   title: String 
   url: String 
   # The site's RSS feed URL
@@ -1549,6 +1550,7 @@ type WebringSite {
   userId: String 
   user: User 
   status: Float 
+  createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
 
@@ -1661,6 +1663,7 @@ input WebringSiteFilterInput {
 
 
   _id: String_Selector
+  createdAt: Date_Selector
   title: String_Selector
   url: String_Selector
   feedUrl: String_Selector
@@ -1673,6 +1676,7 @@ input WebringSiteFilterInput {
 
 input WebringSiteSortInput {
   _id: SortOptions
+  createdAt: SortOptions
   title: SortOptions
   url: SortOptions
   feedUrl: SortOptions
@@ -2254,6 +2258,8 @@ type Mutation {
   approvePost(documentId: String): Post
 
   spamPost(documentId: String): Post
+
+  importFromRSS: JSON
 
   # Mutation for creating new User documents
   createUser(

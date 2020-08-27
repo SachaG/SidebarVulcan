@@ -4,6 +4,7 @@ import WebringSites from '../../modules/sites/collection.js';
 import { webringStatus, webringStatusReverse } from '../../modules/data.js';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import get from 'lodash/get';
 
 const Status = ({ document }) => (
   <div>
@@ -56,6 +57,38 @@ const Actions = ({ document: webringSite }) => {
     </SplitButton>
   );
 };
+
+const DatatableAboveRight = (props) => {
+  const { collection, currentUser, options, newFormOptions, newFormProps, Components } = props;
+  return (
+    <div className="datatable-above-right">
+      <div className="datatable-above-item">
+        <Components.MutationButton
+          className="import-feeds-button"
+          label="Import Feeds"
+          variant="primary"
+          mutationOptions={{
+            name: 'importFromRSS',
+            args: {},
+          }}
+          successCallback={(result) => {
+            alert(`Done, imported ${get(result, 'data.importFromRSS.totalCount')} new posts.`);
+          }}
+        />
+      </div>
+      <div className="datatable-above-item">
+        <Components.NewButton
+          collection={collection}
+          currentUser={currentUser}
+          mutationFragmentName={options && options.fragmentName}
+          {...newFormOptions}
+          {...newFormProps}
+        />
+      </div>
+    </div>
+  );
+};
+
 const AdminSites = () => (
   <div className="admin-users">
     <Components.Datatable
@@ -70,6 +103,9 @@ const AdminSites = () => (
         { name: 'status', component: Status },
         { name: 'actions', component: Actions },
       ]}
+      components={{
+        DatatableAboveRight,
+      }}
     />
   </div>
 );
