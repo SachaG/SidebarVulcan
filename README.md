@@ -66,6 +66,10 @@ The admin area is used to moderate links and send out newsletters. It includes:
 - A newsletter scheduling dashboard.
 - Other dashboards for users, categories, discounts, etc.
 
+## Screencasts
+
+If you're looking for a quick overview of the codebase, [screencasts are available on YouTube](https://www.youtube.com/playlist?list=PLBoa_Q6hVeSzm3sMjcxImwu2uLTk5-WpT).
+
 ## Code Overview
 
 All code for the Sidebar app is contained within the `sidebar2020` package. It's split into three sub-directories corresponding to the environment the code will run into: client, server, and both (the `modules` directory), plus a `components` directory (components also run in both environments).
