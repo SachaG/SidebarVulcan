@@ -1172,6 +1172,8 @@ type Post {
   discountAmount: String 
   sponsorshipPrice: Float 
   paidAt: Date 
+  webringSiteId: String 
+  webringSite: WebringSite 
   pagePath: String 
   pageUrl: String 
   urlRedirect: String 
@@ -1341,6 +1343,7 @@ input PostFilterInput {
   discountAmount: String_Selector
   sponsorshipPrice: Float_Selector
   paidAt: Date_Selector
+  webringSiteId: String_Selector
 }
 
 input PostSortInput {
@@ -1372,6 +1375,7 @@ input PostSortInput {
   discountAmount: SortOptions
   sponsorshipPrice: SortOptions
   paidAt: SortOptions
+  webringSiteId: SortOptions
 }
 
 input PostSelectorInput {
@@ -1535,8 +1539,12 @@ type WebringSite {
   url: String 
   # The site's RSS feed URL
   feedUrl: String 
-  # The Twitter account associated with the site
+  # The Twitter account associated with the site, used to display an avatar
   twitterScreenName: String 
+  # The full Twitter display name of the account associated with the site
+  twitterName: String 
+  # The Twitter avatar URL of the account associated with the site
+  twitterAvatarUrl: String 
   userId: String 
   user: User 
   status: Float 
@@ -1656,6 +1664,8 @@ input WebringSiteFilterInput {
   url: String_Selector
   feedUrl: String_Selector
   twitterScreenName: String_Selector
+  twitterName: String_Selector
+  twitterAvatarUrl: String_Selector
   userId: String_Selector
   status: Float_Selector
 }
@@ -1666,6 +1676,8 @@ input WebringSiteSortInput {
   url: SortOptions
   feedUrl: SortOptions
   twitterScreenName: SortOptions
+  twitterName: SortOptions
+  twitterAvatarUrl: SortOptions
   userId: SortOptions
   status: SortOptions
 }

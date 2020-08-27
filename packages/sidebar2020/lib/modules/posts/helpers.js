@@ -45,9 +45,12 @@ export const getOutgoingUrl = (url) =>
   Utils.getSiteUrl() + "out?url=" + encodeURIComponent(`${url}?ref=sidebar`);
 
 export const getDefaultStatus = (post, user) => {
+  if (!user) {
+    return postStatus.pending;
+  }
   if (Users.isAdmin(user)) {
     if (post.status) {
-      return document.status;
+      return post.status;
     } else if (post.scheduledAt) {
       return postStatus.scheduled;
     } else {

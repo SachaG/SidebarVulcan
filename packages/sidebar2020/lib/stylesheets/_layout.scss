@@ -29,6 +29,10 @@
     .main {
       padding: $spacing * 3;
     }
+    .sidebar{
+      grid-column-start: 4;
+      grid-column-end: 6;
+    }
   }
 }
 

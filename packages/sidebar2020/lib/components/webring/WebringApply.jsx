@@ -3,12 +3,20 @@ import { Components, useCurrentUser } from 'meteor/vulcan:core';
 import Sites from '../../modules/sites/collection';
 import { Link, useHistory } from 'react-router-dom';
 import PageLayout from '../common/PageLayout';
+import ReactMarkdown from 'react-markdown';
+
+const contents = `Apply to join the Sidebar Webring by giving us some information about your site. You will be notified by email if your submission is approved. 
+
+If you hear nothing back for a week or so, please consider that your application wasn't accepted this time :( Also note that you can submit multiple sites if you'd like. 
+`;
 
 const WebringApply = () => {
   const history = useHistory();
   const { currentUser } = useCurrentUser();
   return (
     <PageLayout name="webring-apply" title="Join the Sidebar Webring">
+              <ReactMarkdown source={contents} escapeHtml={false} />
+
       {currentUser ? (
         <Components.SmartForm
           collection={Sites}

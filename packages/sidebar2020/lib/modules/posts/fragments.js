@@ -1,6 +1,6 @@
-import { registerFragment } from 'meteor/vulcan:core';
+import { registerFragment } from "meteor/vulcan:core";
 
-registerFragment(/* GraphQL */`
+registerFragment(/* GraphQL */ `
   fragment UrlFragment on UrlMetadata {
     author
     title
@@ -12,9 +12,8 @@ registerFragment(/* GraphQL */`
   }
 `);
 
-registerFragment(/* GraphQL */`
+registerFragment(/* GraphQL */ `
   fragment PostFragment on Post {
-
     # posts
     _id
     title
@@ -25,6 +24,11 @@ registerFragment(/* GraphQL */`
     credit
     twitterAvatarUrl
     twitterName
+
+    webringSiteId
+    webringSite {
+      title
+    }
 
     postedAt
     postedAtFormatted(format: "YYYY/MM/DD")
@@ -40,16 +44,16 @@ registerFragment(/* GraphQL */`
 
     scheduledAt
     scheduledAtFormatted
-    
+
     sentAt
     sentAtFormatted
     status
 
     pageUrl
     pagePath
-    
+
     domain
-    
+
     body
     htmlBody
 
@@ -62,7 +66,7 @@ registerFragment(/* GraphQL */`
     sponsorshipPrice
     paidAt
     paidAtFormatted
-    
+
     # users
     userId
     user {
@@ -75,7 +79,7 @@ registerFragment(/* GraphQL */`
       ...CategoryFragment
     }
 
-    newsletters{
+    newsletters {
       _id
       createdAt
       createdAtFormatted

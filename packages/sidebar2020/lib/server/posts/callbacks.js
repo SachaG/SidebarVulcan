@@ -8,18 +8,16 @@ import VulcanEmail from "meteor/vulcan:email";
 import { getTwitterData } from "../helpers/twitter";
 
 export const getTwitterMetadata = async (data) => {
-  if (!data.credit) {
+  const twitterScreenName = data.twitterScreenName || data.credit;
+  if (!twitterScreenName) {
     return data;
   } else {
-    const twitterData = await getTwitterData(data.credit);
+    const twitterData = await getTwitterData(twitterScreenName);
     return { ...data, ...twitterData };
   }
 };
 
-export const checkForScheduledAt = async (
-  validationErrors,
-  { document, data }
-) => {
+export const checkForScheduledAt = async (validationErrors, { data }) => {
   if (data.isSponsored && !data.scheduledAt) {
     validationErrors.push({
       id: "app.missing_scheduled_at",
@@ -33,7 +31,7 @@ export const checkForDuplicates = async (
   validationErrors,
   { document, data }
 ) => {
-  const url = document.url || data.url;
+  const url = data.url;
   const _id = document._id || data._id;
   // if there is no URL, abort check
   if (!url) {
@@ -46,10 +44,12 @@ export const checkForDuplicates = async (
     status: postStatus.published,
     postedAt: { $gte: sixMonthsAgo },
   };
+
   // if we are updating a post, exclude itself from the check
   if (_id) {
     selector._id = { $ne: _id };
   }
+
   const duplicatePost = await Connectors.get(Posts, selector);
   if (duplicatePost) {
     validationErrors.push({

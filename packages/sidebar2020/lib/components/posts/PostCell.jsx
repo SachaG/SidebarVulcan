@@ -78,6 +78,7 @@ const PostCellMedium = ({
     categories,
     urlRedirect,
     isSponsored,
+    webringSite
   } = post;
 
   const date = postedAtFormatted || scheduledAtFormatted;
@@ -87,6 +88,11 @@ const PostCellMedium = ({
       {index && <div className="post-index">{index}</div>}
       <div className="post-content">
         <div className="post-subheading">
+          
+          {webringSite && (
+            <h4 className="post-webringsite">{webringSite.title}</h4>
+          )}
+
           {showDate && date && (
             <div className="post-date">
               <Link to={`/date/${date.replace(new RegExp('/', 'g'), '-')}`}>{date}</Link>

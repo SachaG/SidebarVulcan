@@ -7,6 +7,8 @@ registerFragment(/* GraphQL */ `
     feedUrl
     title
     twitterScreenName
+    twitterName
+    twitterAvatarUrl
     status
     userId
     user {

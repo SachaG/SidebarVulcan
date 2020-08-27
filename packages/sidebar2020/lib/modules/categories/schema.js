@@ -18,24 +18,24 @@ export const schema = {
   name: {
     type: String,
     canRead: ["guests"],
-    canCreate: ["members"],
-    canUpdate: ["members"],
+    canCreate: ["admins"],
+    canUpdate: ["admins"],
     searchable: true,
   },
   description: {
     type: String,
     optional: true,
     canRead: ["guests"],
-    canCreate: ["members"],
-    canUpdate: ["members"],
+    canCreate: ["admins"],
+    canUpdate: ["admins"],
     searchable: true,
   },
   slug: {
     type: String,
     optional: true,
     canRead: ["guests"],
-    canCreate: ["members"],
-    canUpdate: ["members"],
+    canCreate: ["admins"],
+    canUpdate: ["admins"],
     onCreate: ({ document: category }) => {
       // if no slug has been provided, generate one
       const slug = category.slug || Utils.slugify(category.name);

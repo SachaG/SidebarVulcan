@@ -69,8 +69,8 @@ export const schema = {
     input: "datetime",
     sortable: true,
     group: formGroups.admin,
-    onCreate: ({ document, currentUser }) =>
-      document.scheduledAt ? document.scheduledAt : new Date(),
+    onCreate: ({ data }) =>
+      data.scheduledAt ? data.scheduledAt : new Date(),
   },
 
   /**
@@ -119,7 +119,7 @@ export const schema = {
     max: 200,
     canRead: ["guests"],
     canCreate: ["members"],
-    canUpdate: ["members"],
+    canUpdate: ["owners", "admins"],
     input: UrlInput,
     label: "URL",
     order: 10,
@@ -143,7 +143,7 @@ export const schema = {
     max: 80,
     canRead: ["guests"],
     canCreate: ["members"],
-    canUpdate: ["members"],
+    canUpdate: ["owners", "admins"],
     input: "text",
     order: 20,
     searchable: true,
@@ -157,7 +157,7 @@ export const schema = {
     max: 20,
     canRead: ["guests"],
     canCreate: ["members"],
-    canUpdate: ["members"],
+    canUpdate: ["owners", "admins"],
     input: "text",
     order: 35,
     searchable: true,
@@ -188,8 +188,8 @@ export const schema = {
     type: String,
     optional: true,
     canRead: ["guests"],
-    onCreate: ({ document: post }) => {
-      return Utils.slugify(post.title);
+    onCreate: ({ data }) => {
+      return Utils.slugify(data.title);
     },
     onUpdate: ({ data }) => {
       if (data.title) {
@@ -206,7 +206,7 @@ export const schema = {
     max: 150,
     canRead: ["guests"],
     canCreate: ["members"],
-    canUpdate: ["members"],
+    canUpdate: ["owners", "admins"],
     input: "textarea",
     description: "Markdown accepted.",
     order: 30,
@@ -218,9 +218,9 @@ export const schema = {
     type: String,
     optional: true,
     canRead: ["guests"],
-    onCreate: ({ document: post }) => {
-      if (post.body) {
-        return Utils.sanitize(marked(post.body));
+    onCreate: ({ data }) => {
+      if (data.body) {
+        return Utils.sanitize(marked(data.body));
       }
     },
     onUpdate: ({ data }) => {
@@ -273,8 +273,8 @@ export const schema = {
     canCreate: ["admins"],
     canUpdate: ["admins"],
     input: "radiogroup",
-    onCreate: ({ document, currentUser }) =>
-      getDefaultStatus(document, currentUser),
+    onCreate: ({ data, currentUser }) =>
+      getDefaultStatus(data, currentUser),
     options: postStatusOptions,
     group: formGroups.admin,
   },
@@ -285,10 +285,10 @@ export const schema = {
     type: Boolean,
     optional: true,
     canRead: ["guests"],
-    onCreate: ({ document: post }) => {
+    onCreate: ({ data }) => {
       // Set the post's isFuture to true if necessary
-      if (post.postedAt) {
-        const postTime = new Date(post.postedAt).getTime();
+      if (data.postedAt) {
+        const postTime = new Date(data.postedAt).getTime();
         const currentTime = new Date().getTime() + 1000;
         return postTime > currentTime; // round up to the second
       }
@@ -337,7 +337,7 @@ export const schema = {
       optional: true,
       input: "select",
       canRead: ["guests"],
-      canCreate: ["members"],
+      canCreate: ["admins"],
       canUpdate: ["admins"],
       relation: {
         fieldName: "user",
@@ -458,4 +458,16 @@ export const schema = {
     },
     optional: true,
   },
+
+  webringSiteId: {
+    type: String,
+    optional: true,
+    canRead: ["guests"],
+    relation: {
+      fieldName: "webringSite",
+      typeName: "WebringSite",
+      kind: "hasOne",
+    }
+  }
+
 };

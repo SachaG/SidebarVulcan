@@ -1,0 +1,46 @@
+.webring-header {
+  margin-bottom: $spacing;
+}
+.webring-feed {
+  .sidebar & {
+    padding: $spacing * 2;
+  }
+}
+
+.webring-list-contents {
+  .list-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $spacing;
+  }
+}
+
+.webring-cell {
+}
+
+.webring-members-intro {
+  margin-bottom: $spacing;
+}
+
+.webring-link {
+  display: flex;
+  align-items: center;
+}
+.webring-avatar {
+  display: block;
+  margin-right: $spacing/2;
+  height: 60px;
+  width: 60px;
+}
+.webring-title {
+  font-size: $medium-font;
+  margin: 0;
+}
+
+.webring-indicator{
+  svg{
+    g path{
+      fill: $red;
+    }
+  }
+}

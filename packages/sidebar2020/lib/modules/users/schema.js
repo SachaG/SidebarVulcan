@@ -14,7 +14,7 @@ export const schema = {
     type: Boolean,
     optional: true,
     canCreate: ["members"],
-    canUpdate: ["members"],
+    canUpdate: ["owners", "admins"],
     canRead: ["guests"],
     hidden: true,
     onCreate: () => null,

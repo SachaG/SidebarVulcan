@@ -19,6 +19,14 @@
   }
 }
 
+.post-status-cell {
+  display: flex;
+  align-items: center;
+  .webring-indicator {
+    margin-left: $spacing/2;
+  }
+}
+
 .post-status {
   @include medium-and-up {
     width: 150px;
@@ -66,7 +74,8 @@
   }
 }
 
-.post-domain {
+.post-domain,
+.post-webringsite {
   margin: 0;
   display: inline-block;
   color: $lighter-text-color;
@@ -80,6 +89,14 @@
     &:hover {
       color: $active-color;
     }
+  }
+}
+
+.post-webringsite {
+  margin-right: $spacing/2;
+  &::after {
+    content: ' | ';
+    color: $lighter-text-color;
   }
 }
 
@@ -142,7 +159,8 @@
   margin-right: $spacing/2;
 }
 
-.post-twitter {
+.post-twitter,
+.avatar-twitter {
   border-radius: 100%;
   overflow: hidden;
   display: block;
@@ -403,7 +421,7 @@ $offset: 3 * $spacing;
   @include border-radius;
   white-space: nowrap;
   font-size: $smaller-font;
-  margin: 0 4px 4px 0;
+  // margin: 0 4px 4px 0;
   cursor: default;
   &-pending {
     background: $lighter-grey;

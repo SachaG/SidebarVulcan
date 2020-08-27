@@ -19,6 +19,7 @@ import NewsletterCell from '../newsletters/NewsletterCell';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import get from 'lodash/get';
+import WebringIndicator from '../webring/WebringIndicator.jsx';
 
 const Title = ({ document: post }) => (
   <div>
@@ -36,8 +37,9 @@ const Clicks = ({ document: post }) => (
 );
 
 const Status = ({ document: post }) => (
-  <div>
+  <div className="post-status-cell">
     <PostStatusIndicator post={post} />
+    {post.webringSite && <WebringIndicator post={post} />}
   </div>
 );
 

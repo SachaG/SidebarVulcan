@@ -130,12 +130,10 @@ $huge-font: $root-size * 3.5rem;
 blockquote {
   border-left: 5px solid $lighter-grey;
   padding-left: $spacing;
-  footer{
+  cite{
     display: block;
     margin-left: $spacing;
     margin-top: $spacing/2;
-  }
-  cite{
     &::before{
       content: "— "
     }
