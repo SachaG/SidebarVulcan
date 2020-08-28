@@ -1,31 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AccountItem from '../users/AccountItem';
-import { useCurrentUser, getSetting } from 'meteor/vulcan:core';
-
-const nav = [
-  // { name: 'Dashboard', to: '/admin/dashboard' },
-  { name: 'Users', to: '/admin/users' },
-  { name: 'Posts', to: '/admin/posts' },
-  { name: 'Categories', to: '/admin/categories' },
-  { name: 'Newsletters', to: '/admin/newsletters' },
-  { name: 'Jobs', to: '/admin/jobs' },
-  { name: 'Discounts', to: '/admin/discounts' },
-  { name: 'Charges', to: '/admin/charges' },
-  { name: 'Sites', to: '/admin/sites' },
-  { name: 'Logs', to: '/admin/logs' },
-];
-
-if (Meteor.isDevelopment && getSetting('environment') === 'development') {
-  nav.push({ name: 'Emails', to: '/admin/emails' });
-  nav.push({ name: 'Database', to: '/admin/database' });
-}
+import { useCurrentUser } from 'meteor/vulcan:core';
+import { adminNav } from '../../modules/data.js';
 
 const AdminNav = () => {
   const { currentUser } = useCurrentUser();
   return (
     <div className="nav">
-      {nav.map((item) => (
+      {adminNav.map((item) => (
         <NavItem key={item.name} item={item} />
       ))}
       <AccountItem currentUser={currentUser} />
@@ -34,9 +17,9 @@ const AdminNav = () => {
 };
 
 const NavItem = ({ item }) => {
-  const { name, to } = item;
+  const { name, path } = item;
   return (
-    <Link to={to} className="nav-item">
+    <Link to={path} className="nav-item">
       {name}
     </Link>
   );

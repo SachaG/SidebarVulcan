@@ -1,5 +1,21 @@
 import { makeAutocomplete } from "meteor/vulcan:core";
 import { webringStatus, webringStatusOptions } from "../../modules/data.js";
+import Users from "meteor/vulcan:users";
+
+export const getDefaultStatus = (site, user) => {
+  if (!user) {
+    return webringStatus.pending;
+  }
+  if (Users.isAdmin(user)) {
+    if (site.status) {
+      return site.status;
+    } else {
+      return webringStatus.published;
+    }
+  } else {
+    return webringStatus.pending;
+  }
+};
 
 export default {
   _id: {
@@ -46,7 +62,8 @@ export default {
   twitterScreenName: {
     type: String,
     optional: true,
-    description: "The Twitter account associated with the site, used to display an avatar",
+    description:
+      "The Twitter account associated with the site, used to display an avatar",
     canRead: ["guests"],
     canCreate: ["members"],
     canUpdate: ["owners", "admins"],
@@ -92,6 +109,7 @@ export default {
     canUpdate: ["admins"],
     input: "radiogroup",
     defaultValue: webringStatus.pending,
+    onCreate: ({ data, currentUser }) => getDefaultStatus(data, currentUser),
     options: webringStatusOptions,
   },
 };

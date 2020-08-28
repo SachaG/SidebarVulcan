@@ -57,7 +57,7 @@ Sponsorships can be refunded any time up to two weeks before the scheduled date 
 `;
 
 const SponsorLanding = () => (
-  <PageLayout title="Advertise with Sidebar" name="sponsor-landing">
+  <PageLayout title="Advertise with Sidebar" name="sponsor-landing"  description="Reach over 40,000 designers">
     <p>
       If you’ve got a great product and you think the Sidebar audience should know about it, you can take out a
       sponsored link.

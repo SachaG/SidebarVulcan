@@ -56,7 +56,7 @@ const SponsorSubmit = () => {
     prefilledProps.discountCode = code;
   }
   return (
-    <PageLayout name="sponsor-submit" title="Submit a Sponsored Link">
+    <PageLayout name="sponsor-submit" title="Submit a Sponsored Link" description="Reach over 40,000 designers">
       {currentUser ? (
         <Components.SmartForm
           prefilledProps={prefilledProps}

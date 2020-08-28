@@ -32,7 +32,12 @@ const PostList = () => {
 
   // const { loading, results } = useMulti2({ collection: Posts, fragmentName: 'PostFragment', input });
   return (
-    <PageLayout name="post-list" title={heading} action={categoryId && <Link to="/categories">All Categories</Link>}>
+    <PageLayout
+      name="post-list"
+      title={heading}
+      action={categoryId && <Link to="/categories">All Categories</Link>}
+      description="Sidebar link archivess"
+    >
       <div className="post-list">
         <Components.PaginatedList
           className="post-list-contents"

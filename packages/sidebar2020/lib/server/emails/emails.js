@@ -3,13 +3,14 @@ import VulcanEmail from "meteor/vulcan:email";
 import moment from "moment";
 import get from "lodash/get";
 import Posts from "../../modules/posts/collection";
+import WebringSites from "../../modules/sites/collection";
 import Newsletters from "../../modules/newsletters/collection";
-import { postStatus } from "../../modules/data";
+import { postStatus, webringStatusOptions, webringStatus } from "../../modules/data";
 
 const defaultEmail = getSetting("defaultEmail");
 
 const postsQuery = /* GraphQL */ `
-  query PostsSingleQuery($input: SinglePostInput!) {
+  query postsSingleQuery($input: SinglePostInput!) {
     siteData {
       title
       url
@@ -41,7 +42,7 @@ newsletter doesn't exist yet at that time.
 
 */
 const newsletterQuery = /* GraphQL */ `
-  query NewsletterQuery($postsIds: [String!]) {
+  query newsletterQuery($postsIds: [String!]) {
     siteData {
       title
     }
@@ -144,6 +145,26 @@ const newsletterQuery = /* GraphQL */ `
     # }
   }
 `;
+
+
+const webringSiteQuery = /* GraphQL */ `
+  query webringSiteQuery($input: SingleWebringSiteInput!) {
+    siteData {
+      title
+      url
+    }
+    webringSite(input: $input) {
+      result {
+        ...WebringSiteFragment
+
+        user {
+          email
+        }
+      }
+    }
+  }
+`;
+
 VulcanEmail.addEmails({
   postApproved: {
     template: "postApproved",
@@ -220,6 +241,31 @@ VulcanEmail.addEmails({
         : Newsletters.findOne({}, { createdAt: -1 });
       const postsIds = newsletter.postsIds;
       return { postsIds, message };
+    },
+  },
+
+  webringSiteApproved: {
+    template: "webringSiteApproved",
+    testPath: "/email/webring-site-approved/:siteId?",
+    to(data) {
+      return get(data, "data.webringSite.result.user.email", defaultEmail);
+    },
+    subject(data) {
+      const dummySite = { title: "[title]", user: { displayName: "[user]" } };
+      const site = get(data, "data.webringSite.result", dummySite);
+      return "Your site “" + site.title + "” has been added to the Sidebar Webring";
+    },
+    query: webringSiteQuery,
+    testVariables({ postId: siteId }) {
+      if (!siteId) {
+        siteId = WebringSites.findOne(
+          {
+            status: webringStatus.approved,
+          },
+          { sort: { createdAt: -1 } }
+        )._id;
+      }
+      return { input: { id: siteId } };
     },
   },
 });

@@ -10,7 +10,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 import SidebarPortal from '../common/SidebarPortal.jsx';
 import { webringStatus } from '../../modules/data';
 
-const PostListItem = ({ document }) => <PostCell document={document} showWebring={true} variant="medium" key={document._id} />;
+const PostListItem = ({ document }) => (
+  <PostCell document={document} showWebring={true} variant="medium" key={document._id} />
+);
 
 const WebringListItem = ({ document }) => <WebringSiteCell document={document} key={document._id} />;
 
@@ -27,20 +29,23 @@ Note that once your site is part of the Sidebar webring, your RSS feed's content
 `;
 
 const Webring = () => {
-
   const membersInput = {
     filter: { status: { _eq: webringStatus.approved } },
     sort: { createdAt: 'desc' },
-  }
+  };
 
   const feedInput = {
     filter: { webringSiteId: { _is_null: false } },
     sort: { postedAt: 'desc' },
     limit: 5,
   };
-  
+
   return (
-    <PageLayout name="webring" title="The Sidebar Webring">
+    <PageLayout
+      name="webring"
+      title="The Sidebar Webring"
+      description="We're bringing webrings back! The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web."
+    >
       <div className="webring-header">
         <ReactMarkdown source={contents} escapeHtml={false} />
         <LinkContainer to="/webring/apply">

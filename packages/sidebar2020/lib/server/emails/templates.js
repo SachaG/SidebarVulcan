@@ -5,4 +5,5 @@ VulcanEmail.addTemplates({
   postApproved:             Assets.getText("lib/server/emails/posts/postApproved2.handlebars"),
   newsletter:               Assets.getText("lib/server/emails/newsletter/newsletter2.handlebars"),
   sponsoredPaid:            Assets.getText("lib/server/emails/sponsored/sponsoredPaid2.handlebars"),
+  webringSiteApproved:      Assets.getText("lib/server/emails/webring/webringSiteApproved.handlebars"),
 });

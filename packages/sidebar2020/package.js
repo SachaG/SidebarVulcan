@@ -35,6 +35,7 @@ Package.onUse((api) => {
     'lib/server/emails/posts/postApproved2.handlebars',
     'lib/server/emails/newsletter/newsletter2.handlebars',
     'lib/server/emails/sponsored/sponsoredPaid2.handlebars',
+    'lib/server/emails/webring/webringSiteApproved.handlebars',
   ], ['server']);
 
   api.mainModule('lib/server/main.js', 'server');

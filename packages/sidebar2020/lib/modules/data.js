@@ -1,3 +1,5 @@
+import { getSetting } from 'meteor/vulcan:core';
+
 // note: all dates are stored in UTC, but displayed using this timezone
 export const timezone = "Asia/Tokyo";
 
@@ -132,3 +134,21 @@ export const webringStatusReverse = {
 
 export const basePostPrice = 950;
 export const baseJobPrice = 250;
+
+export const adminNav = [
+  // { name: 'Dashboard', path: '/admin/dashboard' },
+  { name: 'Users', path: '/admin/users' },
+  { name: 'Posts', path: '/admin/posts' },
+  { name: 'Categories', path: '/admin/categories' },
+  { name: 'Newsletters', path: '/admin/newsletters' },
+  { name: 'Jobs', path: '/admin/jobs' },
+  { name: 'Discounts', path: '/admin/discounts' },
+  { name: 'Charges', path: '/admin/charges' },
+  { name: 'Sites', path: '/admin/sites' },
+  { name: 'Logs', path: '/admin/logs' },
+];
+
+if (Meteor.isDevelopment && getSetting('environment') === 'development') {
+  adminNav.push({ name: 'Emails', path: '/admin/emails' });
+  adminNav.push({ name: 'Database', path: '/admin/database' });
+}

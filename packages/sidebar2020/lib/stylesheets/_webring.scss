@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: $spacing;
+    row-gap: $spacing;
   }
 }
 

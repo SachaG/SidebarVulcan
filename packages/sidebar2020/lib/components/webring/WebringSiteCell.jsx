@@ -9,7 +9,7 @@ const WebringSiteCell = ({ document, currentUser }) => {
     <div className="webring-cell">
       <a href={url} target="_blank" rel="noopener" className="webring-link">
         <span className="webring-avatar avatar-twitter">
-          <img src={twitterAvatarUrl} alt={title} />
+          <img src={twitterAvatarUrl} alt={title} loading="lazy" height="54" width="54"/>
         </span>
         <h4 className="webring-title">{title}</h4>
       </a>

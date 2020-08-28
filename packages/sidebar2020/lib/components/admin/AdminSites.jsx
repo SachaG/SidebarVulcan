@@ -97,6 +97,7 @@ const AdminSites = () => (
         fragmentName: 'WebringSiteFragment',
       }}
       columns={[
+        'createdAt',
         'title',
         'url',
         'feedUrl',
@@ -105,6 +106,11 @@ const AdminSites = () => (
       ]}
       components={{
         DatatableAboveRight,
+      }}
+      initialState={{
+        sort: {
+          createdAt: 'desc',
+        },
       }}
     />
   </div>

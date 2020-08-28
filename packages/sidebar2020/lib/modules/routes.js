@@ -44,7 +44,7 @@ const adminAccessOptions = {
   redirect: '/log-in',
 }
 
-const routes = [
+export const routes = [
   {name:'home',                 path: '/',                          component: Home, layoutComponent: HomeLayout},
 
   {name:'login',                path: '/log-in',                    component: LogIn},

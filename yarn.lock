@@ -2276,11 +2276,6 @@ address@1.1.0, address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.0.tgz#ef8e047847fcd2c5b6f50c16965f924fd99fe709"
   integrity sha512-4diPfzWbLEIElVG4AnqP+00SULlPzNuyJFNnmMrLgyaxG6tZXJ1sn7mjBu4fHrJE+Yp/jgylOweJn2xsLMFggQ==
 
-addressparser@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/addressparser/-/addressparser-1.0.1.tgz#47afbe1a2a9262191db6838e4fd1d39b40821746"
-  integrity sha1-R6++GiqSYhkdtoOOT9HTm0CCF0Y=
-
 "airbnb-js-shims@^1 || ^2":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-2.2.0.tgz#46e1d9d9516f704ef736de76a3b6d484df9a96d8"
@@ -2821,11 +2816,6 @@ array-includes@^3.1.1:
     define-properties "^1.1.3"
     es-abstract "^1.17.0"
     is-string "^1.0.5"
-
-array-indexofobject@~0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/array-indexofobject/-/array-indexofobject-0.0.1.tgz#aaa128e62c9b3c358094568c219ff64fe489d42a"
-  integrity sha1-qqEo5iybPDWAlFaMIZ/2T+SJ1Co=
 
 array-map@~0.0.0:
   version "0.0.0"
@@ -5866,21 +5856,6 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
-feedparser@^2.2.10:
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/feedparser/-/feedparser-2.2.10.tgz#d3fa509e7d64761dfa037bbbe563df9d52dfb038"
-  integrity sha512-WoAOooa61V8/xuKMi2pEtK86qQ3ZH/M72EEGdqlOTxxb3m6ve1NPvZcmPFs3wEDfcBbFLId2GqZ4YjsYi+h1xA==
-  dependencies:
-    addressparser "^1.0.1"
-    array-indexofobject "~0.0.1"
-    lodash.assign "^4.2.0"
-    lodash.get "^4.4.2"
-    lodash.has "^4.5.2"
-    lodash.uniq "^4.5.0"
-    mri "^1.1.5"
-    readable-stream "^2.3.7"
-    sax "^1.2.4"
-
 figgy-pudding@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
@@ -8036,11 +8011,6 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
-lodash.assign@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
-  integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
-
 lodash.assignin@^4.0.9:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assignin/-/lodash.assignin-4.2.0.tgz#ba8df5fb841eb0a3e8044232b0e263a8dc6a28a2"
@@ -8089,16 +8059,6 @@ lodash.foreach@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
   integrity sha1-Gmo16s5AEoDH8G3d7DUWWrJ+PlM=
-
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
-
-lodash.has@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/lodash.has/-/lodash.has-4.5.2.tgz#d19f4dc1095058cccbe2b0cdf4ee0fe4aa37c862"
-  integrity sha1-0Z9NwQlQWMzL4rDN9O4P5Ko3yGI=
 
 lodash.isarguments@^3.0.0:
   version "3.1.0"
@@ -8199,11 +8159,6 @@ lodash.unescape@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/lodash.unescape/-/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
   integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
-
-lodash.uniq@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
-  integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^4.0.0, lodash@^4.17.4, lodash@^4.2.1:
   version "4.17.4"
@@ -8826,11 +8781,6 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
-
-mri@^1.1.5:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/mri/-/mri-1.1.6.tgz#49952e1044db21dbf90f6cd92bc9c9a777d415a6"
-  integrity sha512-oi1b3MfbyGa7FJMP9GmLTttni5JoICpYBRlq+x5V16fZbLsnL9N3wFqqIm/nIG43FjUFkFh9Epzp/kzUGUnJxQ==
 
 ms@2.0.0:
   version "2.0.0"
@@ -10425,10 +10375,15 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-fast-compare@2.0.4, react-fast-compare@^2.0.4:
+react-fast-compare@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
+
+react-fast-compare@^3.1.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
 react-focus-lock@^1.18.3:
   version "1.19.1"
@@ -10451,14 +10406,14 @@ react-helmet-async@^1.0.2:
     react-fast-compare "2.0.4"
     shallowequal "1.1.0"
 
-react-helmet@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.0.0.tgz#fcb93ebaca3ba562a686eb2f1f9d46093d83b5f8"
-  integrity sha512-My6S4sa0uHN/IuVUn0HFmasW5xj9clTkB9qmMngscVycQ5vVG51Qp44BEvLJ4lixupTwDlU9qX1/sCrMN4AEPg==
+react-helmet@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
+  integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
   dependencies:
     object-assign "^4.1.1"
     prop-types "^15.7.2"
-    react-fast-compare "^2.0.4"
+    react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
 react-hotkeys@2.0.0-pre4:
@@ -10828,19 +10783,6 @@ readable-stream@^2.0.2, readable-stream@^2.2.2, "readable-stream@git+https://git
     process-nextick-args "~1.0.6"
     safe-buffer "^5.0.1"
     string_decoder "~1.0.0"
-    util-deprecate "~1.0.1"
-
-readable-stream@^2.3.7:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
-  integrity sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==
-  dependencies:
-    core-util-is "~1.0.0"
-    inherits "~2.0.3"
-    isarray "~1.0.0"
-    process-nextick-args "~2.0.0"
-    safe-buffer "~5.1.1"
-    string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
 readable-stream@^3.1.1:

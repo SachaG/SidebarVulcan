@@ -8,6 +8,7 @@ import Footer from './Footer';
 const Layout = ({ currentUser, children, currentRoute }) => (
   <div className={classNames('wrapper', `wrapper-${currentRoute.name.replace('.', '-')}`)} id="wrapper">
     <Helmet>
+    <title>Foobar</title>
       {/* <link
         name="bootstrap"
         rel="stylesheet"
@@ -21,8 +22,6 @@ const Layout = ({ currentUser, children, currentRoute }) => (
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       /> */}
     </Helmet>
-
-    {/* <Components.HeadTags /> */}
 
     <div className="layout layout-default">
       <div className="layout-inner">

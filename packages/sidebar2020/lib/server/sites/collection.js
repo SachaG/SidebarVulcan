@@ -1,6 +1,7 @@
 import { extendCollection } from "meteor/vulcan:core";
 import WebringSites from "../../modules/sites/collection.js";
 import { getTwitterMetadata } from "../posts/callbacks.js";
+import { sendSiteApprovedNotification } from "./callbacks.js";
 
 extendCollection(WebringSites, {
   callbacks: {
@@ -9,6 +10,7 @@ extendCollection(WebringSites, {
     },
     update: {
       before: [getTwitterMetadata],
+      async: [sendSiteApprovedNotification],
     },
   },
 });
