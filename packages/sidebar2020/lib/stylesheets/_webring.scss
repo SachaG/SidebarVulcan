@@ -3,7 +3,9 @@
 }
 .webring-feed {
   .sidebar & {
-    padding: $spacing * 2;
+    @include large-and-up {
+      padding: $spacing * 2;
+    }
   }
 }
 
@@ -24,7 +26,8 @@
 
 .webring-cell {
   .modal-trigger {
-    margin-top: $spacing/2;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -33,7 +36,10 @@
 }
 
 .webring-link {
-  display: inline-flex;
+  // display: inline-flex;
+  display: inline-grid;
+  grid-template-columns: 60px auto;
+  column-gap: $spacing/2;
   align-items: center;
 }
 .webring-avatar {

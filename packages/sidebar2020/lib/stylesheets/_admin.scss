@@ -1,7 +1,12 @@
 .wrapper-admin {
   .content-wrapper {
     background: $dark-background-color;
-    padding: $spacing * 2 $postsGutterWidth;
+    @include medium-and-down{
+      padding: 5px;
+    }
+    @include large-and-up {
+      padding: $spacing * 2 $postsGutterWidth;
+    }
   }
 }
 .admin-main {

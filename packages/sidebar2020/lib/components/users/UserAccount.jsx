@@ -63,9 +63,11 @@ const UserAccountWebringSites = ({ currentUser }) => (
       <h3>Webring Sites</h3>
     </div>
     <div className="webring-list-contents">
-      {currentUser.webringSites.map((document) => (
-        <WebringSiteCell document={document} key={document._id} currentUser={currentUser} />
-      ))}
+      <div className="list-results">
+        {currentUser.webringSites.map((document) => (
+          <WebringSiteCell document={document} key={document._id} currentUser={currentUser} />
+        ))}
+      </div>
     </div>
   </div>
 );
