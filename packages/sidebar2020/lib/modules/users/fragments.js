@@ -2,10 +2,10 @@ import { registerFragment, extendFragment } from "meteor/vulcan:core";
 
 extendFragment(
   "UsersCurrent",
-  /* GraphQL */ `
+  /* GraphQL */`
   webringSites{
-      ...WebringSiteFields
-    }
+    ...WebringSiteFields
+  }
 `
 );
 

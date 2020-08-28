@@ -13,19 +13,23 @@ const limitItems = (items) => items.slice(0, 5);
 export const importRSSFeeds = async () => {
   // get all approved webring sites
   const sites = WebringSites.find({ status: webringStatus.approved }).fetch();
+  let siteCount = 0;
   let totalCount = 0;
 
   console.log(`[--- Importing ${sites.length} RSS feeds ---]`);
 
   for (const site of sites) {
+    siteCount++;
     const { url, feedUrl, userId, twitterScreenName } = site;
     let count = 0;
+
+    console.log(`// ${siteCount}/${sites.length} Parsing feed for ${url}…`);
 
     // fetch RSS feed contents
     const feed = await parser.parseURL(feedUrl);
     const items = limitItems(feed.items);
 
-    console.log(`// Parsing feed for ${url}, ${items.length} items found`);
+    console.log(`  -> ${items.length} items found`);
 
     for (const item of items) {
       const { title, link: url, isoDate } = item;
@@ -50,7 +54,7 @@ export const importRSSFeeds = async () => {
       const postExists = !!Posts.findOne({ url });
 
       if (!postExists) {
-        console.log(`  - Importing post “${title}”…`);
+        console.log(`  -> Importing post “${title}”…`);
         count++;
         // create post
         try {

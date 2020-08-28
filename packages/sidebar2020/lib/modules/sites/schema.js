@@ -32,6 +32,11 @@ export default {
     onCreate: () => {
       return new Date();
     },
+    onUpdate: ({ document }) => {
+      if (!document.createdAt) {
+        return new Date();
+      }
+    },
   },
 
   title: {

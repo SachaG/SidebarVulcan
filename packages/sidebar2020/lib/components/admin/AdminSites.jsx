@@ -68,8 +68,7 @@ const DatatableAboveRight = (props) => {
           label="Import Feeds"
           variant="primary"
           mutationOptions={{
-            name: 'importFromRSS',
-            args: {},
+            name: 'importFromRSS'
           }}
           successCallback={(result) => {
             alert(`Done, imported ${get(result, 'data.importFromRSS.totalCount')} new posts.`);
