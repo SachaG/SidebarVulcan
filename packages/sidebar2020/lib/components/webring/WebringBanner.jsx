@@ -22,7 +22,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
       <style>{style}</style>
       <g id="sidebar-webring-banner">
         <path id="Rectangle 3" fill="#F58964" d="M0 0H225V60H0z"></path>
-        <a xlinkHref={webringHomeUrl}>
+        <a xlinkHref={webringHomeUrl} target="_top">
           <g id="logo">
             <mask id="mask0" width="60" height="60" x="0" y="0" maskUnits="userSpaceOnUse">
               <path id="Rectangle 1" fill="#C4C4C4" d="M0 0H60V60H0z"></path>
@@ -64,7 +64,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
           </g>
         </a>
         <g id="prevbutton">
-          <a xlinkHref={previousSite.webringUrl}>
+          <a xlinkHref={previousSite.webringUrl} target="_top">
             <path id="background" fill="#F36C3D" d="M65 20H100V55H65z"></path>
             <g id="icon">
               <g id="Outline Icons">
@@ -82,7 +82,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
           </a>
         </g>
         <g id="nextbutton">
-          <a xlinkHref={nextSite.webringUrl}>
+          <a xlinkHref={nextSite.webringUrl} target="_top">
             <path id="background_2" fill="#F36C3D" d="M105 20H140V55H105z"></path>
             <g id="icon_2">
               <g id="Outline Icons_2">
@@ -100,7 +100,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
           </a>
         </g>
         <g id="randombutton">
-          <a xlinkHref={randomSite.webringUrl}>
+          <a xlinkHref={randomSite.webringUrl} target="_top">
             <path id="background_3" fill="#F36C3D" d="M145 20H180V55H145z"></path>
             <g id="icon_3">
               <g id="Outline Icons 1">
@@ -128,7 +128,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
           </a>
         </g>
         <g id="listbutton">
-          <a xlinkHref={webringHomeUrl}>
+          <a xlinkHref={webringHomeUrl} target="_top">
             <path id="background_4" fill="#F36C3D" d="M185 20H220V55H185z"></path>
             <g id="icon_4">
               <g id="Outline Icons 1_2">

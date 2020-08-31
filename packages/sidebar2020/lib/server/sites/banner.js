@@ -55,6 +55,8 @@ export const getSVG = async (code) => {
     nextSite: sites[nextSiteIndex],
     randomSite: sites[randomSiteIndex],
   };
+  console.log(properties)
+
   const svg = ReactDOMServer.renderToStaticMarkup(
     <WebringBanner {...properties} />
   );
@@ -68,8 +70,9 @@ app.use('/static', express.static('public'))
 app.get("/webring/banner/:code.svg", async function (req, res) {
   let { code } = req.params;
   const svg = await getSVG(code);
-  res.header('Content-Type', 'image/svg+xml');
+  console.log(svg)
 
+  res.header('Content-Type', 'image/svg+xml');
   res.status(200).send(svg);
 });
 
