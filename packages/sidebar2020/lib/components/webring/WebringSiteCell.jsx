@@ -1,10 +1,8 @@
 import React from 'react';
-import { Components, Utils } from 'meteor/vulcan:core';
+import { Components } from 'meteor/vulcan:core';
 import WebringSites from '../../modules/sites/collection.js';
 import Users from 'meteor/vulcan:users';
-
-const getBannerCode = (code) =>
-  `<object type="image/svg+xml" data="${Meteor.absoluteUrl()}webring/banner/${code}.svg" height="60" width="225"/>`;
+import WebringBannerButton from './WebringBannerButton.jsx';
 
 const WebringSiteCell = ({ document, currentUser }) => {
   const { title, url, twitterAvatarUrl } = document;
@@ -19,19 +17,7 @@ const WebringSiteCell = ({ document, currentUser }) => {
       {Users.owns(currentUser, document) && (
         <div className="webring-cell-actions">
           <Components.EditButton collection={WebringSites} documentId={document._id} />
-          <Components.ModalTrigger label="Get Banner" title="SVG Webring Banner">
-            <div>
-              <h3>Preview</h3>
-              <div dangerouslySetInnerHTML={{ __html: getBannerCode(document.code) }} />
-              <h3>Code</h3>
-              <p>
-                Paste this code anywhere on your site. Note: make sure you use an <code>object</code> tag to embed the SVG in order to enable links.
-              </p>
-              <textarea style={{ width: '100%', height: '100px', padding: '10px' }}>
-                {getBannerCode(document.code)}
-              </textarea>
-            </div>
-          </Components.ModalTrigger>
+          <WebringBannerButton document={document} />
         </div>
       )}
     </div>
