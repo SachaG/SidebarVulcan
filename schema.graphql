@@ -1550,6 +1550,7 @@ type WebringSite {
   userId: String 
   user: User 
   status: Float 
+  code: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -1629,6 +1630,7 @@ input CreateWebringSiteDataInput {
   twitterScreenName: String 
   userId: String 
   status: Float 
+  code: String 
 }
 
 input UpdateWebringSiteInput{
@@ -1654,6 +1656,7 @@ input UpdateWebringSiteDataInput {
   twitterScreenName: String 
   userId: String 
   status: Float 
+  code: String 
 }
 
 input WebringSiteFilterInput {
@@ -1672,6 +1675,7 @@ input WebringSiteFilterInput {
   twitterAvatarUrl: String_Selector
   userId: String_Selector
   status: Float_Selector
+  code: String_Selector
 }
 
 input WebringSiteSortInput {
@@ -1685,6 +1689,7 @@ input WebringSiteSortInput {
   twitterAvatarUrl: SortOptions
   userId: SortOptions
   status: SortOptions
+  code: SortOptions
 }
 
 input WebringSiteSelectorInput {

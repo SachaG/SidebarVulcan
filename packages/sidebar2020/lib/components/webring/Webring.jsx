@@ -43,7 +43,7 @@ const Webring = () => {
   return (
     <PageLayout
       name="webring"
-      title="The Sidebar Webring"
+      title="Webring"
       description="We're bringing webrings back! The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web."
     >
       <div className="webring-header">

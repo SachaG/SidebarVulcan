@@ -64,6 +64,6 @@ app.get("/api/:limit?", async function (req, res) {
 });
 
 webAppConnectHandlersUse(Meteor.bindEnvironment(app), {
-  name: "inquiries_endpoint",
+  name: "api_endpoint",
   order: 200,
 });

@@ -1,6 +1,8 @@
 import { makeAutocomplete } from "meteor/vulcan:core";
 import { webringStatus, webringStatusOptions } from "../../modules/data.js";
 import Users from "meteor/vulcan:users";
+import get from "lodash/get";
+import sample from "lodash/sample";
 
 export const getDefaultStatus = (site, user) => {
   if (!user) {
@@ -15,6 +17,14 @@ export const getDefaultStatus = (site, user) => {
   } else {
     return webringStatus.pending;
   }
+};
+
+export const generateCode = (length = 4) => {
+  const letters = [..."abcdefghijklmnopqrstuvwyxz"];
+  const code = Array.from(Array(length))
+    .map(() => sample(letters))
+    .join("");
+  return code;
 };
 
 export default {
@@ -116,5 +126,16 @@ export default {
     defaultValue: webringStatus.pending,
     onCreate: ({ data, currentUser }) => getDefaultStatus(data, currentUser),
     options: webringStatusOptions,
+  },
+
+  code: {
+    type: String,
+    optional: true,
+    canRead: ["guests"],
+    canCreate: ["members"],
+    canUpdate: ["admins"],
+    onCreate: () => generateCode(),
+    onUpdate: ({ document }) =>
+      document.code ? document.code : generateCode(),
   },
 };

@@ -12,6 +12,7 @@ registerFragment(/* GraphQL */ `
     status
     userId
     createdAt
+    code
   }
 `);
 

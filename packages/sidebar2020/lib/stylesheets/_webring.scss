@@ -7,27 +7,42 @@
       padding: $spacing * 2;
     }
   }
+  .post-domain{
+    @include small{
+      display: none;
+    }
+  }
 }
 
 .webring-list-contents {
   .list-results {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: $spacing;
-    row-gap: $spacing;
+    @include small {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $spacing/2;
+      row-gap: $spacing/2;
+    }
+    @include medium-and-up {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: $spacing;
+      row-gap: $spacing;
+    }
   }
 }
 
+.webring-sites,
 .webring-list {
-  .page-account & {
-    margin-bottom: $spacing;
-  }
+  margin-bottom: $spacing;
 }
 
 .webring-cell {
-  .modal-trigger {
+  .webring-cell-actions{
     display: flex;
     justify-content: center;
+    align-items: center;
+    .modal-trigger{
+      margin: 0 5px;
+    }
   }
 }
 
@@ -36,17 +51,28 @@
 }
 
 .webring-link {
-  // display: inline-flex;
   display: inline-grid;
-  grid-template-columns: 60px auto;
-  column-gap: $spacing/2;
   align-items: center;
+  @include small {
+    grid-template-columns: 30px auto;
+    column-gap: $spacing/2;
+  }
+  @include medium-and-up {
+    grid-template-columns: 60px auto;
+    column-gap: $spacing/2;
+  }
 }
 .webring-avatar {
   display: block;
   margin-right: $spacing/2;
-  height: 60px;
-  width: 60px;
+  @include small {
+    height: 30px;
+    width: 30px;
+  }
+  @include medium-and-up {
+    height: 60px;
+    width: 60px;
+  }
 }
 .webring-title {
   font-size: $medium-font;

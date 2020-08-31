@@ -22,6 +22,7 @@ import Webring from '../components/webring/Webring';
 import WebringApply from '../components/webring/WebringApply';
 import WebringThanks from '../components/webring/WebringThanks';
 import WebringFeed from '../components/webring/WebringFeed';
+import WebringLayout from '../components/webring/WebringLayout';
 
 import AdminPosts from '../components/admin/AdminPosts.jsx';
 import AdminUsers from '../components/admin/AdminUsers.jsx';
@@ -66,7 +67,7 @@ export const routes = [
 
   {name:'categories',           path: '/categories',                component: CategoryList}, // index route
 
-  {name:'webring',              path: '/webring',                component: Webring}, // index route
+  {name:'webring',              path: '/webring',                component: Webring, layoutComponent: WebringLayout}, // index route
   {name:'webring.apply',              path: '/webring/apply',                component: WebringApply}, // index route
   {name:'webring.thanks',              path: '/webring/thanks',                component: WebringThanks}, // index route
   {name:'webring.feed',              path: '/webring/feed',                component: WebringFeed}, // index route
