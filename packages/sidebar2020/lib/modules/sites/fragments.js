@@ -13,6 +13,7 @@ registerFragment(/* GraphQL */ `
     userId
     createdAt
     code
+    color
   }
 `);
 

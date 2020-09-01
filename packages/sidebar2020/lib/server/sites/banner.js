@@ -40,6 +40,7 @@ export const getSVG = async (code) => {
 
   const totalSites = sites.length;
   const currentSiteIndex = sites.findIndex((s) => s.code === code);
+  const currentSite = sites[currentSiteIndex];
 
   if (currentSiteIndex === -1) {
     throw new Error(`Could not find site for code "${code}"`);
@@ -51,9 +52,10 @@ export const getSVG = async (code) => {
     currentSiteIndex === totalSites ? 0 : currentSiteIndex + 1;
   // note: exclude current site from random pick
   const randomSiteIndex = sample([
-    random(0, currentSiteIndex - 1),
-    random(currentSiteIndex + 1, totalSites - 1),
+    Math.max(0, random(0, currentSiteIndex - 1)),
+    Math.min(totalSites - 1, random(currentSiteIndex + 1, totalSites - 1)),
   ]);
+
   const properties = {
     currentSiteIndex,
     prevSiteIndex,
@@ -61,7 +63,7 @@ export const getSVG = async (code) => {
     randomSiteIndex,
     webringHomeUrl: "https://sidebar.io/webring",
     code,
-    currentSite: sites[currentSiteIndex],
+    currentSite,
     previousSite: sites[prevSiteIndex],
     nextSite: sites[nextSiteIndex],
     randomSite: sites[randomSiteIndex],

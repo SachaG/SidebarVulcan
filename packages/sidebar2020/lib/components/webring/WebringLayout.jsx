@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Nav from '../common/Nav';
 import Footer from '../common/Footer';
 import { Link } from 'react-router-dom';
-import WebringLogo from './WebringLogo.jsx';
+import Logo from '../common/Logo.jsx';
 
 const WebringLayout = ({ currentUser, children, currentRoute }) => (
   <div className={classNames('wrapper', `wrapper-${currentRoute.name.replace('.', '-')}`)} id="wrapper">
@@ -15,7 +15,7 @@ const WebringLayout = ({ currentUser, children, currentRoute }) => (
             {/* <h1>Sidebar 2020</h1> */}
             <div className="header-one">
               <Link className="logo-link" to="/">
-                <WebringLogo />
+                <Logo />
               </Link>
               <h2 className="tagline">The five best design links, every weekday</h2>
             </div>

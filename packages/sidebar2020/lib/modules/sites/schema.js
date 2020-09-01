@@ -19,6 +19,16 @@ export const getDefaultStatus = (site, user) => {
   }
 };
 
+export const stripHash = (data) => data.color && data.color.replace("#", "");
+
+export const addHash = (data) => {
+  if (data && data.color.slice(0, 1) !== "#") {
+    return `#${data.color}`;
+  } else {
+    return data.color;
+  }
+};
+
 export const generateCode = (length = 4) => {
   const letters = [..."abcdefghijklmnopqrstuvwyxz"];
   const code = Array.from(Array(length))
@@ -137,5 +147,17 @@ export default {
     onCreate: () => generateCode(),
     onUpdate: ({ document }) =>
       document.code ? document.code : generateCode(),
+  },
+
+  color: {
+    type: String,
+    optional: true,
+    canRead: ["guests"],
+    canCreate: ["members"],
+    canUpdate: ["owners", "admins"],
+    description:
+      'HTML hexadecimal color code (including the "#"). Defaults to #f36c3d',
+    onCreate: ({ data }) => addHash(data),
+    onUpdate: ({ data }) => addHash(data),
   },
 };

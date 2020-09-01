@@ -5,6 +5,7 @@
   }
   @include font-secondary;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .btn-default{
   background-color: transparent;

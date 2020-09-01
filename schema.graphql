@@ -1551,6 +1551,8 @@ type WebringSite {
   user: User 
   status: Float 
   code: String 
+  # HTML hexadecimal color code (including the "#"). Defaults to #f36c3d
+  color: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -1631,6 +1633,7 @@ input CreateWebringSiteDataInput {
   userId: String 
   status: Float 
   code: String 
+  color: String 
 }
 
 input UpdateWebringSiteInput{
@@ -1657,6 +1660,7 @@ input UpdateWebringSiteDataInput {
   userId: String 
   status: Float 
   code: String 
+  color: String 
 }
 
 input WebringSiteFilterInput {
@@ -1676,6 +1680,7 @@ input WebringSiteFilterInput {
   userId: String_Selector
   status: Float_Selector
   code: String_Selector
+  color: String_Selector
 }
 
 input WebringSiteSortInput {
@@ -1690,6 +1695,7 @@ input WebringSiteSortInput {
   userId: SortOptions
   status: SortOptions
   code: SortOptions
+  color: SortOptions
 }
 
 input WebringSiteSelectorInput {
