@@ -7,6 +7,7 @@ import get from "lodash/get";
 import ReactDOMServer from "react-dom/server";
 import WebringBanner from "../../components/webring/WebringBanner";
 import { webringStatus } from "../../modules/data.js";
+import bodyParser from 'body-parser';
 
 const query = `
 query webringSitesQuery($input: MultiWebringSiteInput) {
@@ -18,7 +19,7 @@ query webringSitesQuery($input: MultiWebringSiteInput) {
 }
 `;
 
-export const getSVG = async (code) => {
+export const getSVG = async (code, color) => {
   const input = {
     filter: { status: { _eq: webringStatus.approved } },
     sort: { createdAt: "desc" },
@@ -57,6 +58,7 @@ export const getSVG = async (code) => {
   ]);
 
   const properties = {
+    color,
     currentSiteIndex,
     prevSiteIndex,
     nextSiteIndex,
@@ -78,12 +80,16 @@ export const getSVG = async (code) => {
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.use("/static", express.static("public"));
 
 app.get("/webring/banner/:code.svg", async function (req, res) {
-  let { code } = req.params;
+  const { code } = req.params;
+  const { color } = req.query;
   try {
-    const svg = await getSVG(code);
+    const svg = await getSVG(code, color);
     res.header("Content-Type", "image/svg+xml");
     res.status(200).send(svg);
   } catch (error) {

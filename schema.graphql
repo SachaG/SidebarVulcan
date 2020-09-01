@@ -1537,8 +1537,9 @@ input CategorySelectorUniqueInput {
 type WebringSite {
   _id: String 
   createdAt: Date 
-  title: String 
   url: String 
+  title: String 
+  description: String 
   # The site's RSS feed URL
   feedUrl: String 
   # The Twitter account associated with the site, used to display an avatar
@@ -1551,8 +1552,6 @@ type WebringSite {
   user: User 
   status: Float 
   code: String 
-  # HTML hexadecimal color code (including the "#"). Defaults to #f36c3d
-  color: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -1626,14 +1625,14 @@ input CreateWebringSiteInput {
 }
 
 input CreateWebringSiteDataInput {
-  title: String 
   url: String 
+  title: String 
+  description: String 
   feedUrl: String 
   twitterScreenName: String 
   userId: String 
   status: Float 
   code: String 
-  color: String 
 }
 
 input UpdateWebringSiteInput{
@@ -1653,14 +1652,14 @@ input UpsertWebringSiteInput{
 }
 
 input UpdateWebringSiteDataInput {
-  title: String 
   url: String 
+  title: String 
+  description: String 
   feedUrl: String 
   twitterScreenName: String 
   userId: String 
   status: Float 
   code: String 
-  color: String 
 }
 
 input WebringSiteFilterInput {
@@ -1671,8 +1670,9 @@ input WebringSiteFilterInput {
 
   _id: String_Selector
   createdAt: Date_Selector
-  title: String_Selector
   url: String_Selector
+  title: String_Selector
+  description: String_Selector
   feedUrl: String_Selector
   twitterScreenName: String_Selector
   twitterName: String_Selector
@@ -1680,14 +1680,14 @@ input WebringSiteFilterInput {
   userId: String_Selector
   status: Float_Selector
   code: String_Selector
-  color: String_Selector
 }
 
 input WebringSiteSortInput {
   _id: SortOptions
   createdAt: SortOptions
-  title: SortOptions
   url: SortOptions
+  title: SortOptions
+  description: SortOptions
   feedUrl: SortOptions
   twitterScreenName: SortOptions
   twitterName: SortOptions
@@ -1695,7 +1695,6 @@ input WebringSiteSortInput {
   userId: SortOptions
   status: SortOptions
   code: SortOptions
-  color: SortOptions
 }
 
 input WebringSiteSelectorInput {

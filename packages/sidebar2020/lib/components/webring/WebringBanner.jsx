@@ -1,5 +1,6 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
+import { addHash} from '../../modules/helpers.js';
 
 const textColor = '#fff';
 const secondaryColor = 'rgba(255, 255, 255, 0.2)';
@@ -20,8 +21,8 @@ const getStyle = (color) => `
 }
 `;
 
-const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSite, randomSite }) => {
-  const color = isEmpty(currentSite.color) ? defaultBannerColor : currentSite.color;
+const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSite, randomSite, color: propsColor }) => {
+  const color = propsColor ? addHash(propsColor) : defaultBannerColor;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
