@@ -1,10 +1,11 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 
 const textColor = '#fff';
 const secondaryColor = 'rgba(255, 255, 255, 0.2)';
 export const defaultBannerColor = '#f36c3d';
 
-const getStyle = (mainColor) => `
+const getStyle = (color) => `
 .button {
   cursor: pointer;
 }
@@ -12,15 +13,15 @@ const getStyle = (mainColor) => `
   fill: ${textColor};
 }
 .button:hover .icon, .button:hover .icon path{
-  stroke: ${mainColor};
+  stroke: ${color};
 }
 .button:hover .text{
-  fill: ${mainColor};
+  fill: ${color};
 }
 `;
 
 const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSite, randomSite }) => {
-  const { color: mainColor = defaultBannerColor } = currentSite;
+  const color = isEmpty(currentSite.color) ? defaultBannerColor : currentSite.color;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -30,12 +31,12 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
       fill="none"
       viewBox="0 0 225 60"
     >
-      <style>{getStyle(mainColor)}</style>
+      <style>{getStyle(color)}</style>
       <mask fill="#ffffff" id="outerMask" x="0" y="0" width="100%" height="100%" maskUnits="userSpaceOnUse">
         <rect x="0" y="0" width="100%" height="100%" rx="3" />
       </mask>
       <g mask="url(#outerMask)" id="sidebar-webring-banner">
-        <path id="Rectangle 3" fill={mainColor} d="M0 0H225V60H0z"></path>
+        <path id="Rectangle 3" fill={color} d="M0 0H225V60H0z"></path>
         <path id="Rectangle 3" fill={secondaryColor} d="M0 0H225V60H0z"></path>
         <a xlinkHref={webringHomeUrl} target="_top">
           <g id="logo">
@@ -43,7 +44,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
               <path id="Rectangle 1" fill="#ffffff" d="M0 0H60V60H0z"></path>
             </mask>
             <g mask="url(#mask0)">
-              <path id="Rectangle 2" fill={mainColor} d="M0 0H60V60H0z"></path>
+              <path id="Rectangle 2" fill={color} d="M0 0H60V60H0z"></path>
               <g id="bg" fill={secondaryColor}>
                 <path id="Rectangle" d="M14 8.667H30V11.334H14z"></path>
                 <path id="Rectangle_2" d="M30 2H46V4.667H30z"></path>
@@ -80,7 +81,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
         </a>
         <g className="button" id="prevbutton">
           <a xlinkHref={previousSite.webringUrl} target="_top">
-            <path className="background" fill={mainColor} d="M65 20H100V55H65z"></path>
+            <path className="background" fill={color} d="M65 20H100V55H65z"></path>
             <g className="icon" stroke={textColor} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10">
               <path id="Vector" d="M75.5 37.5l-5-5 5-5"></path>
               <path id="Vector_2" d="M70.5 32.5h23"></path>
@@ -94,7 +95,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
         </g>
         <g className="button" id="nextbutton">
           <a xlinkHref={nextSite.webringUrl} target="_top">
-            <path className="background" fill={mainColor} d="M105 20H140V55H105z"></path>
+            <path className="background" fill={color} d="M105 20H140V55H105z"></path>
             <g className="icon" stroke={textColor} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10">
               <path id="Vector_3" d="M128.5 27.5l5 5-5 5"></path>
               <path id="Vector_4" d="M133.5 32.5h-23"></path>
@@ -108,7 +109,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
         </g>
         <g className="button" id="randombutton">
           <a xlinkHref={randomSite.webringUrl} target="_top">
-            <path className="background" fill={mainColor} d="M145 20H180V55H145z"></path>
+            <path className="background" fill={color} d="M145 20H180V55H145z"></path>
             <g className="icon" stroke={textColor} strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10">
               <path id="Vector_5" d="M150.927 31.199l2.787 4.151 3.205-3.838"></path>
               <path id="Vector_6" d="M173.5 35.5l-2.786-4.15-3.206 3.838"></path>
@@ -130,7 +131,7 @@ const WebringBanner = ({ webringHomeUrl, code, currentSite, previousSite, nextSi
         </g>
         <g className="button" id="listbutton">
           <a xlinkHref={webringHomeUrl} target="_top">
-            <path className="background" fill={mainColor} d="M185 20H220V55H185z"></path>
+            <path className="background" fill={color} d="M185 20H220V55H185z"></path>
             <g className="icon">
               <path
                 id="Vector_9"

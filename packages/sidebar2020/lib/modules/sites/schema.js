@@ -22,7 +22,7 @@ export const getDefaultStatus = (site, user) => {
 export const stripHash = (data) => data.color && data.color.replace("#", "");
 
 export const addHash = (data) => {
-  if (data && data.color.slice(0, 1) !== "#") {
+  if (data && data.color && data.color.slice(0, 1) !== "#") {
     return `#${data.color}`;
   } else {
     return data.color;
