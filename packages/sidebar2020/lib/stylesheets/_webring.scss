@@ -48,10 +48,11 @@
 }
 
 .webring-header {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  // grid-template-columns: repeat(3, 1fr);
+  @include large-and-up {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
 }
 .webring-header-item {
   text-align: center;
@@ -65,12 +66,19 @@
 }
 /* ------ Intro ----- */
 .webring-intro {
-  max-width: 700px;
-  margin: $spacing * 3 auto;
+  max-width: 800px;
+  @include medium-and-down {
+    padding: $spacing;
+    margin: $spacing * 2 auto;
+  }
+  @include large-and-up {
+    margin: $spacing * 3 auto;
+  }
 }
 
 .webring-intro-heading {
   text-align: center;
+  margin-bottom: $spacing/3;
 }
 .webring-intro-quote {
   background: $background-color;
@@ -80,7 +88,7 @@
   }
 }
 .webring-intro-text {
-  margin-top: $spacing;
+  margin-bottom: $spacing;
   font-size: $large-font;
   @include font-secondary;
   text-align: center;
@@ -88,11 +96,20 @@
 
 /* ------ Sites ----- */
 .webring-sites {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  row-gap: $spacing * 2;
-  column-gap: $spacing * 2;
-  margin: $spacing * 2;
+  @include medium-and-down {
+    padding: $spacing;
+    margin-bottom: $spacing * 2;
+    .webring-cell {
+      margin-bottom: $spacing * 2;
+    }
+  }
+  @include large-and-up {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: $spacing * 2;
+    column-gap: $spacing * 2;
+    margin: $spacing * 2;
+  }
 }
 
 .webring-list-contents {
@@ -111,10 +128,6 @@
   }
 }
 
-.webring-sites {
-  margin-bottom: $spacing;
-}
-
 /* ------ Cell ----- */
 .webring-cell {
   .webring-cell-actions {
@@ -131,7 +144,7 @@
   margin-bottom: $spacing;
 }
 
-.webring-link {
+.webring-cell-heading {
   display: inline-grid;
   align-items: center;
   @include small {
@@ -142,6 +155,34 @@
     grid-template-columns: 60px auto;
     column-gap: $spacing/2;
   }
+}
+.webring-cell-name {
+}
+
+.webring-title {
+  font-size: $medium-font;
+  margin-bottom: 0;
+}
+.webring-twitter {
+  a:link {
+    color: $lighter-text-color;
+  }
+  a:hover {
+    color: $hover-color;
+  }
+  .icon-twitter {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    fill: $lighter-text-color;
+    margin-right: 4px;
+  }
+  &:hover .icon-twitter {
+    fill: $hover-color;
+  }
+  font-size: $small-font;
+  margin: 0;
+  @include font-regular;
 }
 .webring-avatar {
   display: block;
@@ -155,10 +196,6 @@
     width: 60px;
   }
 }
-.webring-title {
-  font-size: $medium-font;
-  margin: 0;
-}
 
 .webring-indicator {
   svg {
@@ -170,11 +207,11 @@
 
 .webring-cell-post {
   margin-bottom: $spacing/2;
-  .post-title{
+  .post-title {
     font-size: $small-font;
   }
   .post-date {
-    &::after{
+    &::after {
       content: '';
     }
   }

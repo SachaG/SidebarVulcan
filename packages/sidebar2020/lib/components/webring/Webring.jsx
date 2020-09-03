@@ -47,12 +47,11 @@ const Webring = () => {
 
   const { loading, data = {} } = useQuery(gql(webringQuery));
 
-  console.log(data);
   return (
     <div className="webring-wrapper">
       <Components.HeadTags
         title={`Sidebar Webring`}
-        description="We're bringing webrings back! The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web."
+        description="Let's bring webrings back! The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web."
         url="https://sidebar.io/webring"
       />
 
@@ -91,6 +90,9 @@ const Webring = () => {
 
       <div className="webring-intro">
         <h2 className="webring-intro-heading">Let’s bring webrings back!</h2>
+        <div className="webring-intro-text">
+          The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web.
+        </div>
         <div className="webring-intro-quote">
           <blockquote>
             “A <strong>webring</strong> is a collection of websites linked together in a circular structure and organized around a specific theme. They were popular in the 1990s and early 2000s.”
@@ -100,9 +102,6 @@ const Webring = () => {
               </a>
             </cite>
           </blockquote>
-        </div>
-        <div className="webring-intro-text">
-          The Sidebar Webring is a collection of handpicked sites and blogs focused on design and the web.
         </div>
       </div>
 

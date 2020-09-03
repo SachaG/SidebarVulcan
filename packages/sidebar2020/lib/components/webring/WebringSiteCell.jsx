@@ -4,6 +4,7 @@ import WebringSites from '../../modules/sites/collection.js';
 import Users from 'meteor/vulcan:users';
 import WebringBannerButton from './WebringBannerButton.jsx';
 import PostCell from '../posts/PostCell.jsx';
+import { IconTwitter } from '../common/Icons.jsx';
 
 const WebringSiteCell = (props) => {
   const { variant = 'medium', ...rest } = props;
@@ -35,18 +36,31 @@ const WebringSiteCellMedium = ({ document, currentUser }) => {
 };
 
 const WebringSiteCellLarge = ({ document: webringSite, currentUser }) => {
-  const { title, url, twitterAvatarUrl, posts } = webringSite;
+  const { title, url, twitterAvatarUrl, posts, twitterScreenName } = webringSite;
   return (
     <div className="webring-cell webring-cell-large">
-      <a href={url} target="_blank" rel="noopener" className="webring-link">
+      <div className="webring-cell-heading">
         <span className="webring-avatar avatar-twitter">
-          <img src={twitterAvatarUrl} alt={title} loading="lazy" height="54" width="54" />
+          <a href={url} target="_blank" rel="noopener" className="webring-link">
+            <img src={twitterAvatarUrl} alt={title} loading="lazy" height="54" width="54" />
+          </a>
         </span>
-        <h4 className="webring-title">{title}</h4>
-      </a>
+        <div className="webring-name">
+          <h4 className="webring-title">
+            <a href={url} target="_blank" rel="noopener" className="webring-link">
+              {title}
+            </a>
+          </h4>
+          <h5 className="webring-twitter">
+            <a href={`https://twitter.com/${twitterScreenName}`} target="_blank" rel="noreferrer noopener">
+              <IconTwitter />@{twitterScreenName}
+            </a>
+          </h5>
+        </div>
+      </div>
       <div className="webring-posts">
-        {posts.map((post) => (
-          <WebringSiteCellPost variant="small" document={post} key={post._id} />
+        {posts.map((post, i) => (
+          <WebringSiteCellPost variant="small" document={post} key={i} />
         ))}
       </div>
     </div>

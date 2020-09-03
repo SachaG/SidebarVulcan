@@ -3,7 +3,7 @@ import {
   addGraphQLResolvers,
   runGraphQL,
 } from "meteor/vulcan:core";
-import { webringStatus } from '../../modules/data';
+import { webringStatus } from "../../modules/data";
 
 const webringQuery = `
 query webringQuery($input: MultiWebringSiteInput) {
@@ -20,7 +20,7 @@ const webring = async (root, args, context) => {
   const input = {
     limit: 999,
     filter: { status: { _eq: webringStatus.approved } },
-    sort: { createdAt: 'desc' },
+    sort: { createdAt: "desc" },
     enableCache: true,
   };
   const results = await runGraphQL(
@@ -29,13 +29,11 @@ const webring = async (root, args, context) => {
     {},
     { useCache: true, key: "webring" }
   );
-  console.log(JSON.stringify(results, '', 2))
   const webringSites = results.data.webringSites;
-  webringSites.results = webringSites.results.map(s => {
+  webringSites.results = webringSites.results.map((s) => {
     s.createdAt = new Date(s.createdAt);
     return s;
-  })
-  console.log(webringSites.results)
+  });
   return webringSites.results;
 };
 
