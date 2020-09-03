@@ -26,3 +26,22 @@ registerFragment(/* GraphQL */ `
     }
   }
 `);
+
+
+
+registerFragment(/* GraphQL */ `
+  fragment WebringSiteFullFragment on WebringSite {
+    ...WebringSiteFields
+
+    posts {
+      title
+      url
+      postedAt
+      postedAtFormatted
+    }
+
+    user {
+      ...UserFragment
+    }
+  }
+`);

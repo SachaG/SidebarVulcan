@@ -1539,7 +1539,6 @@ type WebringSite {
   createdAt: Date 
   url: String 
   title: String 
-  description: String 
   # The site's RSS feed URL
   feedUrl: String 
   # The Twitter account associated with the site, used to display an avatar
@@ -1552,6 +1551,7 @@ type WebringSite {
   user: User 
   status: Float 
   code: String 
+  posts: [Post] 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
@@ -1627,7 +1627,6 @@ input CreateWebringSiteInput {
 input CreateWebringSiteDataInput {
   url: String 
   title: String 
-  description: String 
   feedUrl: String 
   twitterScreenName: String 
   userId: String 
@@ -1654,7 +1653,6 @@ input UpsertWebringSiteInput{
 input UpdateWebringSiteDataInput {
   url: String 
   title: String 
-  description: String 
   feedUrl: String 
   twitterScreenName: String 
   userId: String 
@@ -1672,7 +1670,6 @@ input WebringSiteFilterInput {
   createdAt: Date_Selector
   url: String_Selector
   title: String_Selector
-  description: String_Selector
   feedUrl: String_Selector
   twitterScreenName: String_Selector
   twitterName: String_Selector
@@ -1687,7 +1684,6 @@ input WebringSiteSortInput {
   createdAt: SortOptions
   url: SortOptions
   title: SortOptions
-  description: SortOptions
   feedUrl: SortOptions
   twitterScreenName: SortOptions
   twitterName: SortOptions
@@ -2162,6 +2158,8 @@ type Query {
   leaderboards: JSON
   
   homepagePosts: [JSON]
+  
+  webring: [WebringSite]
   
   # A single User document fetched by ID or slug
   user(input: SingleUserInput!): SingleUserOutput

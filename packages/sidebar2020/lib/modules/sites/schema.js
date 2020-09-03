@@ -66,14 +66,14 @@ export default {
     label: "Site Title",
   },
 
-  description: {
-    type: String,
-    canRead: ["guests"],
-    canCreate: ["members"],
-    canUpdate: ["owners", "admins"],
-    input: "textarea",
-    max: 150,
-  },
+  // description: {
+  //   type: String,
+  //   canRead: ["guests"],
+  //   canCreate: ["members"],
+  //   canUpdate: ["owners", "admins"],
+  //   input: "textarea",
+  //   max: 150,
+  // },
 
   feedUrl: {
     type: String,
