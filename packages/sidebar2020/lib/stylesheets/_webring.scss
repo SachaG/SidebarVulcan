@@ -72,7 +72,7 @@
     margin: $spacing * 2 auto;
   }
   @include large-and-up {
-    margin: $spacing * 3 auto;
+    margin: $spacing * 2 auto;
   }
 }
 
@@ -106,9 +106,9 @@
   @include large-and-up {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    row-gap: $spacing * 3;
-    column-gap: $spacing * 3;
-    margin: $spacing * 3;
+    row-gap: $spacing * 2.5;
+    column-gap: $spacing * 2.5;
+    margin: $spacing * 2.5;
   }
 }
 
