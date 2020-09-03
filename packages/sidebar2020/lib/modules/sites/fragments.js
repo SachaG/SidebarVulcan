@@ -13,6 +13,7 @@ registerFragment(/* GraphQL */ `
     userId
     createdAt
     code
+    # color
   }
 `);
 
@@ -20,6 +21,25 @@ registerFragment(/* GraphQL */ `
 registerFragment(/* GraphQL */ `
   fragment WebringSiteFragment on WebringSite {
     ...WebringSiteFields
+    user {
+      ...UserFragment
+    }
+  }
+`);
+
+
+
+registerFragment(/* GraphQL */ `
+  fragment WebringSiteFullFragment on WebringSite {
+    ...WebringSiteFields
+
+    posts {
+      title
+      url
+      postedAt
+      postedAtFormatted
+    }
+
     user {
       ...UserFragment
     }

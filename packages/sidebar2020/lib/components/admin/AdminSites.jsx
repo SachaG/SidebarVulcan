@@ -5,6 +5,7 @@ import { webringStatus, webringStatusReverse } from '../../modules/data.js';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import get from 'lodash/get';
+import WebringBannerButton from '../webring/WebringBannerButton.jsx';
 
 const Status = ({ document }) => (
   <div>
@@ -13,6 +14,9 @@ const Status = ({ document }) => (
     </span>
   </div>
 );
+
+const Banner = ({ document }) =>
+  document.status === webringStatus.pending ? null : <WebringBannerButton document={document} />;
 
 const Actions = ({ document: webringSite }) => {
   const [updateSite, { called, loading }] = useUpdate2({
@@ -68,7 +72,7 @@ const DatatableAboveRight = (props) => {
           label="Import Feeds"
           variant="primary"
           mutationOptions={{
-            name: 'importFromRSS'
+            name: 'importFromRSS',
           }}
           successCallback={(result) => {
             alert(`Done, imported ${get(result, 'data.importFromRSS.totalCount')} new posts.`);
@@ -95,12 +99,15 @@ const AdminSites = () => (
       options={{
         fragmentName: 'WebringSiteFragment',
       }}
+      rowClass={(document) => `webring-item item-status-${webringStatusReverse[document.status]}`}
+
       columns={[
         'createdAt',
         'title',
         'url',
         'feedUrl',
         { name: 'status', component: Status },
+        { name: 'banner', component: Banner },
         { name: 'actions', component: Actions },
       ]}
       components={{

@@ -1,16 +1,114 @@
-.webring-header {
-  margin-bottom: $spacing;
+/* ------ Layout ----- */
+.webring-colorscale {
+  & > *:nth-child(1) {
+    background: $orange-red;
+    // background:$light-orange-red;
+  }
+  & > *:nth-child(2) {
+    background: $light-orange-red;
+    // background:$lighter-orange-red;
+  }
+  & > *:nth-child(3) {
+    background: $lighter-orange-red;
+    // background:$lightest-orange-red;
+  }
+  & > *:nth-child(4) {
+    background: $lighter-orange-red;
+    background: $lightest-orange-red;
+  }
+  & > *:nth-child(5) {
+    background: $light-orange-red;
+  }
 }
-.webring-feed {
-  .sidebar & {
-    @include large-and-up {
-      padding: $spacing * 2;
+/* ------ Logo ----- */
+.webring-logo-link {
+  // display: flex;
+  align-items: center;
+}
+
+.webring-logo {
+  height: 160px;
+  width: 160px;
+}
+.webring-logo-text {
+  @include font-secondary;
+  font-size: $smaller-font;
+  &-c2 {
+    letter-spacing: 1.5px;
+  }
+}
+.webring-logo-curve-decorative {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 3px;
+}
+/* ------ Header ----- */
+.webring-header-item {
+  padding: $spacing * 2;
+  @include flex-center;
+}
+
+.webring-header {
+  @include large-and-up {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
+}
+.webring-header-item {
+  text-align: center;
+  p {
+    margin-bottom: $spacing * 0.75;
+  }
+}
+.webring-header-item-title {
+  font-size: $mediumer-font;
+  margin-bottom: $spacing/3;
+}
+/* ------ Intro ----- */
+.webring-intro {
+  max-width: 800px;
+  @include medium-and-down {
+    padding: $spacing;
+    margin: $spacing * 2 auto;
+  }
+  @include large-and-up {
+    margin: $spacing * 2 auto;
+  }
+}
+
+.webring-intro-heading {
+  text-align: center;
+  margin-bottom: $spacing/3;
+}
+.webring-intro-quote {
+  background: $background-color;
+  padding: $spacing;
+  blockquote {
+    margin: 0;
+  }
+}
+.webring-intro-text {
+  margin-bottom: $spacing;
+  font-size: $large-font;
+  @include font-secondary;
+  text-align: center;
+}
+
+/* ------ Sites ----- */
+.webring-sites {
+  @include medium-and-down {
+    padding: $spacing;
+    margin-bottom: $spacing * 2;
+    .webring-cell {
+      margin-bottom: $spacing * 2;
     }
   }
-  .post-domain{
-    @include small{
-      display: none;
-    }
+  @include large-and-up {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: $spacing * 2.5;
+    column-gap: $spacing * 2.5;
+    margin: $spacing * 2.5;
   }
 }
 
@@ -30,17 +128,13 @@
   }
 }
 
-.webring-sites,
-.webring-list {
-  margin-bottom: $spacing;
-}
-
+/* ------ Cell ----- */
 .webring-cell {
-  .webring-cell-actions{
+  .webring-cell-actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    .modal-trigger{
+    .modal-trigger {
       margin: 0 5px;
     }
   }
@@ -50,9 +144,10 @@
   margin-bottom: $spacing;
 }
 
-.webring-link {
+.webring-cell-heading {
   display: inline-grid;
   align-items: center;
+  transform: translateX(-3px);
   @include small {
     grid-template-columns: 30px auto;
     column-gap: $spacing/2;
@@ -61,6 +156,34 @@
     grid-template-columns: 60px auto;
     column-gap: $spacing/2;
   }
+}
+.webring-cell-name {
+}
+
+.webring-title {
+  font-size: $medium-font;
+  margin-bottom: 0;
+}
+.webring-twitter {
+  a {
+    color: $lighter-text-color;
+  }
+  a:hover {
+    color: $hover-color;
+  }
+  .icon-twitter {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    fill: $lighter-text-color;
+    margin-right: 4px;
+  }
+  &:hover .icon-twitter {
+    fill: $hover-color;
+  }
+  font-size: $small-font;
+  margin: 0;
+  @include font-regular;
 }
 .webring-avatar {
   display: block;
@@ -74,15 +197,25 @@
     width: 60px;
   }
 }
-.webring-title {
-  font-size: $medium-font;
-  margin: 0;
-}
 
 .webring-indicator {
   svg {
     g path {
       fill: $red;
     }
+  }
+}
+
+.webring-cell-post {
+  margin-bottom: $spacing/2;
+  .post-title {
+    font-size: $small-font;
+  }
+  .post-date {
+    &::after {
+      content: '';
+    }
+  }
+  .post-link {
   }
 }

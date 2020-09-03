@@ -14,7 +14,7 @@ Anybody can apply, but sites that meet the following criteria have a higher chan
 - You're a **personal & independent blog** with a single writer and voice (as opposed to company or corporate blogs).
 - Your site has a nice, well-crafted design and layout. 
 - You don't publish more than once a day (to avoid flooding the feed).
-- You've had articles published in Sidebar before.
+- You've had pieces of content featured in Sidebar before.
 - You write mainly about design.
 - You are willing to show a small webring banner somewhere on your site (coming soon).
 

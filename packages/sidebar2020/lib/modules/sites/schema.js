@@ -3,6 +3,7 @@ import { webringStatus, webringStatusOptions } from "../../modules/data.js";
 import Users from "meteor/vulcan:users";
 import get from "lodash/get";
 import sample from "lodash/sample";
+// import { addHash, stripHash } from "../helpers.js";
 
 export const getDefaultStatus = (site, user) => {
   if (!user) {
@@ -49,6 +50,14 @@ export default {
     },
   },
 
+  url: {
+    type: String,
+    canRead: ["guests"],
+    canCreate: ["members"],
+    canUpdate: ["owners", "admins"],
+    label: "Site URL",
+  },
+
   title: {
     type: String,
     canRead: ["guests"],
@@ -57,13 +66,14 @@ export default {
     label: "Site Title",
   },
 
-  url: {
-    type: String,
-    canRead: ["guests"],
-    canCreate: ["members"],
-    canUpdate: ["owners", "admins"],
-    label: "Site URL",
-  },
+  // description: {
+  //   type: String,
+  //   canRead: ["guests"],
+  //   canCreate: ["members"],
+  //   canUpdate: ["owners", "admins"],
+  //   input: "textarea",
+  //   max: 150,
+  // },
 
   feedUrl: {
     type: String,
@@ -132,10 +142,23 @@ export default {
     type: String,
     optional: true,
     canRead: ["guests"],
-    canCreate: ["members"],
+    canCreate: ["admins"],
     canUpdate: ["admins"],
     onCreate: () => generateCode(),
     onUpdate: ({ document }) =>
       document.code ? document.code : generateCode(),
   },
+
+  // color: {
+  //   type: String,
+  //   label: "Banner Color",
+  //   optional: true,
+  //   canRead: ["guests"],
+  //   canCreate: ["admins"],
+  //   canUpdate: ["admins"],
+  //   description:
+  //     'HTML hexadecimal color code (including the "#"). Defaults to #f36c3d',
+  //   onCreate: ({ data }) => addHash(data.color),
+  //   onUpdate: ({ data }) => addHash(data.color),
+  // },
 };
