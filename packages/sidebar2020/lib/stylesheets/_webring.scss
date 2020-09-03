@@ -106,9 +106,9 @@
   @include large-and-up {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    row-gap: $spacing * 2;
-    column-gap: $spacing * 2;
-    margin: $spacing * 2;
+    row-gap: $spacing * 3;
+    column-gap: $spacing * 3;
+    margin: $spacing * 3;
   }
 }
 
@@ -147,6 +147,7 @@
 .webring-cell-heading {
   display: inline-grid;
   align-items: center;
+  transform: translateX(-3px);
   @include small {
     grid-template-columns: 30px auto;
     column-gap: $spacing/2;
@@ -164,7 +165,7 @@
   margin-bottom: 0;
 }
 .webring-twitter {
-  a:link {
+  a {
     color: $lighter-text-color;
   }
   a:hover {
