@@ -74,6 +74,8 @@
     "intl": "^1.2.4",
     "intl-locales-supported": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "js-yaml": "^3.14.0",
+    "jsonwebtoken": "^8.5.1",
     "juice": "^5.1.0",
     "mailchimp": "^1.1.6",
     "mailchimp-api-v3": "^1.13.1",
