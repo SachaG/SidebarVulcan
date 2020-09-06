@@ -12,6 +12,7 @@ export * from "./users";
 export * from "./posts";
 export * from "./charges";
 export * from "./sites";
+export * from "./blog";
 
 export * from "./emails";
 

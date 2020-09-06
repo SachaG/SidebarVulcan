@@ -75,6 +75,7 @@
     "intl": "^1.2.4",
     "intl-locales-supported": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "js-yaml": "^3.14.0",
     "jsonwebtoken": "^8.5.1",
     "juice": "^5.1.0",
     "jwks-rsa": "^1.9.0",

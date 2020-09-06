@@ -7,6 +7,7 @@ import { useApolloClient } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import WebringSiteCell from '../webring/WebringSiteCell';
 import PageLayout from '../common/PageLayout';
+import { useCookies } from 'react-cookie';
 
 const PaginatedListItem = ({ document }) => (
   <PostCell
@@ -23,6 +24,7 @@ const PaginatedListItem = ({ document }) => (
 const UserAccount = () => {
   const client = useApolloClient();
   const { loading, currentUser } = useCurrentUser();
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   return (
     <PageLayout
@@ -33,6 +35,7 @@ const UserAccount = () => {
           <Components.Button
             className="page-heading-action"
             onClick={() => {
+              removeCookie('og_auth_token');
               Meteor.logout(() => client.resetStore());
             }}
           >

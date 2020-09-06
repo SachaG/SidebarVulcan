@@ -191,6 +191,19 @@ type UrlMetadata {
   twitter: String
 }
 union AssociatedDocument = Job | Post
+
+type BlogPost {
+  slug: String
+  title: String
+  postedAt: Date
+  postedAtFormatted: String
+  excerpt: String
+  body: String
+  bodyHtml: String
+  twitterScreenName: String
+  userId: String
+  user: User
+}
 union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | WebringSite | Job | Discount | Log
 
 # A user object
@@ -2160,6 +2173,10 @@ type Query {
   homepagePosts: [JSON]
   
   webring: [WebringSite]
+  
+  blogPost(slug: String): BlogPost
+  
+  blogPosts: [BlogPost]
   
   # A single User document fetched by ID or slug
   user(input: SingleUserInput!): SingleUserOutput
