@@ -203,6 +203,9 @@ type BlogPost {
   twitterScreenName: String
   userId: String
   user: User
+  pagePath: String
+  pageUrl: String
+  image: String
 }
 union Chargeable = User | Newsletter | Email | Setting | Callback | Charge | AnalyticsEvent | Post | Category | WebringSite | Job | Discount | Log
 

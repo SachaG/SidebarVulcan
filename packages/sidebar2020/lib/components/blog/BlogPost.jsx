@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { expandQueryFragments, Components } from 'meteor/vulcan:core';
+import { expandQueryFragments, Components, Utils } from 'meteor/vulcan:core';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import BlogPostCell from './BlogPostCell.jsx';
+import { Link } from 'react-router-dom';
 
 const blogPostQuery = `
 query blogPostQuery($slug: String){
@@ -22,7 +23,27 @@ const BlogPost = () => {
     return <Components.Loading />;
   }
   const { blogPost } = data;
-  return <BlogPostCell blogPost={blogPost} variant="large" />;
+  const { title, excerpt, image } = blogPost;
+  return (
+    <div className="blogpost-page">
+      <Components.HeadTags
+        title={`Sidebar | ${title}`}
+        description={excerpt}
+        url={Utils.getSiteUrl() + '/blog/' + slug}
+      />
+      <div className="blog-archives-link">
+        <Link to="/blog">← Back to blog archives</Link>
+      </div>
+      {image && (
+        <div className="blogpost-image">
+          <img src={image} />
+        </div>
+      )}
+      <div className="blogpost-page-inner">
+        <BlogPostCell blogPost={blogPost} variant="large" />
+      </div>
+    </div>
+  );
 };
 
 export default BlogPost;

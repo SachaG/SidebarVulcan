@@ -26,6 +26,7 @@ import WebringLayout from '../components/webring/WebringLayout';
 
 import BlogHome from '../components/blog/BlogHome';
 import BlogPost from '../components/blog/BlogPost';
+import BlogLayout from '../components/blog/BlogLayout';
 
 import AdminPosts from '../components/admin/AdminPosts.jsx';
 import AdminUsers from '../components/admin/AdminUsers.jsx';
@@ -75,8 +76,8 @@ export const routes = [
   {name:'webring.thanks',              path: '/webring/thanks',                component: WebringThanks}, // index route
   {name:'webring.feed',              path: '/webring/feed',                component: WebringFeed}, // index route
   
-  {name:'blog',              path: '/blog',                component: BlogHome}, // index route
-  {name:'blog.post',              path: '/blog/:slug',                component: BlogPost}, // index route
+  {name:'blog',              path: '/blog',                component: BlogHome, layoutComponent: BlogLayout}, // index route
+  {name:'blog.post',              path: '/blog/:slug',                component: BlogPost, layoutComponent: BlogLayout}, // index route
 
   // {name:'users.single',   path:'users/:slug',           componentName: 'UsersSingle'},
   // {name:'users.account',  path:'account',               componentName: 'UsersAccount'},
