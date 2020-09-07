@@ -29,7 +29,8 @@ const BlogPost = () => {
       <Components.HeadTags
         title={`Sidebar | ${title}`}
         description={excerpt}
-        url={Utils.getSiteUrl() + '/blog/' + slug}
+        url={Utils.getSiteUrl(false) + '/blog/' + slug}
+        image={Utils.getSiteUrl(false) + image}
       />
       <div className="blog-archives-link">
         <Link to="/blog">← Back to blog archives</Link>

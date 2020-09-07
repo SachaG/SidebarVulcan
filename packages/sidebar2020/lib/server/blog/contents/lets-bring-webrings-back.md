@@ -1,8 +1,8 @@
 ---
-slug: bring-webrings-back
+slug: lets-bring-webrings-back
 title: Let's Bring Webrings Back
 excerpt: What if a 20-year-old concept held the key to revitalizing design blogging?
-postedAt: 09/08/20
+postedAt: 09/08/2020
 twitterScreenName: SachaGreif
 image: /img/blog/webrings/webring-illustration.jpg
 ---
@@ -61,7 +61,7 @@ And thanks to webring banners, popular webring members can send on traffic to mo
 
 ### A New Life For Webrings?
 
-One of the really great things about a platform like Patreaon is that it can help creators avoid being "held hostage" by a single platform like YouTube: instead of putting all your eggs in one basket, you at least split off your financial support system into a different service.
+One of the really great things about a platform like Patreon is that it can help creators avoid being "held hostage" by a single platform like YouTube: instead of putting all your eggs in one basket, you at least split off your financial support system into a different service.
 
 Similarly, I believe webrings could provide an alternative to Medium for writers. For example, what if a webring had a paid tier for readers, with profits being redistributed to all webring members… while letting them write on their *own* sites?
 
@@ -69,4 +69,6 @@ This is still very far away of course, but it's certainly interesting to think a
 
 For now, just [go check out the Sidebar Webring](/webring) and maybe [download the OPML file](/webring/opml) so you can subscribe to all feeds at once. 
 
-Or hey, if you write about design, why not [apply to join](/webring/apply)?
+And if you're curious about building your own webring, the entire Sidebar codebase is [available on GitHub](https://github.com/SachaG/SidebarVulcan/), including the webring feature. I also [recorded a screencast](https://www.youtube.com/watch?v=H8GjM0ZzJRM) about the webring feature specifically, if you want to see how that works. 
+
+Or hey, if you write about design, why not [apply to join](/webring/apply)? Let's bring webrings back together!

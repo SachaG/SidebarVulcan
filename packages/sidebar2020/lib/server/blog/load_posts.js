@@ -20,7 +20,7 @@ Meteor.startup(async () => {
       const user = Users.findOne({
         twitterScreenName,
       });
-      const mPostedAt = moment(postedAt, "MM/DD/YY");
+      const mPostedAt = moment(postedAt, "MM/DD/YYYY");
       const pagePath = `/blog/${slug}`;
       posts.push({
         ...frontmatter,
@@ -37,7 +37,6 @@ Meteor.startup(async () => {
 
     // sort posts by postedAt desc
     posts = posts.sort((p1, p2) => p1.postedAt > p2.postedAt);
-    console.log(posts.map(p => p.title))
     nodeCache.set("blogPosts", posts);
   } catch (err) {
     console.log(err);

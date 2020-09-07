@@ -6,7 +6,7 @@ import {
 
 const blogPost = async (root, { slug }, context) => {
   const posts = nodeCache.get("blogPosts");
-  return posts.find((p) => p.slug === slug);
+  return posts && posts.find((p) => p.slug === slug);
 };
 
 const blogPosts = async (root, args, context) => {
