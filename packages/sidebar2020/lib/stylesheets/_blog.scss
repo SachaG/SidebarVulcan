@@ -1,6 +1,6 @@
 .wrapper-blog {
   background: $background-color;
-  background: $background-color-four;
+  // background: $background-color-four;
 }
 
 .layout-blog {
@@ -14,7 +14,7 @@
   }
   @include large-and-up {
     display: grid;
-    grid-template-columns: 160px auto;
+    grid-template-columns: 160px 800px;
     grid-template-rows: 160px auto;
     grid-template-areas:
       'a b'
@@ -81,7 +81,6 @@
     display: none;
   }
   text-align: right;
-  margin-right: $spacing;
   .newsletterform-inner {
     justify-content: flex-end;
   }
@@ -115,33 +114,15 @@
   }
 }
 /* ------------ Blog Post ---------- */
-
-.blogpost-page-inner {
-  @include medium-and-down {
-    padding: $spacing;
-  }
-  @include large-and-up {
-    padding: $spacing * 2 $spacing * 6 $spacing * 3 $spacing * 6;
-  }
-}
-.blogpost-main {
-  @include large-and-up {
-    display: grid;
-    grid-template-columns: auto 240px;
-    column-gap: $spacing * 3;
-    grid-template-areas: 'a b';
-  }
-}
 .blogpost-image {
   @include flex-center;
   // display: none;
   @include medium-and-down {
-    margin: $spacing $spacing 0 $spacing;
+    // margin: $spacing $spacing 0 $spacing;
   }
   @include large-and-up {
-    margin: $spacing * 3 $spacing * 6 $spacing * 0 $spacing * 6;
+    // margin: $spacing * 3 $spacing * 6 $spacing * 0 $spacing * 6;
   }
-
   img {
     background: $dark-grey;
 
@@ -150,23 +131,34 @@
     width: 100%;
   }
 }
-.blogpost-meta {
-  grid-area: b;
+.blogpost-main {
+  @include medium-and-down {
+    padding: $spacing;
+  }
   @include large-and-up {
-    padding-top: $spacing;
+    padding: $spacing * 2;
   }
 }
+
+.blogpost-meta {
+  position: relative;
+}
 .blogpost-meta-inner {
+  padding: $spacing * 2 0 0 $spacing;
+  position: absolute;
+  left: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+  width: 240px;
   @include medium-and-down {
     margin-bottom: $spacing;
   }
   @include large-and-up {
-    border-left: 2px solid $border-color;
-    padding: $spacing $spacing * 0 $spacing $spacing * 2;
+    // border-left: 2px solid $border-color;
+    // padding: $spacing $spacing * 0 $spacing $spacing * 2;
   }
 }
 .blogpost-contents {
@@ -210,9 +202,20 @@
   }
   .blogpost-cell-large & {
     font-size: $medium-font;
-    margin-bottom: $spacing;
+    margin-bottom: $spacing/2;
   }
 }
+
+.blogpost-credit {
+  @include flex-center;
+}
+
+.blogpost-twitter {
+  height: 40px;
+  width: 40px;
+  margin-right: $spacing/2;
+}
+
 .blogpost-title {
   @include medium-and-down {
     .blogpost-cell-medium & {
@@ -240,19 +243,6 @@
       color: $active-color;
     }
   }
-}
-
-.blogpost-credit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.blogpost-twitter {
-  height: 40px;
-  width: 40px;
-  margin-bottom: $spacing/2;
 }
 
 .blogpost-excerpt {

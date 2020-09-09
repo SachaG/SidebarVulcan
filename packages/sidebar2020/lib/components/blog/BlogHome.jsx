@@ -28,7 +28,7 @@ const BlogPost = () => {
         url={Utils.getSiteUrl() + '/blog'}
       />
       <div className="blogpost-list">
-        {blogPosts.map((blogPost) => (
+        {blogPosts && blogPosts.map((blogPost) => (
           <BlogPostCell key={blogPost.slug} blogPost={blogPost} variant="medium" />
         ))}
       </div>

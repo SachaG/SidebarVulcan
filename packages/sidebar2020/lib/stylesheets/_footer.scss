@@ -1,16 +1,33 @@
 .footer {
-  padding: $spacing;
   background: $dark-background-color;
-  .footer-inner{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  @include medium-and-down {
+    padding: $spacing;
   }
-  .nav-item {
-    margin: 0 $spacing 0 0;
-    &:last-child {
-      margin: 0;
-    }
+  @include large-and-up {
+    padding: $spacing * 3;
+  }
+}
+
+.footer-inner {
+  @include large-and-up {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    column-gap: $spacing;
+  }
+}
+.footer-column {
+}
+.footer-column-title {
+}
+.footer-column-items {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.footer-nav-item {
+  margin: 0 0 $spacing/2 0;
+  &:last-child {
+    margin: 0;
   }
 }

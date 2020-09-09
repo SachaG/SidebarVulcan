@@ -23,6 +23,15 @@ const BlogPost = () => {
     return <Components.Loading />;
   }
   const { blogPost } = data;
+
+  if (!blogPost) {
+    return (
+      <div>
+        <Components.Error404 />
+      </div>
+    );
+    
+  }
   const { title, excerpt, image } = blogPost;
   return (
     <div className="blogpost-page">

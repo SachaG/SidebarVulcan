@@ -1,16 +1,14 @@
 import { promises as fs } from "fs";
-import { nodeCache, Utils } from "meteor/vulcan:core";
+import { nodeCache, Utils, getSetting } from "meteor/vulcan:core";
 import Users from "meteor/vulcan:users";
 import yaml from "js-yaml";
 import moment from "moment";
 
-const fullPath =
-  "../../../../../packages/sidebar2020/lib/server/blog/contents/";
+const fullPath = getSetting("blog.contentPath");
 
-Meteor.startup(async () => {
+export const loadPosts = async () => {
   try {
     let posts = [];
-
     const fileNames = await fs.readdir(fullPath);
     for (const fileName of fileNames) {
       const data = await fs.readFile(fullPath + fileName, "utf8");
@@ -38,7 +36,12 @@ Meteor.startup(async () => {
     // sort posts by postedAt desc
     posts = posts.sort((p1, p2) => p1.postedAt > p2.postedAt);
     nodeCache.set("blogPosts", posts);
+    return posts;
   } catch (err) {
     console.log(err);
   }
+}
+
+Meteor.startup(async () => {
+  await loadPosts();
 });

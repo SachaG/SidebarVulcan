@@ -64,23 +64,25 @@ const BlogPostCellLarge = ({ blogPost }) => {
   const { avatarUrl, twitterScreenName, displayName } = user;
   return (
     <div className="blogpost-cell blogpost-cell-large">
-      <div className="blogpost-main">
-        <div className="blogpost-meta">
-          <div className="blogpost-meta-inner">
-            <div className="blogpost-date">{postedAtFormatted}</div>
-            <a
-              className="blogpost-credit"
-              href={`https://twitter.com/${twitterScreenName}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="blogpost-twitter avatar-twitter">
-                <img src={avatarUrl} alt={twitterScreenName} />
-              </span>
-              <span className="blogpost-name">{displayName}</span>
-            </a>
-          </div>
+      
+      <div className="blogpost-meta">
+        <div className="blogpost-meta-inner">
+          <div className="blogpost-date">{postedAtFormatted}</div>
+          <a
+            className="blogpost-credit"
+            href={`https://twitter.com/${twitterScreenName}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="blogpost-twitter avatar-twitter">
+              <img src={avatarUrl} alt={twitterScreenName} />
+            </span>
+            <span className="blogpost-name">{displayName}</span>
+          </a>
         </div>
+      </div>
+
+      <div className="blogpost-main">
         <div className="blogpost-contents">
           <h2 className="blogpost-title">{title}</h2>
           <h3 className="blogpost-excerpt">{excerpt}</h3>
