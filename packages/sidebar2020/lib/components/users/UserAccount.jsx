@@ -3,7 +3,7 @@ import React from 'react';
 import Posts from '../../modules/posts/collection';
 import WebringSites from '../../modules/sites/collection';
 import PostCell from '../posts/PostCell';
-import { useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import WebringSiteCell from '../webring/WebringSiteCell';
 import PageLayout from '../common/PageLayout';

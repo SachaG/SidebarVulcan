@@ -7,9 +7,9 @@
   "scripts": {
     "prestart": "sh prestart_vulcan.sh",
     "visualizer": "meteor --extra-packages bundle-visualizer --production --settings settings.json",
-    "start": "ROOT_URL=http://localhost:5000 meteor --settings settings.json --port 5000",
+    "start": "ROOT_URL=http://localhost:6000 meteor --settings settings.json --port 6000",
     "lint": "eslint --cache --ext .jsx,js packages",
-    "pushschema": "apollo schema:publish --endpoint=http://localhost:5000/graphql --key=\"service:zenstokyo-ZensRoom:5cPnMFTbY32TEGyfoV8eAg\"",
+    "pushschema": "apollo schema:publish --endpoint=http://localhost:6000/graphql --key=\"service:zenstokyo-ZensRoom:5cPnMFTbY32TEGyfoV8eAg\"",
     "deploy-production": "cd .deploy/production && mup deploy",
     "deploy-staging": "cd .deploy/staging && mup deploy",
     "storybook": "start-storybook -p 6006",
@@ -17,7 +17,7 @@
     "deploy": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy sidebar.io --settings settings-galaxy.json"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.1",
+    "@apollo/client": "^3.1.1",
     "@babel/runtime": "^7.1.2",
     "@google/maps": "^0.4.6",
     "@sentry/browser": "^4.2.4",
@@ -114,6 +114,7 @@
     "react-dropzone": "^8.0.3",
     "react-helmet": "^6.1.0",
     "react-intl": "^2.8.0",
+    "react-lazy-load": "^3.1.13",
     "react-loadable": "^5.4.0",
     "react-markdown": "^4.3.1",
     "react-pdf": "^4.0.0-beta.6",

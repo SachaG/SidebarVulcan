@@ -14,6 +14,9 @@ type BlogPost {
   twitterScreenName: String
   userId: String
   user: User
+  pagePath: String
+  pageUrl: String
+  image: String
 }`;
 
 addGraphQLSchema(blogPostType);

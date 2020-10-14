@@ -7,7 +7,7 @@ import get from "lodash/get";
 import ReactDOMServer from "react-dom/server";
 import WebringBanner from "../../components/webring/WebringBanner";
 import { webringStatus } from "../../modules/data.js";
-import bodyParser from 'body-parser';
+import bodyParser from "body-parser";
 
 const query = `
 query webringSitesQuery($input: MultiWebringSiteInput) {
@@ -50,7 +50,7 @@ export const getSVG = async (code, color) => {
   const prevSiteIndex =
     currentSiteIndex === 0 ? totalSites - 1 : currentSiteIndex - 1;
   const nextSiteIndex =
-    currentSiteIndex === totalSites ? 0 : currentSiteIndex + 1;
+    currentSiteIndex === totalSites - 1 ? 0 : currentSiteIndex + 1;
   // note: exclude current site from random pick
   const randomSiteIndex = sample([
     Math.max(0, random(0, currentSiteIndex - 1)),

@@ -3,14 +3,15 @@ import {
   addGraphQLResolvers,
   nodeCache,
 } from "meteor/vulcan:core";
+import { loadPosts } from "../load_posts.js";
 
 const blogPost = async (root, { slug }, context) => {
-  const posts = nodeCache.get("blogPosts");
-  return posts.find((p) => p.slug === slug);
+  const posts = nodeCache.get("blogPosts") || (await loadPosts());
+  return posts && posts.find((p) => p.slug === slug);
 };
 
 const blogPosts = async (root, args, context) => {
-  const posts = nodeCache.get("blogPosts");
+  const posts = nodeCache.get("blogPosts") || (await loadPosts());
   return posts;
 };
 

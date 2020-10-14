@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { expandQueryFragments, Components } from 'meteor/vulcan:core';
+import { expandQueryFragments, Components, Utils } from 'meteor/vulcan:core';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import BlogPostCell from './BlogPostCell.jsx';
-import PageLayout from '../common/PageLayout';
 
 const blogPostsQuery = `
 query blogPostsQuery{
@@ -22,11 +21,18 @@ const BlogPost = () => {
   }
   const { blogPosts } = data;
   return (
-    <PageLayout name="bloghome" title="Sidebar Blog" description="The latest articles from the Sidebar blog.">
-      {blogPosts.map((blogPost) => (
-        <BlogPostCell key={blogPost.slug} blogPost={blogPost} variant="medium" />
-      ))}
-    </PageLayout>
+    <div className="bloghome-page">
+      <Components.HeadTags
+        title={`Sidebar | Blog`}
+        description="The latest articles from the Sidebar blog."
+        url={Utils.getSiteUrl() + '/blog'}
+      />
+      <div className="blogpost-list">
+        {blogPosts && blogPosts.map((blogPost) => (
+          <BlogPostCell key={blogPost.slug} blogPost={blogPost} variant="medium" />
+        ))}
+      </div>
+    </div>
   );
 };
 

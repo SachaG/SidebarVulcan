@@ -8,7 +8,7 @@ import range from 'lodash/range';
 import { postStatus } from '../../modules/data';
 import { LinkContainer } from 'react-router-bootstrap';
 import { WeekdayPlaceholder, DatePlaceholder } from '../common/Placeholders';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 
 const postCount = 35;

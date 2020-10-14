@@ -4,11 +4,17 @@ registerFragment(`
   fragment BlogPostFragment on BlogPost {
     postedAt
     postedAtFormatted
+    excerpt
     body
     slug
     title
     twitterScreenName
     userId
-    user
+    user{
+      ...UserFragment
+    }
+    pagePath
+    pageUrl
+    image
   }
 `);
