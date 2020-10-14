@@ -8,7 +8,7 @@ import WebringSiteCell from './WebringSiteCell';
 import { LinkContainer } from 'react-router-bootstrap';
 import SidebarPortal from '../common/SidebarPortal.jsx';
 import { webringStatus } from '../../modules/data';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Logo from '../common/Logo';
 import WebringLogo from './WebringLogo';

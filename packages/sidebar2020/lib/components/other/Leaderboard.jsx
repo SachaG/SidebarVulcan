@@ -1,6 +1,6 @@
 import { Components } from 'meteor/vulcan:core';
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import get from 'lodash/get';
 import { Link } from 'react-router-dom';

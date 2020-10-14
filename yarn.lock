@@ -35,7 +35,7 @@
   integrity sha512-ozoq3XkHZKXrLQUOTZlbbPg9SvZryPQCRhTl+WJZu75ysaAKbwl6iVt+emBymZ5/eNXSUSdxqnOCX281sFLRRw==
   dependencies:
     "@apollo/react-common" "^3.1.1"
-    "@apollo/react-hooks" "^3.1.1"
+    "@apollo/client" "^3.1.1"
     prop-types "^15.7.2"
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
@@ -51,9 +51,9 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-hooks@^3.1.1":
+"@apollo/client@^3.1.1":
   version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@apollo/react-hooks/-/react-hooks-3.1.1.tgz#8e5a0f281a9778aaf17496ad38a178d23375077c"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/react-hooks-3.1.1.tgz#8e5a0f281a9778aaf17496ad38a178d23375077c"
   integrity sha512-LwE4olNlKwqh1hl6iHr/igSDGRVs7c6Ik5MYZm9TzGj01f+ebhM1+Pn+UBNLsb3uRuytZsUOsEDBEXMABzC9Tw==
   dependencies:
     "@apollo/react-common" "^3.1.1"
@@ -67,7 +67,7 @@
   integrity sha512-Jbh3bpkqmp5k5KGZNcKgpGiChlUB3kVkFxzuqC4Tzx5u1gg47dPuS950j3LeMLD6ZRFhwryMnMtBsLu8iceE/Q==
   dependencies:
     "@apollo/react-common" "^3.1.1"
-    "@apollo/react-hooks" "^3.1.1"
+    "@apollo/client" "^3.1.1"
     tslib "^1.10.0"
 
 "@apollographql/apollo-tools@^0.4.3":
@@ -10370,7 +10370,7 @@ react-apollo@^3.1.1:
     "@apollo/react-common" "^3.1.1"
     "@apollo/react-components" "^3.1.1"
     "@apollo/react-hoc" "^3.1.1"
-    "@apollo/react-hooks" "^3.1.1"
+    "@apollo/client" "^3.1.1"
     "@apollo/react-ssr" "^3.1.1"
 
 react-big-calendar@^0.19.2:
