@@ -1,14 +1,14 @@
 Arguments: 
-  /Users/sacha/.nvm/versions/node/v13.5.0/bin/node /usr/local/Cellar/yarn/1.22.5/libexec/bin/yarn.js add @apollo/client
+  /Users/sacha/.nvm/versions/node/v14.12.0/bin/node /usr/local/Cellar/yarn/1.22.5/libexec/bin/yarn.js
 
 PATH: 
-  /Users/sacha/.rvm/gems/ruby-2.2.5/bin:/Users/sacha/.rvm/gems/ruby-2.2.5@global/bin:/Users/sacha/.rvm/rubies/ruby-2.2.5/bin:/Users/sacha/.nvm/versions/node/v13.5.0/bin:/Users/sacha/bin:/usr/local/bin:/Users/sacha/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/sacha/.rvm/bin
+  /Users/sacha/.rvm/gems/ruby-2.2.5/bin:/Users/sacha/.rvm/gems/ruby-2.2.5@global/bin:/Users/sacha/.rvm/rubies/ruby-2.2.5/bin:/Users/sacha/.nvm/versions/node/v14.12.0/bin:/Users/sacha/bin:/usr/local/bin:/Users/sacha/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/sacha/.rvm/bin
 
 Yarn version: 
   1.22.5
 
 Node version: 
-  13.5.0
+  14.12.0
 
 Platform: 
   darwin x64
@@ -18,13 +18,13 @@ Trace:
       at ResponseError.ExtendableBuiltin (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:696:66)
       at new ResponseError (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:802:124)
       at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:67058:16)
-      at Request.emit (events.js:305:20)
+      at Request.emit (events.js:314:20)
       at Request.module.exports.Request.onRequestResponse (/usr/local/Cellar/yarn/1.22.5/libexec/lib/cli.js:141626:10)
-      at ClientRequest.emit (events.js:305:20)
-      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:601:27)
-      at HTTPParser.parserOnHeadersComplete (_http_common.js:116:17)
-      at TLSSocket.socketOnData (_http_client.js:470:22)
-      at TLSSocket.emit (events.js:305:20)
+      at ClientRequest.emit (events.js:314:20)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:640:27)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+      at TLSSocket.socketOnData (_http_client.js:509:22)
+      at TLSSocket.emit (events.js:314:20)
 
 npm manifest: 
   {

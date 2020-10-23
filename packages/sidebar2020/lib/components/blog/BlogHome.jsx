@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { expandQueryFragments, Components, Utils } from 'meteor/vulcan:core';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import BlogPostCell from './BlogPostCell.jsx';
 

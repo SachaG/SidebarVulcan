@@ -7,9 +7,9 @@
   "scripts": {
     "prestart": "sh prestart_vulcan.sh",
     "visualizer": "meteor --extra-packages bundle-visualizer --production --settings settings.json",
-    "start": "ROOT_URL=http://localhost:6000 meteor --settings settings.json --port 6000",
+    "start": "ROOT_URL=http://localhost:5555 meteor --settings settings.json --port 5555  --exclude-archs 'web.cordova'",
     "lint": "eslint --cache --ext .jsx,js packages",
-    "pushschema": "apollo schema:publish --endpoint=http://localhost:6000/graphql --key=\"service:zenstokyo-ZensRoom:5cPnMFTbY32TEGyfoV8eAg\"",
+    "pushschema": "apollo schema:publish --endpoint=http://localhost:5555/graphql --key=\"service:zenstokyo-ZensRoom:5cPnMFTbY32TEGyfoV8eAg\"",
     "deploy-production": "cd .deploy/production && mup deploy",
     "deploy-staging": "cd .deploy/staging && mup deploy",
     "storybook": "start-storybook -p 6006",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.1.1",
-    "@babel/runtime": "^7.1.2",
+    "@babel/runtime": "^7.12.1",
     "@google/maps": "^0.4.6",
     "@sentry/browser": "^4.2.4",
     "@sentry/node": "4.2.4",

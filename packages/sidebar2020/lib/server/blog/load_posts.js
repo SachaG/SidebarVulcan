@@ -18,19 +18,21 @@ export const loadPosts = async () => {
       const user = Users.findOne({
         twitterScreenName,
       });
-      const mPostedAt = moment(postedAt, "MM/DD/YYYY");
-      const pagePath = `/blog/${slug}`;
-      posts.push({
-        ...frontmatter,
-        postedAt: mPostedAt.toDate(),
-        postedAtFormatted: mPostedAt.format("MMMM Do, YYYY"),
-        userId: user._id,
-        user,
-        pagePath,
-        pageUrl: `${Utils.getSiteUrl()}${pagePath}`,
-        body,
-        image,
-      });
+      if (user) {
+        const mPostedAt = moment(postedAt, "MM/DD/YYYY");
+        const pagePath = `/blog/${slug}`;
+        posts.push({
+          ...frontmatter,
+          postedAt: mPostedAt.toDate(),
+          postedAtFormatted: mPostedAt.format("MMMM Do, YYYY"),
+          userId: user._id,
+          user,
+          pagePath,
+          pageUrl: `${Utils.getSiteUrl()}${pagePath}`,
+          body,
+          image,
+        });
+    }
     }
 
     // sort posts by postedAt desc

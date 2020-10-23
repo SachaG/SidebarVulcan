@@ -117,6 +117,12 @@ input IntlValueInput{
   value: String
 }
 directive @intl on FIELD_DEFINITION
+type Locale {
+  id: String,
+  label: String
+  dynamic: Boolean
+  strings: JSON
+}
 
   input AuthPasswordInput {
     email: String
@@ -2164,6 +2170,8 @@ input LogSelectorUniqueInput {
 
 type Query {
   siteData: Site
+  
+  locale(localeId: String): Locale
   
   currentUser: User
   
