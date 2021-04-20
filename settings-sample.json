@@ -25,6 +25,10 @@
       "clientDSN": "https://foo123@o324825.ingest.sentry.io/foo123"
     },
 
+    "oneGraph": {
+      "appId": "foo123"
+    },
+
     "hosting": "Localhost",
     "hostingLink": "http://localhost:5000/"
   },
@@ -66,6 +70,10 @@
 
   "apolloEngine": {
     "apiKey": "service:foo:foo123"
+  },
+
+  "blog": {
+    "contentPath": "../../../../../public/md/blog/"
   }
   
 }
