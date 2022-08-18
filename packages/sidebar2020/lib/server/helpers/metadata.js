@@ -1,4 +1,5 @@
-import got from "got";
+// import got from "got";
+import fetch from "node-fetch";
 
 const twitterScraper = () => {
   const rules = {
@@ -25,8 +26,11 @@ const metascraper = require("metascraper")([
   twitterScraper(),
 ]);
 
-export const getMetadata = async targetUrl => {
-  const { body: html, url } = await got(targetUrl);
-  const metadata = await metascraper({ html, url });
+export const getMetadata = async (targetUrl) => {
+  // const { body: html, url } = await got(targetUrl);
+  const response = await fetch(targetUrl);
+  const html = await response.text();
+
+  const metadata = await metascraper({ html, url: targetUrl });
   return metadata;
 };

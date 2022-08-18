@@ -13,7 +13,7 @@ export const loadPosts = async () => {
     for (const fileName of fileNames) {
       const data = await fs.readFile(fullPath + fileName, 'utf8');
       const [empty, frontmatterString, body] = data.split('---');
-      const frontmatter = yaml.safeLoad(frontmatterString, 'utf8');
+      const frontmatter = yaml.load(frontmatterString, 'utf8');
       const { twitterScreenName, slug, image, postedAt } = frontmatter;
       const user = Users.findOne({
         twitterScreenName,

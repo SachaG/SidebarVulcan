@@ -252,9 +252,11 @@ const AdminPosts = () => (
       showEdit={true}
       newFormOptions={{
         queryFragmentName: 'PostFragment',
+        mutationFragmentName: 'PostFragment',
       }}
       editFormOptions={{
         queryFragmentName: 'PostFragment',
+        mutationFragmentName: 'PostFragment',
         // addFields: ['clickCount'],
       }}
       components={{

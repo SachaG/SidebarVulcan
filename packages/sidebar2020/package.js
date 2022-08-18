@@ -2,11 +2,11 @@ Package.describe({
   name: `sidebar2020`,
 });
 
-const version = `1.16.0`;
+const version = `1.16.7`;
 
 Package.onUse((api) => {
   api.use([
-    `fourseven:scss@4.12.0`,
+    `fourseven:scss@4.15.0`,
 
     // vulcan core
     `vulcan:core@${version}`,

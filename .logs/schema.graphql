@@ -247,11 +247,6 @@ type User {
 }
 
 
-input DeleteUserInput{
-  filter: UserFilterInput
-  id: String
-}
-
 input SingleUserInput {
   # filtering
   filter: UserFilterInput
@@ -354,6 +349,11 @@ input UpdateUserDataInput {
   emailIsRequired: Boolean 
 }
 
+input DeleteUserInput{
+  filter: UserFilterInput
+  id: String
+}
+
 input UserFilterInput {
   _and: [UserFilterInput]
   _not: UserFilterInput
@@ -435,11 +435,6 @@ type Newsletter {
   sentAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeleteNewsletterInput{
-  filter: NewsletterFilterInput
-  id: String
-}
 
 input SingleNewsletterInput {
   # filtering
@@ -534,6 +529,11 @@ input UpdateNewsletterDataInput {
   postsIds: [String] 
 }
 
+input DeleteNewsletterInput{
+  filter: NewsletterFilterInput
+  id: String
+}
+
 input NewsletterFilterInput {
   _and: [NewsletterFilterInput]
   _not: NewsletterFilterInput
@@ -590,11 +590,6 @@ type Email {
 }
 
 
-input DeleteEmailInput{
-  filter: EmailFilterInput
-  id: String
-}
-
 input SingleEmailInput {
   # filtering
   filter: EmailFilterInput
@@ -648,10 +643,6 @@ type  MultiEmailOutput{
   totalCount: Int
 }
 
-type EmailMutationOutput{
-  data: Email
-}
-
 input EmailFilterInput {
   _and: [EmailFilterInput]
   _not: EmailFilterInput
@@ -694,11 +685,6 @@ type Setting {
   description: String 
 }
 
-
-input DeleteSettingInput{
-  filter: SettingFilterInput
-  id: String
-}
 
 input SingleSettingInput {
   # filtering
@@ -753,10 +739,6 @@ type  MultiSettingOutput{
   totalCount: Int
 }
 
-type SettingMutationOutput{
-  data: Setting
-}
-
 input SettingFilterInput {
   _and: [SettingFilterInput]
   _not: SettingFilterInput
@@ -804,11 +786,6 @@ type Callback {
   hooks: [String] 
 }
 
-
-input DeleteCallbackInput{
-  filter: CallbackFilterInput
-  id: String
-}
 
 input SingleCallbackInput {
   # filtering
@@ -861,10 +838,6 @@ type SingleCallbackOutput{
 type  MultiCallbackOutput{
   results: [Callback]
   totalCount: Int
-}
-
-type CallbackMutationOutput{
-  data: Callback
 }
 
 input CallbackFilterInput {
@@ -930,11 +903,6 @@ type Charge {
 }
 
 
-input DeleteChargeInput{
-  filter: ChargeFilterInput
-  id: String
-}
-
 input SingleChargeInput {
   # filtering
   filter: ChargeFilterInput
@@ -986,10 +954,6 @@ type SingleChargeOutput{
 type  MultiChargeOutput{
   results: [Charge]
   totalCount: Int
-}
-
-type ChargeMutationOutput{
-  data: Charge
 }
 
 input ChargeFilterInput {
@@ -1058,11 +1022,6 @@ type AnalyticsEvent {
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeleteAnalyticsEventInput{
-  filter: AnalyticsEventFilterInput
-  id: String
-}
 
 input SingleAnalyticsEventInput {
   # filtering
@@ -1182,11 +1141,6 @@ type Category {
 }
 
 
-input DeleteCategoryInput{
-  filter: CategoryFilterInput
-  id: String
-}
-
 input SingleCategoryInput {
   # filtering
   filter: CategoryFilterInput
@@ -1278,6 +1232,11 @@ input UpdateCategoryDataInput {
   slug: String 
 }
 
+input DeleteCategoryInput{
+  filter: CategoryFilterInput
+  id: String
+}
+
 input CategoryFilterInput {
   _and: [CategoryFilterInput]
   _not: CategoryFilterInput
@@ -1366,14 +1325,8 @@ type Post {
   scheduledAtFormatted(format: String = "YYYY/MM/DD"): String 
   sentAtFormatted(format: String = "YYYY/MM/DD"): String 
   paidAtFormatted(format: String = "YYYY/MM/DD"): String 
-  tweetedAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeletePostInput{
-  filter: PostFilterInput
-  id: String
-}
 
 input SinglePostInput {
   # filtering
@@ -1489,6 +1442,11 @@ input UpdatePostDataInput {
   paidAt: Date 
 }
 
+input DeletePostInput{
+  filter: PostFilterInput
+  id: String
+}
+
 input PostFilterInput {
   _and: [PostFilterInput]
   _not: PostFilterInput
@@ -1589,16 +1547,10 @@ type Job {
   archivedAt: Date 
   coupon: String 
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
-  sentAtFormatted(format: String = "YYYY/MM/DD"): String 
   paidAtFormatted(format: String = "YYYY/MM/DD"): String 
   archivedAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeleteJobInput{
-  filter: JobFilterInput
-  id: String
-}
 
 input SingleJobInput {
   # filtering
@@ -1701,6 +1653,11 @@ input UpdateJobDataInput {
   coupon: String 
 }
 
+input DeleteJobInput{
+  filter: JobFilterInput
+  id: String
+}
+
 input JobFilterInput {
   _and: [JobFilterInput]
   _not: JobFilterInput
@@ -1760,11 +1717,6 @@ type Discount {
   amount: Float 
 }
 
-
-input DeleteDiscountInput{
-  filter: DiscountFilterInput
-  id: String
-}
 
 input SingleDiscountInput {
   # filtering
@@ -1855,6 +1807,11 @@ input UpdateDiscountDataInput {
   amount: Float 
 }
 
+input DeleteDiscountInput{
+  filter: DiscountFilterInput
+  id: String
+}
+
 input DiscountFilterInput {
   _and: [DiscountFilterInput]
   _not: DiscountFilterInput
@@ -1901,11 +1858,6 @@ type Log {
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeleteLogInput{
-  filter: LogFilterInput
-  id: String
-}
 
 input SingleLogInput {
   # filtering
@@ -1958,10 +1910,6 @@ type SingleLogOutput{
 type  MultiLogOutput{
   results: [Log]
   totalCount: Int
-}
-
-type LogMutationOutput{
-  data: Log
 }
 
 input LogFilterInput {
@@ -2031,11 +1979,6 @@ type WebringSite {
   createdAtFormatted(format: String = "YYYY/MM/DD"): String 
 }
 
-
-input DeleteWebringSiteInput{
-  filter: WebringSiteFilterInput
-  id: String
-}
 
 input SingleWebringSiteInput {
   # filtering
@@ -2134,6 +2077,11 @@ input UpdateWebringSiteDataInput {
   userId: String 
   status: Float 
   code: String 
+}
+
+input DeleteWebringSiteInput{
+  filter: WebringSiteFilterInput
+  id: String
 }
 
 input WebringSiteFilterInput {
