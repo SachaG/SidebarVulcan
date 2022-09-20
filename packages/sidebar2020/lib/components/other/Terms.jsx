@@ -49,7 +49,7 @@ These terms and conditions are governed by and construed in accordance with the 
 const About = () => {
   return (
     <PageLayout name="terms" title="Terms of Service">
-      <ReactMarkdown source={contents} escapeHtml={false} />
+      <ReactMarkdown>{contents}</ReactMarkdown>
     </PageLayout>
   );
 };

@@ -118,7 +118,7 @@ const Webring = () => {
 
       {/* <div className="webring-footer webring-colorscale">
         <div className="webring-footer-item">
-          <ReactMarkdown source={applyContents} escapeHtml={false} />
+          <ReactMarkdown>{applyContents}</ReactMarkdown>
           <LinkContainer to="/webring/apply">
             <Components.Button>Apply to Join</Components.Button>
           </LinkContainer>

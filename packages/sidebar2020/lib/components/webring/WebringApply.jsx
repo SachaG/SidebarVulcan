@@ -26,7 +26,7 @@ const WebringApply = () => {
   const { currentUser } = useCurrentUser();
   return (
     <PageLayout name="webring-apply" title="Join the Sidebar Webring">
-      <ReactMarkdown source={contents} escapeHtml={false} />
+      <ReactMarkdown>{contents}</ReactMarkdown>
       {currentUser ? (
         <Components.SmartForm
           collection={Sites}

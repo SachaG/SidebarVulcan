@@ -28,7 +28,7 @@ This policy is effective as of 27 August 2020.
 const About = () => {
   return (
     <PageLayout name="privacy" title="Privacy Policy">
-      <ReactMarkdown source={contents} escapeHtml={false} />
+      <ReactMarkdown>{contents}</ReactMarkdown>
     </PageLayout>
   );
 };

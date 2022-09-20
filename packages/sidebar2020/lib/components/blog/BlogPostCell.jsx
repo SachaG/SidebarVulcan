@@ -64,7 +64,6 @@ const BlogPostCellLarge = ({ blogPost }) => {
   const { avatarUrl, twitterScreenName, displayName } = user;
   return (
     <div className="blogpost-cell blogpost-cell-large">
-      
       <div className="blogpost-meta">
         <div className="blogpost-meta-inner">
           <div className="blogpost-date">{postedAtFormatted}</div>
@@ -87,7 +86,9 @@ const BlogPostCellLarge = ({ blogPost }) => {
           <h2 className="blogpost-title">{title}</h2>
           <h3 className="blogpost-excerpt">{excerpt}</h3>
           <div className="blogpost-body">
-            <ReactMarkdown source={body} escapeHtml={false} renderers={{ link: RouterLink, image: ImageLoader }} />
+            <ReactMarkdown escapeHtml={false} renderers={{ link: RouterLink, image: ImageLoader }}>
+              {body}
+            </ReactMarkdown>
           </div>
         </div>
       </div>

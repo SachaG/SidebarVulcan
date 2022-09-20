@@ -40,7 +40,7 @@ Generally speaking, links that require a heavy download or a plugin install will
 const About = () => {
   return (
     <PageLayout name="about" title="About" description="Learn more about Sidebar">
-      <ReactMarkdown source={contents} escapeHtml={false} />
+      <ReactMarkdown>{contents}</ReactMarkdown>
     </PageLayout>
   );
 };

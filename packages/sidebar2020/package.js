@@ -2,7 +2,7 @@ Package.describe({
   name: `sidebar2020`,
 });
 
-const version = `1.16.7`;
+const version = `1.16.9`;
 
 Package.onUse((api) => {
   api.use([

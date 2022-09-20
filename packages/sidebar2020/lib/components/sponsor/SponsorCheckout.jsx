@@ -61,7 +61,7 @@ const SponsorCheckout = () => {
           {document.paidAt ? <SponsorThanks document={document} /> : <SponsorCheckoutActions document={document} />}
 
           <div className="sponsor-checkout-text">
-            <ReactMarkdown source={contents} escapeHtml={false} />
+            <ReactMarkdown>{contents}</ReactMarkdown>
           </div>
         </div>
       )}
