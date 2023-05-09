@@ -12,8 +12,6 @@ app.get("/out", async function (req, res) {
   if (url) {
     try {
 
-      // disable URL check for now
-      
       /*
 
       If the URL passed to ?url= is in plain text, any hash fragment
@@ -22,16 +20,16 @@ app.get("/out", async function (req, res) {
       even without the hash
       
       */
-      // const post = await Connectors.get(
-      //   Posts,
-      //   {
-      //     status: postStatus.published,
-      //     url: { $regex: escapeStringRegexp(url.replace("?ref=sidebar", "")) },
-      //   },
-      //   { sort: { postedAt: -1, createdAt: -1 } }
-      // );
+      const post = await Connectors.get(
+        Posts,
+        {
+          status: postStatus.published,
+          url: { $regex: escapeStringRegexp(url.replace("?ref=sidebar", "")) },
+        },
+        { sort: { postedAt: -1, createdAt: -1 } }
+      );
 
-      if (true) {
+      if (post) {
         // const { _id, clickCount } = post;
         // const ip =
         //   (req.headers && req.headers["x-forwarded-for"]) ||
