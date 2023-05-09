@@ -18,9 +18,9 @@ const LogIn = () => {
         <p>You are already logged in.</p>
       ) : (
         <div>
-          <p>Log in or sign up using Twitter</p>
+          <p>Log in or sign up</p>
           <Components.AccountsLoginForm
-            showSignUpLink={false}
+            showSignUpLink={true}
             onSignedInHook={() => {
               history.push(`/log-in/finish/?redirect=${redirect}`);
             }}
