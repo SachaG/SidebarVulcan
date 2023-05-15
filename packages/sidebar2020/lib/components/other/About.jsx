@@ -5,7 +5,7 @@ import { Components } from 'meteor/vulcan:core';
 
 const contents = `
 
-Sidebar has been collecting the best design links of the day since October 2012. It's maintained by [Sacha Greif](http://twitter.com/sachagreif) and built with [Vulcan.js](http://vulcanjs.org/). Sidebar's code is open-source and [available on GitHub](https://github.com/SachaG/Sidebar/).
+Sidebar has been collecting the best design links of the day since October 2012. It's maintained by [Sacha Greif](http://twitter.com/sachagreif) and built with [Vulcan.js](http://vulcanjs.org/). Sidebar's code is open-source and [available on GitHub](https://github.com/SachaG/SidebarVulcan/).
 
 ## Submission Guidelines
 
