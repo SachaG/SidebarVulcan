@@ -6,7 +6,7 @@ const version = `1.16.9`;
 
 Package.onUse((api) => {
   api.use([
-    `fourseven:scss@4.15.0`,
+    `vulcan:scss@4.15.0`,
 
     // vulcan core
     `vulcan:core@${version}`,

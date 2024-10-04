@@ -7,7 +7,7 @@
   "scripts": {
     "prestart": "sh prestart_vulcan.sh",
     "visualizer": "meteor --extra-packages bundle-visualizer --production --settings settings.json",
-    "start": "METEOR_PACKAGE_DIRS='/Users/sacha/Dev/Vulcan/packages/' ROOT_URL=http://localhost:5555 meteor --settings settings.json --port 5555  --exclude-archs 'web.cordova'",
+    "start": "MONGO_URL='mongodb://vulcan2:hfPYfaoP2Ydj29dh239fh@SG-Sidebar-37049.servers.mongodirector.com:27017/sidebar' METEOR_PACKAGE_DIRS='/Users/sacha/dev/Vulcan/packages/' ROOT_URL=http://localhost:5555 meteor --settings settings.json --port 5555  --exclude-archs 'web.cordova'",
     "lint": "eslint --cache --ext .jsx,js packages",
     "pushschema": "apollo schema:publish --endpoint=http://localhost:5555/graphql --key=\"service:zenstokyo-ZensRoom:5cPnMFTbY32TEGyfoV8eAg\"",
     "deploy-production": "cd .deploy/production && mup deploy",

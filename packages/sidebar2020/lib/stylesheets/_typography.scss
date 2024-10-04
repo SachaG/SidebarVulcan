@@ -4,7 +4,7 @@
 
 // @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 // @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
@@ -42,9 +42,10 @@
   // font-family: 'IBM Plex Mono', 'IBM Plex Sans', 'Inter', 'Roboto', Helvetica, sans-serif;
   // font-family: "GT Eesti Text", "Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif;
   // font-family: 'IBM Plex Serif', serif;
-  font-family: avenir next, avenir, -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: avenir next, avenir, -apple-system, BlinkMacSystemFont,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
-@mixin font-secondary{
+@mixin font-secondary {
   // font-family: 'GT Walsheim Pro Trial Bd', Helvetica, sans-serif
   // font-family: 'GT Pressura Pro M Trial Bd', Helvetica, sans-serif
   // font-family: "GT Eesti Text", "Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif;
@@ -52,8 +53,7 @@
   // font-family: 'Menlo', 'IBM Plex Mono', 'IBM Plex Sans', 'Inter', 'Roboto', Helvetica, sans-serif;
   // font-family: 'IBM Plex Mono', 'IBM Plex Sans', 'Inter', 'Roboto', Helvetica, sans-serif;
   // font-family: 'Pitch Sans Bold Test';
-  font-family: 'IBM Plex Mono', Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-
+  font-family: "IBM Plex Mono", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
 }
 @mixin line-height {
   line-height: 1.6;
@@ -132,12 +132,12 @@ $huge-font: $root-size * 3.5rem;
 blockquote {
   border-left: 5px solid $lighter-grey;
   padding-left: $spacing;
-  cite{
+  cite {
     display: block;
     margin-left: $spacing;
-    margin-top: $spacing/2;
-    &::before{
-      content: "— "
+    margin-top: calc($spacing / 2);
+    &::before {
+      content: "— ";
     }
   }
 }

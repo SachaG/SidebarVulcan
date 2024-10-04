@@ -9,16 +9,16 @@
     grid-template-columns: 60px auto;
     grid-template-rows: 60px auto;
     grid-template-areas:
-      'a b'
-      'd d';
+      "a b"
+      "d d";
   }
   @include large-and-up {
     display: grid;
     grid-template-columns: 160px 800px;
     grid-template-rows: 160px auto;
     grid-template-areas:
-      'a b'
-      'c d';
+      "a b"
+      "c d";
   }
 }
 
@@ -213,7 +213,7 @@
 .blogpost-twitter {
   height: 40px;
   width: 40px;
-  margin-right: $spacing/2;
+  margin-right: ($spacing / 2);
 }
 
 .blogpost-title {
@@ -291,7 +291,7 @@
   display: block;
   @include font-secondary();
   color: $lighter-text-color;
-  margin-top: $spacing/2;
+  margin-top: calc($spacing / 2);
   text-align: center;
   font-size: $small-font;
 }

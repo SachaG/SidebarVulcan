@@ -187,7 +187,7 @@
 }
 .webring-avatar {
   display: block;
-  margin-right: $spacing/2;
+  margin-right: ($spacing / 2);
   @include small {
     height: 30px;
     width: 30px;
@@ -213,7 +213,7 @@
   }
   .post-date {
     &::after {
-      content: '';
+      content: "";
     }
   }
   .post-link {

@@ -62,14 +62,14 @@
 
 .post-date {
   @include font-secondary;
-  margin-right: $spacing/2;
+  margin-right: ($spacing / 2);
   font-size: $small-font;
   &,
   a:not(:hover) {
     color: $lighter-text-color;
   }
   &::after {
-    content: ' | ';
+    content: " | ";
     color: $lighter-text-color;
   }
 }
@@ -93,12 +93,12 @@
 }
 
 .post-webringsite {
-  margin-right: $spacing/2;
+  margin-right: ($spacing / 2);
   display: flex;
   align-items: center;
   &::after {
     margin-left: $spacing/2;
-    content: ' | ';
+    content: " | ";
     color: $lighter-text-color;
   }
   .post-credit {
@@ -162,7 +162,7 @@
 }
 
 .post-credit {
-  margin-right: $spacing/2;
+  margin-right: ($spacing / 2);
 }
 
 .post-twitter,
@@ -187,7 +187,7 @@
   display: flex;
   align-items: center;
   .category-cell {
-    margin-right: $spacing/2;
+    margin-right: ($spacing / 2);
     &:last-child {
       margin-right: 0;
     }
@@ -195,7 +195,7 @@
 }
 
 .post-actions {
-  margin-top: $spacing/2;
+  margin-top: calc($spacing / 2);
   display: flex;
   align-items: center;
 }
@@ -301,9 +301,9 @@ $offset: 3 * $spacing;
     }
     &:nth-child(even) {
       grid-template-areas:
-        'two two one one one'
-        'three three one one one'
-        'four four one one one';
+        "two two one one one"
+        "three three one one one"
+        "four four one one one";
       // .sidecolumn {
       //   grid-column-start: 1;
       //   grid-column-end: 3;
@@ -314,9 +314,9 @@ $offset: 3 * $spacing;
     }
     &:nth-child(odd) {
       grid-template-areas:
-        'one one one two two'
-        'one one one three three'
-        'one one one four four';
+        "one one one two two"
+        "one one one three three"
+        "one one one four four";
       // .postscolumn {
       //   grid-column-start: 1;
       //   grid-column-end: 4;

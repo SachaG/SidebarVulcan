@@ -1,29 +1,35 @@
-.btn{
-  &:hover, &:active, &:focus{
-    background-color: $hover-color;
-    border-color: $hover-color;
-  }
+.btn {
   @include font-secondary;
   text-transform: uppercase;
   white-space: nowrap;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
 }
-.btn-default{
+.btn-default {
   background-color: transparent;
   color: $active-color;
 }
-.btn-info{
+.btn-info {
   background-color: $dark-grey;
   border-color: $dark-grey;
 }
-.btn-primary, a.btn-primary{
-  &, &.active{
+.btn-primary,
+a.btn-primary {
+  &,
+  &.active {
     background-color: $active-color;
     border-color: $active-color;
-    &, & span{
+    &,
+    & span {
       color: $white;
     }
   }
 }
-.btn-secondary, a.btn-secondary{
+.btn-secondary,
+a.btn-secondary {
   color: $inverted-text-color;
 }

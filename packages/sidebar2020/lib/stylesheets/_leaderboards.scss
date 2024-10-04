@@ -1,19 +1,19 @@
 .leaderboard {
-  @include medium-and-up{
+  @include medium-and-up {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: $spacing * 4;
   }
 }
-.leaderboard-heading{
+.leaderboard-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dotted $dark-border-color;
-  padding-bottom: $spacing/2;
+  padding-bottom: calc($spacing / 2);
   margin-bottom: $spacing/2;
   @include font-secondary;
-  h3{
+  h3 {
     margin: 0;
   }
 }
@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px dotted $dark-border-color;
-  padding-bottom: $spacing/2;
+  padding-bottom: calc($spacing / 2);
   margin-bottom: $spacing/2;
 }
 
@@ -37,10 +37,10 @@
   @include font-secondary;
 }
 
-.leaderboard-label{
+.leaderboard-label {
   display: flex;
   align-items: center;
-  .avatar{
+  .avatar {
     height: 22px;
     width: 22px;
     margin-right: 5px;

@@ -40,7 +40,7 @@
   background: $background-color;
 }
 .sponsor-discount {
-  margin-top: $spacing/2;
+  margin-top: calc($spacing / 2);
   font-size: $small-font;
 }
 .sponsor-discount-base {
@@ -56,6 +56,6 @@
   text-transform: uppercase;
 }
 
-.sponsor-checkout-thanks{
+.sponsor-checkout-thanks {
   text-align: center;
 }
