@@ -1,9 +1,15 @@
-import React from 'react';
-import { Components } from 'meteor/vulcan:core';
+import React from "react";
+import { Components } from "meteor/vulcan:core";
 
 const PostCredit = ({ post }) => {
-  const { credit, twitterAvatarUrl, twitterName, user = {} } = post;
-  const { twitterScreenName: userTwitterScreenName, avatarUrl: userAvatarUrl /* displayName: userDisplayName */ } = user;
+  const { credit, twitterAvatarUrl, twitterName, user } = post;
+  if (!user) {
+    return null;
+  }
+  const {
+    twitterScreenName: userTwitterScreenName,
+    avatarUrl: userAvatarUrl /* displayName: userDisplayName */,
+  } = user;
 
   const avatarUrl = twitterAvatarUrl || userAvatarUrl;
   const twitterScreenName = credit || userTwitterScreenName;
@@ -26,16 +32,24 @@ const PostCredit = ({ post }) => {
           {credit && credit !== userTwitterScreenName && (
             <span>
               By {twitterName} (
-              <a href={`https://twitter.com/${credit}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`https://twitter.com/${credit}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 @{credit}
               </a>
-              ),{' '}
+              ),{" "}
             </span>
           )}
           {userTwitterScreenName && (
             <span>
-              {credit ? 'submitted' : 'Submitted'} by{' '}
-              <a href={`https://twitter.com/${userTwitterScreenName}`} target="_blank" rel="noopener noreferrer">
+              {credit ? "submitted" : "Submitted"} by{" "}
+              <a
+                href={`https://twitter.com/${userTwitterScreenName}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 @{userTwitterScreenName}
               </a>
             </span>

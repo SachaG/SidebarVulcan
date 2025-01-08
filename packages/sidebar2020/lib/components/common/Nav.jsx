@@ -1,22 +1,25 @@
-import React from 'react';
-import { useCurrentUser } from 'meteor/vulcan:core';
-import { Link } from 'react-router-dom';
-import Users from 'meteor/vulcan:users';
-import AccountItem from '../users/AccountItem';
+import React from "react";
+import { useCurrentUser } from "meteor/vulcan:core";
+import { Link } from "react-router-dom";
+import Users from "meteor/vulcan:users";
+import AccountItem from "../users/AccountItem";
+
+export const sponsorLink =
+  "https://uxdesigncc.medium.com/sponsor-sidebar-io-d511b6cf032b";
 
 const nav = [
-  { name: 'Categories', to: '/categories' },
+  // { name: 'Categories', to: '/categories' },
   {
-    name: 'Sponsor',
-    to: '/sponsor',
+    name: "Sponsor",
+    to: sponsorLink,
   },
   // {
   //   name: 'Jobs',
   //   to: '/jobs',
   // },
   {
-    name: 'Submit',
-    to: '/submit',
+    name: "Submit a Link",
+    to: "/submit",
   },
 ];
 
@@ -27,8 +30,14 @@ const Nav = () => {
       {nav.map((item) => (
         <NavItem key={item.name} item={item} />
       ))}
-      {currentUser && Users.isAdmin(currentUser) && <NavItem item={{ name: 'Admin', to: '/admin/posts' }} />}
-      {currentUser ? <AccountItem currentUser={currentUser} /> : <NavItem item={{ name: 'Log-in', to: '/log-in' }} />}
+      {currentUser && Users.isAdmin(currentUser) && (
+        <NavItem item={{ name: "Admin", to: "/admin/posts" }} />
+      )}
+      {currentUser ? (
+        <AccountItem currentUser={currentUser} />
+      ) : (
+        <NavItem item={{ name: "Log-in", to: "/log-in" }} />
+      )}
     </div>
   );
 };
@@ -41,6 +50,5 @@ const NavItem = ({ item }) => {
     </Link>
   );
 };
-
 
 export default Nav;

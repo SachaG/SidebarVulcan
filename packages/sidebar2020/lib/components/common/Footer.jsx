@@ -1,38 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { getSetting } from 'meteor/vulcan:core';
+import React from "react";
+import { Link } from "react-router-dom";
+import { getSetting } from "meteor/vulcan:core";
+import { sponsorLink } from "./Nav";
 
 const HostingLink = () => (
   <div className="nav-item footer-nav-item">
-    Hosted on{' '}
-    <a href={getSetting('hostingLink')} target="_blank" rel="noopener noreferrer">
-      {getSetting('hosting')}
+    Hosted on{" "}
+    <a
+      href={getSetting("hostingLink")}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {getSetting("hosting")}
     </a>
   </div>
 );
 
-const Mentions = () => <div className="nav-item footer-nav-item">&copy; Sidebar 2012-2020</div>;
+const Mentions = () => (
+  <div className="nav-item footer-nav-item">
+    &copy; UX Collective {new Date().getFullYear()}
+  </div>
+);
 
 const footer = [
   {
-    title: 'foo',
+    title: "foo",
     items: [
-      { name: 'Archives', to: '/archives' },
-      { name: 'Categories', to: '/categories' },
-      { name: 'Leaderboard', to: '/leaderboard' },
-      { name: 'Sponsor', to: '/sponsor' },
-      { name: 'Submit', to: '/submit' },
+      { name: "Archives", to: "/archives" },
+      { name: "Categories", to: "/categories" },
+      // { name: 'Leaderboard', to: '/leaderboard' },
+      { name: "Sponsor", to: sponsorLink },
+      { name: "Submit a Link", to: "/submit" },
     ],
   },
   {
-    title: 'foo',
+    title: "foo",
     items: [
-      { name: 'About', to: '/about' },
-      { name: 'Webring', to: '/webring' },
-      { name: 'Blog', to: '/blog' },
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms', href: '/terms' },
-      { name: 'Contact', href: 'mailto:hi@sidebar.io' },
+      { name: "About", to: "/about" },
+      // { name: 'Webring', to: '/webring' },
+      // { name: 'Blog', to: '/blog' },
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Terms", href: "/terms" },
+      { name: "Contact", href: "mailto:hello@uxdesign.cc" },
     ],
   },
   // {
@@ -44,23 +53,23 @@ const footer = [
   //   ],
   // },
   {
-    title: 'foo',
+    title: "foo",
     items: [
-      { name: 'RSS', href: 'https://sidebar.io/feed.xml' },
-      { name: 'REST API', href: 'https://sidebar.io/api' },
-      { name: 'GraphQL', href: 'https://sidebar.io/graphql' },
-      { name: 'GitHub', href: 'https://github.com/SachaG/SidebarVulcan/' },
+      { name: "RSS", href: "https://sidebar.io/feed.xml" },
+      // { name: 'REST API', href: 'https://sidebar.io/api' },
+      // { name: 'GraphQL', href: 'https://sidebar.io/graphql' },
+      { name: "GitHub", href: "https://github.com/SachaG/SidebarVulcan/" },
       {
-        name: 'hosting',
+        name: "hosting",
         component: HostingLink,
       },
     ],
   },
   {
-    title: 'foo',
+    title: "foo",
     items: [
       {
-        name: 'copy',
+        name: "copy",
         component: Mentions,
       },
     ],
@@ -92,7 +101,7 @@ const FooterColumn = ({ column }) => {
 };
 
 const NavItem = ({ item }) => {
-  const { name, to, href, rel = '', component: Component } = item;
+  const { name, to, href, rel = "", component: Component } = item;
   return Component ? (
     <Component />
   ) : to ? (
@@ -101,7 +110,12 @@ const NavItem = ({ item }) => {
     </Link>
   ) : (
     // eslint-disable-next-line
-    <a href={href} className="nav-item footer-nav-item" target="_blank" rel={`${rel} noopener noreferrer`}>
+    <a
+      href={href}
+      className="nav-item footer-nav-item"
+      target="_blank"
+      rel={`${rel} noopener noreferrer`}
+    >
       {name}
     </a>
   );

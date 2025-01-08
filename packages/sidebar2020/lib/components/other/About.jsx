@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import PageLayout from '../common/PageLayout';
-import { Components } from 'meteor/vulcan:core';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import PageLayout from "../common/PageLayout";
+import { Components } from "meteor/vulcan:core";
 
 const contents = `
 
-Sidebar has been collecting the best design links of the day since October 2012. It's maintained by [Sacha Greif](http://twitter.com/sachagreif) and built with [Vulcan.js](http://vulcanjs.org/). Sidebar's code is open-source and [available on GitHub](https://github.com/SachaG/Sidebar/).
+Sidebar is a platform that curates the best links and resources for designers and makers—and has been collecting links since October 2012. It's maintained by Fabricio Teixeira and originally created by [Sacha Greif](https://bsky.app/profile/sachagreif.com). Sidebar's code is open-source and [available on GitHub](https://github.com/SachaG/SidebarVulcan/).
 
 ## Submission Guidelines
 
-Sidebar links can be anything from an article, to a beautiful porfolio, to a cool CodePen demo. Here are a few pointers to boost your submission's chances of making the cut.
+Sidebar links can be anything from an article, to a beautiful portfolio, to a cool CodePen demo. Here are a few pointers to boost your submission's chances of making the cut.
 
 Note that posting your own content is fine as long as it follows the guidelines below. 
 
@@ -39,7 +39,11 @@ Generally speaking, links that require a heavy download or a plugin install will
 
 const About = () => {
   return (
-    <PageLayout name="about" title="About" description="Learn more about Sidebar">
+    <PageLayout
+      name="about"
+      title="About"
+      description="Learn more about Sidebar"
+    >
       <ReactMarkdown>{contents}</ReactMarkdown>
     </PageLayout>
   );
