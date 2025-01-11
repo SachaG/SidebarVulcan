@@ -44,7 +44,11 @@ const Nav = () => {
 
 const NavItem = ({ item }) => {
   const { name, to } = item;
-  return (
+  return to.includes("http") ? (
+    <a href={to} target="_blank" rel="noreferrer" className="nav-item">
+      {name}
+    </a>
+  ) : (
     <Link to={to} className="nav-item">
       {name}
     </Link>
