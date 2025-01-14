@@ -5,7 +5,11 @@ import get from "lodash/get";
 import Posts from "../../modules/posts/collection";
 import WebringSites from "../../modules/sites/collection";
 import Newsletters from "../../modules/newsletters/collection";
-import { postStatus, webringStatusOptions, webringStatus } from "../../modules/data";
+import {
+  postStatus,
+  webringStatusOptions,
+  webringStatus,
+} from "../../modules/data";
 
 const defaultEmail = getSetting("defaultEmail");
 
@@ -146,7 +150,6 @@ const newsletterQuery = /* GraphQL */ `
   }
 `;
 
-
 const webringSiteQuery = /* GraphQL */ `
   query webringSiteQuery($input: SingleWebringSiteInput!) {
     siteData {
@@ -229,6 +232,8 @@ VulcanEmail.addEmails({
       return {
         message,
         date: moment().format("MMMM D YYYY"),
+        curlyOpen: "{",
+        curlyClose: "}",
       };
     },
     query: newsletterQuery,
@@ -240,7 +245,7 @@ VulcanEmail.addEmails({
         ? Newsletters.findOne(newsletterId)
         : Newsletters.findOne({}, { createdAt: -1 });
       const postsIds = newsletter.postsIds;
-      return { postsIds, message };
+      return { postsIds, message, curlyOpen: "{", curlyClose: "}" };
     },
   },
 
@@ -253,7 +258,9 @@ VulcanEmail.addEmails({
     subject(data) {
       const dummySite = { title: "[title]", user: { displayName: "[user]" } };
       const site = get(data, "data.webringSite.result", dummySite);
-      return "Your site “" + site.title + "” has been added to the Sidebar Webring";
+      return (
+        "Your site “" + site.title + "” has been added to the Sidebar Webring"
+      );
     },
     query: webringSiteQuery,
     testVariables({ postId: siteId }) {
